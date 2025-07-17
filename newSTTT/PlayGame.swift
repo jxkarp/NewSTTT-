@@ -57,260 +57,260 @@ struct PlayGame {
     var tempB = false // ??? now that error tuple is removed
 
     // P L A Y G A M E   F U N C T I O N S
-    func pos(pt1: [Int]) -> Int { // pos returns the index to the array game
-        return pt1[0] * 9 + (pt1[1] - 1) * 3 + pt1[2] - 1
-    } // end func pos(pt1: [Int]) -> Int
-
-    func hasTTTinGrid(grd3: Int, tok3: String...) -> Int {
-        // if return == 0 there is no TTT, else the number that corresponds to which TTT (eg: row1, col3, LtoR diag, etc.)
-
-        for w in tok3 {
-            if game[pos(pt1: [grd3, 1, 1])] == w && game[pos(pt1: [grd3, 1, 2])] == w && game[pos(pt1: [grd3, 1, 3])] == w { // TTT in row 1
-                tempI1 = 1
-            } else if game[pos(pt1: [grd3, 2, 1])] == w && game[pos(pt1: [grd3, 2, 2])] == w && game[pos(pt1: [grd3, 2, 3])] == w { // TTT in row 2
-                tempI1 = 2
-            } else if game[pos(pt1: [grd3, 3, 1])] == w && game[pos(pt1: [grd3, 3, 2])] == w && game[pos(pt1: [grd3, 3, 3])] == w { // TTT in row 3
-                tempI1 = 3
-            } else if game[pos(pt1: [grd3, 1, 1])] == w && game[pos(pt1: [grd3, 2, 1])] == w && game[pos(pt1: [grd3, 3, 1])] == w { // TTT in col 1
-                tempI1 = 4
-            } else if game[pos(pt1: [grd3, 1, 2])] == w && game[pos(pt1: [grd3, 2, 2])] == w && game[pos(pt1: [grd3, 3, 2])] == w { // TTT in col 2
-                tempI1 = 5
-            } else if game[pos(pt1: [grd3, 1, 3])] == w && game[pos(pt1: [grd3, 2, 3])] == w && game[pos(pt1: [grd3, 3, 3])] == w { // TTT in col 3
-                tempI1 = 6
-            } else if game[pos(pt1: [grd3, 1, 1])] == w && game[pos(pt1: [grd3, 2, 2])] == w && game[pos(pt1: [grd3, 3, 3])] == w { // TTT in LR diagonal
-                tempI1 = 7
-            } else if game[pos(pt1: [grd3, 1, 3])] == w && game[pos(pt1: [grd3, 2, 2])] == w && game[pos(pt1: [grd3, 3, 1])] == w { // TTT in RL diagonal
-                tempI1 = 8
-            } else { // no TTT in this grid
-                tempI1 = 0
-            } // end if
-        } // end w
-        return tempI1
-    } // end func hasTTTinGrid(grd3: Int, tok3: String...) -> Int
-
-    func count(grd8: Int, tok8: String...) -> Int { // counts tokens in the grid
-        var c = 0
-        for j in tok8 {
-            for i in 0 ... 8 { // for each cell in the grid
-                if game[grd8 * 9 + i] == j {
-                    c += 1
-                } // end if
-            } // end for i
-        } // end for j
-        return c
-    } // end func count
-
-    func isGridDraw(grd15: Int) -> Bool {
-        if count(grd8: grd15, tok8: ex, oh) == 9 {
-            return true // draw
-        } else { // no TTT and count = 9
-            return false // no draw
-        } // end if
-    } // end func isGridDraw(grd15) -> Bool
-
-    func displayBigBoard() {
-        print("""
-                \n\t\t\(sp7)\(game[pos(pt1: [0, 1, 1])])\(sp2)\(game[pos(pt1: [0, 1, 2])])\(sp2)\(game[pos(pt1: [0, 1, 3])])\n\t\t\(sp7)\(game[pos(pt1: [0, 2, 1])])\(sp2)\(game[pos(pt1: [0, 2, 2])])\(sp2)\(game[pos(pt1: [0, 2, 3])])\n\t\t\(sp7)\(game[pos(pt1: [0, 3, 1])])\(sp2)\(game[pos(pt1: [0, 3, 2])])\(sp2)\(game[pos(pt1: [0, 3, 3])])
-        """) // end print
-    } // end func printBigBoard
-
-    func displayGame(tag: Bool) {
-        // C O N S T A N T S
-        let horiz = "————————————————————————————-——————"
-        let bar = "|"
-        let sp3 = "   "
-        let sp4 = "    "
-        let sp10 = "          "
-        let sp11 = "           "
-
-        // F U N C T I O N S
-
-        func formLabelLine(grd14: Int) -> String {
-            func printGridLabel(grd6: Int) -> String {
-                if (hasTTTinGrid(grd3: grd6, tok3: ex, oh) != 0) || isGridDraw(grd15: grd6) {
-                    return sp7
-                } else { // is big grid TTT
-                    return "Grid" + sp1 + String(grd6) + sp1
-                } // end if
-            } // end func printGridLabel
-
-            // F O R M L A B E L L I N E   C O D E   H E R E
-            if hasTTTinGrid(grd3: bigBoard, tok3: ex, oh) != 0 {
-                return ""
-            } else {
-                return "\(tab2)\(sp6)\(printGridLabel(grd6: grd14))\(sp1)\(bar)\(sp3)\(printGridLabel(grd6: grd14 + 1))\(sp1)\(bar)\(sp3)\(printGridLabel(grd6: grd14 + 2))\n"
-            } // end if
-        } // end func formLabelLine
-
-        func printSpacers() -> String {
-            if hasTTTinGrid(grd3: bigBoard, tok3: ex, oh) != 0 || isGridDraw(grd15: bigBoard) {
-                return ""
-            } else {
-                return "\(sp10)\(bar)\(sp11)\(bar)"
-            } // end if
-        } // end func printSpacers
-
-        // D I S P L A Y G A M E   C O D E   H E R E
-        if testBigBoard {
-            displayBigBoard()
-        } // end if
-        // newLine()
-        display(msg: """
-            \n\(sp11)\(sp1)\(printSpacers())\n\(formLabelLine(grd14: 1))\(sp11)\(sp2)\(game[pos(pt1: [1, 1, 1])])\(sp2)\(game[pos(pt1: [1, 1, 2])])\(sp2)\(game[pos(pt1: [1, 1, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [2, 1, 1])])\(sp2)\(game[pos(pt1: [2, 1, 2])])\(sp2)\(game[pos(pt1: [2, 1, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [3, 1, 1])])\(sp2)\(game[pos(pt1: [3, 1, 2])])\(sp2)\(game[pos(pt1: [3, 1, 3])])\n\(sp11)\(sp2)\(game[pos(pt1: [1, 2, 1])])\(sp2)\(game[pos(pt1: [1, 2, 2])])\(sp2)\(game[pos(pt1: [1, 2, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [2, 2, 1])])\(sp2)\(game[pos(pt1: [2, 2, 2])])\(sp2)\(game[pos(pt1: [2, 2, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [3, 2, 1])])\(sp2)\(game[pos(pt1: [3, 2, 2])])\(sp2)\(game[pos(pt1: [3, 2, 3])])\n\(sp11)\(sp2)\(game[pos(pt1: [1, 3, 1])])\(sp2)\(game[pos(pt1: [1, 3, 2])])\(sp2)\(game[pos(pt1: [1, 3, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [2, 3, 1])])\(sp2)\(game[pos(pt1: [2, 3, 2])])\(sp2)\(game[pos(pt1: [2, 3, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [3, 3, 1])])\(sp2)\(game[pos(pt1: [3, 3, 2])])\(sp2)\(game[pos(pt1: [3, 3, 3])])\n\(tab2)\(sp4)\(horiz)\n\(formLabelLine(grd14: 4))\(sp11)\(sp2)\(game[pos(pt1: [4, 1, 1])])\(sp2)\(game[pos(pt1: [4, 1, 2])])\(sp2)\(game[pos(pt1: [4, 1, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [5, 1, 1])])\(sp2)\(game[pos(pt1: [5, 1, 2])])\(sp2)\(game[pos(pt1: [5, 1, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [6, 1, 1])])\(sp2)\(game[pos(pt1: [6, 1, 2])])\(sp2)\(game[pos(pt1: [6, 1, 3])])\n\(sp11)\(sp2)\(game[pos(pt1: [4, 2, 1])])\(sp2)\(game[pos(pt1: [4, 2, 2])])\(sp2)\(game[pos(pt1: [4, 2, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [5, 2, 1])])\(sp2)\(game[pos(pt1: [5, 2, 2])])\(sp2)\(game[pos(pt1: [5, 2, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [6, 2, 1])])\(sp2)\(game[pos(pt1: [6, 2, 2])])\(sp2)\(game[pos(pt1: [6, 2, 3])])\n\(sp11)\(sp2)\(game[pos(pt1: [4, 3, 1])])\(sp2)\(game[pos(pt1: [4, 3, 2])])\(sp2)\(game[pos(pt1: [4, 3, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [5, 3, 1])])\(sp2)\(game[pos(pt1: [5, 3, 2])])\(sp2)\(game[pos(pt1: [5, 3, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [6, 3, 1])])\(sp2)\(game[pos(pt1: [6, 3, 2])])\(sp2)\(game[pos(pt1: [6, 3, 3])])\n\(tab2)\(sp4)\(horiz)\n\(formLabelLine(grd14: 7))\(sp11)\(sp2)\(game[pos(pt1: [7, 1, 1])])\(sp2)\(game[pos(pt1: [7, 1, 2])])\(sp2)\(game[pos(pt1: [7, 1, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [8, 1, 1])])\(sp2)\(game[pos(pt1: [8, 1, 2])])\(sp2)\(game[pos(pt1: [8, 1, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [9, 1, 1])])\(sp2)\(game[pos(pt1: [9, 1, 2])])\(sp2)\(game[pos(pt1: [9, 1, 3])])\n\(sp11)\(sp2)\(game[pos(pt1: [7, 2, 1])])\(sp2)\(game[pos(pt1: [7, 2, 2])])\(sp2)\(game[pos(pt1: [7, 2, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [8, 2, 1])])\(sp2)\(game[pos(pt1: [8, 2, 2])])\(sp2)\(game[pos(pt1: [8, 2, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [9, 2, 1])])\(sp2)\(game[pos(pt1: [9, 2, 2])])\(sp2)\(game[pos(pt1: [9, 2, 3])])\n\(sp11)\(sp2)\(game[pos(pt1: [7, 3, 1])])\(sp2)\(game[pos(pt1: [7, 3, 2])])\(sp2)\(game[pos(pt1: [7, 3, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [8, 3, 1])])\(sp2)\(game[pos(pt1: [8, 3, 2])])\(sp2)\(game[pos(pt1: [8, 3, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [9, 3, 1])])\(sp2)\(game[pos(pt1: [9, 3, 2])])\(sp2)\(game[pos(pt1: [9, 3, 3])])\n\(sp11)\(sp1)\(printSpacers())
-        """) // end display("""
-        nL()
-        display(msg: mMsg[7], trm: "")
-        if !mmFlag && !test { // pause for Return in either human game
-            tempS1 = readLine(strippingNewline: true)!
-        } else { // don't pause for return in MM game
-            tempS1 = ""
-        } // end if
-        if test {
-            display(m2: testSpcM, msg: "Inside displayGame: continueFlag = \(continueFlag); tempS1 = \(tempS1)")
-        } // end if test
-    } // end func displayGame()
-
-    mutating func proposeOorT(grd12: Int, tok12: String...) {
-        //  Opportunity = called with token
-        //  Threat = called with oppToken
-        // called with PlayerCurrent.oppToken, playerCurrent.token checks first for threats, then for opportunities in one call
-        // returns proposeFlag
-        for x in tok12 {
-            if game[pos(pt1: [grd12, 1, 1])] == x && game[pos(pt1: [grd12, 1, 2])] == x && game[pos(pt1: [grd12, 1, 3])] == under {
-                // row 1
-                // 11, 12, -> 13
-                tempRC = [1, 3]
-                // proposeFlag = true
-            } else if game[pos(pt1: [grd12, 1, 1])] == x && game[pos(pt1: [grd12, 1, 3])] == x && game[pos(pt1: [grd12, 1, 2])] == under {
-                // row 1
-                // 11, 13 -> 12
-                tempRC = [1, 2]
-                // proposeFlag = true
-            } else if game[pos(pt1: [grd12, 1, 2])] == x && game[pos(pt1: [grd12, 1, 3])] == x && game[pos(pt1: [grd12, 1, 1])] == under {
-                // row 1
-                // 12, 13 -> 11
-                tempRC = [1, 1]
-                // proposeFlag = true
-            } else if game[pos(pt1: [grd12, 2, 1])] == x && game[pos(pt1: [grd12, 2, 2])] == x && game[pos(pt1: [grd12, 2, 3])] == under {
-                // row 2
-                // 21, 22, -> 23
-                tempRC = [2, 3]
-                // proposeFlag = true
-            } else if game[pos(pt1: [grd12, 2, 1])] == x && game[pos(pt1: [grd12, 2, 3])] == x && game[pos(pt1: [grd12, 2, 2])] == under {
-                // row 2
-                // 21, 23 -> 22
-                tempRC = [2, 2]
-                // proposeFlag = true
-            } else if game[pos(pt1: [grd12, 2, 2])] == x && game[pos(pt1: [grd12, 2, 3])] == x && game[pos(pt1: [grd12, 2, 1])] == under {
-                // row 2
-                // 22, 23 -> 21
-                tempRC = [2, 1]
-                // proposeFlag = true
-            } else if game[pos(pt1: [grd12, 3, 1])] == x && game[pos(pt1: [grd12, 3, 2])] == x && game[pos(pt1: [grd12, 3, 3])] == under {
-                // row 3
-                // 31, 32, -> 33
-                tempRC = [3, 3]
-                // proposeFlag = true
-            } else if game[pos(pt1: [grd12, 3, 1])] == x && game[pos(pt1: [grd12, 3, 3])] == x && game[pos(pt1: [grd12, 3, 2])] == under {
-                // row 3
-                // 31, 33 -> 32
-                tempRC = [3, 2]
-                // proposeFlag = true
-            } else if game[pos(pt1: [grd12, 3, 2])] == x && game[pos(pt1: [grd12, 3, 3])] == x && game[pos(pt1: [grd12, 3, 1])] == under {
-                // row 3
-                // 32, 33 -> 31
-                tempRC = [3, 1]
-                // proposeFlag = true
-            } else if game[pos(pt1: [grd12, 1, 1])] == x && game[pos(pt1: [grd12, 2, 1])] == x && game[pos(pt1: [grd12, 3, 1])] == under {
-                // col 1
-                // 11, 21 -> 31
-                tempRC = [3, 1]
-                // proposeFlag = true
-            } else if game[pos(pt1: [grd12, 1, 1])] == x && game[pos(pt1: [grd12, 3, 1])] == x && game[pos(pt1: [grd12, 2, 1])] == under {
-                // col 1
-                // 11, 31 -> 21
-                tempRC = [2, 1]
-                // proposeFlag = true
-            } else if game[pos(pt1: [grd12, 2, 1])] == x && game[pos(pt1: [grd12, 3, 1])] == x && game[pos(pt1: [grd12, 1, 1])] == under {
-                // col 1
-                // 21, 31 -> 11
-                tempRC = [1, 1]
-                // proposeFlag = true
-            } else if game[pos(pt1: [grd12, 1, 2])] == x && game[pos(pt1: [grd12, 2, 2])] == x && game[pos(pt1: [grd12, 3, 2])] == under {
-                // col 2
-                // 12, 22 -> 32
-                tempRC = [3, 2]
-                // proposeFlag = true
-            } else if game[pos(pt1: [grd12, 1, 2])] == x && game[pos(pt1: [grd12, 3, 2])] == x && game[pos(pt1: [grd12, 2, 2])] == under {
-                // col 2
-                // 12, 32 -> 22
-                tempRC = [2, 2]
-                // proposeFlag = true
-            } else if game[pos(pt1: [grd12, 2, 1])] == x && game[pos(pt1: [grd12, 3, 1])] == x && game[pos(pt1: [grd12, 1, 1])] == under {
-                // col 2
-                // 22, 32 -> 12
-                tempRC = [1, 2]
-                // proposeFlag = true
-            } else if game[pos(pt1: [grd12, 1, 3])] == x && game[pos(pt1: [grd12, 2, 3])] == x && game[pos(pt1: [grd12, 3, 3])] == under {
-                // col 3
-                // 13, 23 -> 33
-                tempRC = [3, 3]
-                // proposeFlag = true
-            } else if game[pos(pt1: [grd12, 1, 3])] == x && game[pos(pt1: [grd12, 3, 3])] == x && game[pos(pt1: [grd12, 2, 3])] == under {
-                // col 3
-                // 13, 33 -> 23
-                tempRC = [2, 3]
-                // proposeFlag = true
-            } else if game[pos(pt1: [grd12, 2, 3])] == x && game[pos(pt1: [grd12, 3, 3])] == x && game[pos(pt1: [grd12, 1, 3])] == under {
-                // col 3
-                // 23, 33 -> 13
-                tempRC = [1, 3]
-                // proposeFlag = true
-            } else if game[pos(pt1: [grd12, 1, 1])] == x && game[pos(pt1: [grd12, 2, 2])] == x && game[pos(pt1: [grd12, 3, 3])] == under {
-                // diag L to R
-                // 11, 22 -> 33
-                tempRC = [3, 3]
-                // proposeFlag = true
-            } else if game[pos(pt1: [grd12, 1, 1])] == x && game[pos(pt1: [grd12, 3, 3])] == x && game[pos(pt1: [grd12, 2, 2])] == under {
-                // diag L to R
-                // 11, 33 -> 22
-                tempRC = [2, 2]
-                // proposeFlag = true
-            } else if game[pos(pt1: [grd12, 2, 2])] == x && game[pos(pt1: [grd12, 3, 3])] == x && game[pos(pt1: [grd12, 1, 1])] == under {
-                // diag L to R
-                // 22, 33 -> 11
-                tempRC = [1, 1]
-                // proposeFlag = true
-            } else if game[pos(pt1: [grd12, 1, 3])] == x && game[pos(pt1: [grd12, 2, 2])] == x && game[pos(pt1: [grd12, 3, 1])] == under {
-                // diag R to L
-                // 13, 22 -> 31
-                tempRC = [3, 1]
-                // proposeFlag = true
-            } else if game[pos(pt1: [grd12, 1, 3])] == x && game[pos(pt1: [grd12, 3, 1])] == x && game[pos(pt1: [grd12, 2, 2])] == under {
-                // diag R to L
-                // 13, 31 -> 22
-                tempRC = [2, 2]
-                // proposeFlag = true
-            } else if game[pos(pt1: [grd12, 2, 2])] == x && game[pos(pt1: [grd12, 3, 1])] == x && game[pos(pt1: [grd12, 1, 3])] == under {
-                // diag R to L
-                // 22, 31 -> 13
-                tempRC = [1, 3]
-                // proposeFlag = true
-            } // end if
-        } // end for
-
-        proposeTempG(grd21: grd12)
-    } // end func takeOorT
-
-    mutating func proposeTempG(grd21: Int) {
-        // should be called from within another propose function
-
-        if grd21 == 0 {
-            tempG = tempRC[0] * 3 + tempRC[1]
-        } // end if
-    } // end func proposeTempG
-
     mutating func continuePlay() -> Bool {
+        func pos(pt1: [Int]) -> Int { // pos returns the index to the array game
+            return pt1[0] * 9 + (pt1[1] - 1) * 3 + pt1[2] - 1
+        } // end func pos(pt1: [Int]) -> Int
+
+        func hasTTTinGrid(grd3: Int, tok3: String...) -> Int {
+            // if return == 0 there is no TTT, else the number that corresponds to which TTT (eg: row1, col3, LtoR diag, etc.)
+
+            for w in tok3 {
+                if game[pos(pt1: [grd3, 1, 1])] == w && game[pos(pt1: [grd3, 1, 2])] == w && game[pos(pt1: [grd3, 1, 3])] == w { // TTT in row 1
+                    tempI1 = 1
+                } else if game[pos(pt1: [grd3, 2, 1])] == w && game[pos(pt1: [grd3, 2, 2])] == w && game[pos(pt1: [grd3, 2, 3])] == w { // TTT in row 2
+                    tempI1 = 2
+                } else if game[pos(pt1: [grd3, 3, 1])] == w && game[pos(pt1: [grd3, 3, 2])] == w && game[pos(pt1: [grd3, 3, 3])] == w { // TTT in row 3
+                    tempI1 = 3
+                } else if game[pos(pt1: [grd3, 1, 1])] == w && game[pos(pt1: [grd3, 2, 1])] == w && game[pos(pt1: [grd3, 3, 1])] == w { // TTT in col 1
+                    tempI1 = 4
+                } else if game[pos(pt1: [grd3, 1, 2])] == w && game[pos(pt1: [grd3, 2, 2])] == w && game[pos(pt1: [grd3, 3, 2])] == w { // TTT in col 2
+                    tempI1 = 5
+                } else if game[pos(pt1: [grd3, 1, 3])] == w && game[pos(pt1: [grd3, 2, 3])] == w && game[pos(pt1: [grd3, 3, 3])] == w { // TTT in col 3
+                    tempI1 = 6
+                } else if game[pos(pt1: [grd3, 1, 1])] == w && game[pos(pt1: [grd3, 2, 2])] == w && game[pos(pt1: [grd3, 3, 3])] == w { // TTT in LR diagonal
+                    tempI1 = 7
+                } else if game[pos(pt1: [grd3, 1, 3])] == w && game[pos(pt1: [grd3, 2, 2])] == w && game[pos(pt1: [grd3, 3, 1])] == w { // TTT in RL diagonal
+                    tempI1 = 8
+                } else { // no TTT in this grid
+                    tempI1 = 0
+                } // end if
+            } // end w
+            return tempI1
+        } // end func hasTTTinGrid(grd3: Int, tok3: String...) -> Int
+
+        func count(grd8: Int, tok8: String...) -> Int { // counts tokens in the grid
+            var c = 0
+            for j in tok8 {
+                for i in 0 ... 8 { // for each cell in the grid
+                    if game[grd8 * 9 + i] == j {
+                        c += 1
+                    } // end if
+                } // end for i
+            } // end for j
+            return c
+        } // end func count
+
+        func isGridDraw(grd15: Int) -> Bool {
+            if count(grd8: grd15, tok8: ex, oh) == 9 {
+                return true // draw
+            } else { // no TTT and count = 9
+                return false // no draw
+            } // end if
+        } // end func isGridDraw(grd15) -> Bool
+
+        func displayBigBoard() {
+            print("""
+                    \n\t\t\(sp7)\(game[pos(pt1: [0, 1, 1])])\(sp2)\(game[pos(pt1: [0, 1, 2])])\(sp2)\(game[pos(pt1: [0, 1, 3])])\n\t\t\(sp7)\(game[pos(pt1: [0, 2, 1])])\(sp2)\(game[pos(pt1: [0, 2, 2])])\(sp2)\(game[pos(pt1: [0, 2, 3])])\n\t\t\(sp7)\(game[pos(pt1: [0, 3, 1])])\(sp2)\(game[pos(pt1: [0, 3, 2])])\(sp2)\(game[pos(pt1: [0, 3, 3])])
+            """) // end print
+        } // end func printBigBoard
+
+        func displayGame(tag: Bool) {
+            // C O N S T A N T S
+            let horiz = "————————————————————————————-——————"
+            let bar = "|"
+            let sp3 = "   "
+            let sp4 = "    "
+            let sp10 = "          "
+            let sp11 = "           "
+
+            // F U N C T I O N S
+
+            func formLabelLine(grd14: Int) -> String {
+                func printGridLabel(grd6: Int) -> String {
+                    if (hasTTTinGrid(grd3: grd6, tok3: ex, oh) != 0) || isGridDraw(grd15: grd6) {
+                        return sp7
+                    } else { // is big grid TTT
+                        return "Grid" + sp1 + String(grd6) + sp1
+                    } // end if
+                } // end func printGridLabel
+
+                // F O R M L A B E L L I N E   C O D E   H E R E
+                if hasTTTinGrid(grd3: bigBoard, tok3: ex, oh) != 0 {
+                    return ""
+                } else {
+                    return "\(tab2)\(sp6)\(printGridLabel(grd6: grd14))\(sp1)\(bar)\(sp3)\(printGridLabel(grd6: grd14 + 1))\(sp1)\(bar)\(sp3)\(printGridLabel(grd6: grd14 + 2))\n"
+                } // end if
+            } // end func formLabelLine
+
+            func printSpacers() -> String {
+                if hasTTTinGrid(grd3: bigBoard, tok3: ex, oh) != 0 || isGridDraw(grd15: bigBoard) {
+                    return ""
+                } else {
+                    return "\(sp10)\(bar)\(sp11)\(bar)"
+                } // end if
+            } // end func printSpacers
+
+            // D I S P L A Y G A M E   C O D E   H E R E
+            if testBigBoard {
+                displayBigBoard()
+            } // end if
+            // newLine()
+            display(msg: """
+                \n\(sp11)\(sp1)\(printSpacers())\n\(formLabelLine(grd14: 1))\(sp11)\(sp2)\(game[pos(pt1: [1, 1, 1])])\(sp2)\(game[pos(pt1: [1, 1, 2])])\(sp2)\(game[pos(pt1: [1, 1, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [2, 1, 1])])\(sp2)\(game[pos(pt1: [2, 1, 2])])\(sp2)\(game[pos(pt1: [2, 1, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [3, 1, 1])])\(sp2)\(game[pos(pt1: [3, 1, 2])])\(sp2)\(game[pos(pt1: [3, 1, 3])])\n\(sp11)\(sp2)\(game[pos(pt1: [1, 2, 1])])\(sp2)\(game[pos(pt1: [1, 2, 2])])\(sp2)\(game[pos(pt1: [1, 2, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [2, 2, 1])])\(sp2)\(game[pos(pt1: [2, 2, 2])])\(sp2)\(game[pos(pt1: [2, 2, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [3, 2, 1])])\(sp2)\(game[pos(pt1: [3, 2, 2])])\(sp2)\(game[pos(pt1: [3, 2, 3])])\n\(sp11)\(sp2)\(game[pos(pt1: [1, 3, 1])])\(sp2)\(game[pos(pt1: [1, 3, 2])])\(sp2)\(game[pos(pt1: [1, 3, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [2, 3, 1])])\(sp2)\(game[pos(pt1: [2, 3, 2])])\(sp2)\(game[pos(pt1: [2, 3, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [3, 3, 1])])\(sp2)\(game[pos(pt1: [3, 3, 2])])\(sp2)\(game[pos(pt1: [3, 3, 3])])\n\(tab2)\(sp4)\(horiz)\n\(formLabelLine(grd14: 4))\(sp11)\(sp2)\(game[pos(pt1: [4, 1, 1])])\(sp2)\(game[pos(pt1: [4, 1, 2])])\(sp2)\(game[pos(pt1: [4, 1, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [5, 1, 1])])\(sp2)\(game[pos(pt1: [5, 1, 2])])\(sp2)\(game[pos(pt1: [5, 1, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [6, 1, 1])])\(sp2)\(game[pos(pt1: [6, 1, 2])])\(sp2)\(game[pos(pt1: [6, 1, 3])])\n\(sp11)\(sp2)\(game[pos(pt1: [4, 2, 1])])\(sp2)\(game[pos(pt1: [4, 2, 2])])\(sp2)\(game[pos(pt1: [4, 2, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [5, 2, 1])])\(sp2)\(game[pos(pt1: [5, 2, 2])])\(sp2)\(game[pos(pt1: [5, 2, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [6, 2, 1])])\(sp2)\(game[pos(pt1: [6, 2, 2])])\(sp2)\(game[pos(pt1: [6, 2, 3])])\n\(sp11)\(sp2)\(game[pos(pt1: [4, 3, 1])])\(sp2)\(game[pos(pt1: [4, 3, 2])])\(sp2)\(game[pos(pt1: [4, 3, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [5, 3, 1])])\(sp2)\(game[pos(pt1: [5, 3, 2])])\(sp2)\(game[pos(pt1: [5, 3, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [6, 3, 1])])\(sp2)\(game[pos(pt1: [6, 3, 2])])\(sp2)\(game[pos(pt1: [6, 3, 3])])\n\(tab2)\(sp4)\(horiz)\n\(formLabelLine(grd14: 7))\(sp11)\(sp2)\(game[pos(pt1: [7, 1, 1])])\(sp2)\(game[pos(pt1: [7, 1, 2])])\(sp2)\(game[pos(pt1: [7, 1, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [8, 1, 1])])\(sp2)\(game[pos(pt1: [8, 1, 2])])\(sp2)\(game[pos(pt1: [8, 1, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [9, 1, 1])])\(sp2)\(game[pos(pt1: [9, 1, 2])])\(sp2)\(game[pos(pt1: [9, 1, 3])])\n\(sp11)\(sp2)\(game[pos(pt1: [7, 2, 1])])\(sp2)\(game[pos(pt1: [7, 2, 2])])\(sp2)\(game[pos(pt1: [7, 2, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [8, 2, 1])])\(sp2)\(game[pos(pt1: [8, 2, 2])])\(sp2)\(game[pos(pt1: [8, 2, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [9, 2, 1])])\(sp2)\(game[pos(pt1: [9, 2, 2])])\(sp2)\(game[pos(pt1: [9, 2, 3])])\n\(sp11)\(sp2)\(game[pos(pt1: [7, 3, 1])])\(sp2)\(game[pos(pt1: [7, 3, 2])])\(sp2)\(game[pos(pt1: [7, 3, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [8, 3, 1])])\(sp2)\(game[pos(pt1: [8, 3, 2])])\(sp2)\(game[pos(pt1: [8, 3, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [9, 3, 1])])\(sp2)\(game[pos(pt1: [9, 3, 2])])\(sp2)\(game[pos(pt1: [9, 3, 3])])\n\(sp11)\(sp1)\(printSpacers())
+            """) // end display("""
+            nL()
+            display(msg: mMsg[7], trm: "")
+            if !mmFlag && !test { // pause for Return in either human game
+                tempS1 = readLine(strippingNewline: true)!
+            } else { // don't pause for return in MM game
+                tempS1 = ""
+            } // end if
+            if test {
+                display(m2: testSpcM, msg: "Inside displayGame: continueFlag = \(continueFlag); tempS1 = \(tempS1)")
+            } // end if test
+        } // end func displayGame()
+
+        func proposeOorT(grd12: Int, tok12: String...) {
+            //  Opportunity = called with token
+            //  Threat = called with oppToken
+            // called with both playerCurrent.oppToken and playerCurrent.token checks first for threats, then for opportunities in one call
+            // // returns proposeFlag
+            for x in tok12 {
+                if game[pos(pt1: [grd12, 1, 1])] == x && game[pos(pt1: [grd12, 1, 2])] == x && game[pos(pt1: [grd12, 1, 3])] == under {
+                    // row 1
+                    // 11, 12, -> 13
+                    tempRC = [1, 3]
+                    // proposeFlag = true
+                } else if game[pos(pt1: [grd12, 1, 1])] == x && game[pos(pt1: [grd12, 1, 3])] == x && game[pos(pt1: [grd12, 1, 2])] == under {
+                    // row 1
+                    // 11, 13 -> 12
+                    tempRC = [1, 2]
+                    // proposeFlag = true
+                } else if game[pos(pt1: [grd12, 1, 2])] == x && game[pos(pt1: [grd12, 1, 3])] == x && game[pos(pt1: [grd12, 1, 1])] == under {
+                    // row 1
+                    // 12, 13 -> 11
+                    tempRC = [1, 1]
+                    // proposeFlag = true
+                } else if game[pos(pt1: [grd12, 2, 1])] == x && game[pos(pt1: [grd12, 2, 2])] == x && game[pos(pt1: [grd12, 2, 3])] == under {
+                    // row 2
+                    // 21, 22, -> 23
+                    tempRC = [2, 3]
+                    // proposeFlag = true
+                } else if game[pos(pt1: [grd12, 2, 1])] == x && game[pos(pt1: [grd12, 2, 3])] == x && game[pos(pt1: [grd12, 2, 2])] == under {
+                    // row 2
+                    // 21, 23 -> 22
+                    tempRC = [2, 2]
+                    // proposeFlag = true
+                } else if game[pos(pt1: [grd12, 2, 2])] == x && game[pos(pt1: [grd12, 2, 3])] == x && game[pos(pt1: [grd12, 2, 1])] == under {
+                    // row 2
+                    // 22, 23 -> 21
+                    tempRC = [2, 1]
+                    // proposeFlag = true
+                } else if game[pos(pt1: [grd12, 3, 1])] == x && game[pos(pt1: [grd12, 3, 2])] == x && game[pos(pt1: [grd12, 3, 3])] == under {
+                    // row 3
+                    // 31, 32, -> 33
+                    tempRC = [3, 3]
+                    // proposeFlag = true
+                } else if game[pos(pt1: [grd12, 3, 1])] == x && game[pos(pt1: [grd12, 3, 3])] == x && game[pos(pt1: [grd12, 3, 2])] == under {
+                    // row 3
+                    // 31, 33 -> 32
+                    tempRC = [3, 2]
+                    // proposeFlag = true
+                } else if game[pos(pt1: [grd12, 3, 2])] == x && game[pos(pt1: [grd12, 3, 3])] == x && game[pos(pt1: [grd12, 3, 1])] == under {
+                    // row 3
+                    // 32, 33 -> 31
+                    tempRC = [3, 1]
+                    // proposeFlag = true
+                } else if game[pos(pt1: [grd12, 1, 1])] == x && game[pos(pt1: [grd12, 2, 1])] == x && game[pos(pt1: [grd12, 3, 1])] == under {
+                    // col 1
+                    // 11, 21 -> 31
+                    tempRC = [3, 1]
+                    // proposeFlag = true
+                } else if game[pos(pt1: [grd12, 1, 1])] == x && game[pos(pt1: [grd12, 3, 1])] == x && game[pos(pt1: [grd12, 2, 1])] == under {
+                    // col 1
+                    // 11, 31 -> 21
+                    tempRC = [2, 1]
+                    // proposeFlag = true
+                } else if game[pos(pt1: [grd12, 2, 1])] == x && game[pos(pt1: [grd12, 3, 1])] == x && game[pos(pt1: [grd12, 1, 1])] == under {
+                    // col 1
+                    // 21, 31 -> 11
+                    tempRC = [1, 1]
+                    // proposeFlag = true
+                } else if game[pos(pt1: [grd12, 1, 2])] == x && game[pos(pt1: [grd12, 2, 2])] == x && game[pos(pt1: [grd12, 3, 2])] == under {
+                    // col 2
+                    // 12, 22 -> 32
+                    tempRC = [3, 2]
+                    // proposeFlag = true
+                } else if game[pos(pt1: [grd12, 1, 2])] == x && game[pos(pt1: [grd12, 3, 2])] == x && game[pos(pt1: [grd12, 2, 2])] == under {
+                    // col 2
+                    // 12, 32 -> 22
+                    tempRC = [2, 2]
+                    // proposeFlag = true
+                } else if game[pos(pt1: [grd12, 2, 1])] == x && game[pos(pt1: [grd12, 3, 1])] == x && game[pos(pt1: [grd12, 1, 1])] == under {
+                    // col 2
+                    // 22, 32 -> 12
+                    tempRC = [1, 2]
+                    // proposeFlag = true
+                } else if game[pos(pt1: [grd12, 1, 3])] == x && game[pos(pt1: [grd12, 2, 3])] == x && game[pos(pt1: [grd12, 3, 3])] == under {
+                    // col 3
+                    // 13, 23 -> 33
+                    tempRC = [3, 3]
+                    // proposeFlag = true
+                } else if game[pos(pt1: [grd12, 1, 3])] == x && game[pos(pt1: [grd12, 3, 3])] == x && game[pos(pt1: [grd12, 2, 3])] == under {
+                    // col 3
+                    // 13, 33 -> 23
+                    tempRC = [2, 3]
+                    // proposeFlag = true
+                } else if game[pos(pt1: [grd12, 2, 3])] == x && game[pos(pt1: [grd12, 3, 3])] == x && game[pos(pt1: [grd12, 1, 3])] == under {
+                    // col 3
+                    // 23, 33 -> 13
+                    tempRC = [1, 3]
+                    // proposeFlag = true
+                } else if game[pos(pt1: [grd12, 1, 1])] == x && game[pos(pt1: [grd12, 2, 2])] == x && game[pos(pt1: [grd12, 3, 3])] == under {
+                    // diag L to R
+                    // 11, 22 -> 33
+                    tempRC = [3, 3]
+                    // proposeFlag = true
+                } else if game[pos(pt1: [grd12, 1, 1])] == x && game[pos(pt1: [grd12, 3, 3])] == x && game[pos(pt1: [grd12, 2, 2])] == under {
+                    // diag L to R
+                    // 11, 33 -> 22
+                    tempRC = [2, 2]
+                    // proposeFlag = true
+                } else if game[pos(pt1: [grd12, 2, 2])] == x && game[pos(pt1: [grd12, 3, 3])] == x && game[pos(pt1: [grd12, 1, 1])] == under {
+                    // diag L to R
+                    // 22, 33 -> 11
+                    tempRC = [1, 1]
+                    // proposeFlag = true
+                } else if game[pos(pt1: [grd12, 1, 3])] == x && game[pos(pt1: [grd12, 2, 2])] == x && game[pos(pt1: [grd12, 3, 1])] == under {
+                    // diag R to L
+                    // 13, 22 -> 31
+                    tempRC = [3, 1]
+                    // proposeFlag = true
+                } else if game[pos(pt1: [grd12, 1, 3])] == x && game[pos(pt1: [grd12, 3, 1])] == x && game[pos(pt1: [grd12, 2, 2])] == under {
+                    // diag R to L
+                    // 13, 31 -> 22
+                    tempRC = [2, 2]
+                    // proposeFlag = true
+                } else if game[pos(pt1: [grd12, 2, 2])] == x && game[pos(pt1: [grd12, 3, 1])] == x && game[pos(pt1: [grd12, 1, 3])] == under {
+                    // diag R to L
+                    // 22, 31 -> 13
+                    tempRC = [1, 3]
+                    // proposeFlag = true
+                } // end if
+            } // end for
+
+            proposeTempG(grd21: grd12)
+        } // end func takeOorT
+
+        func proposeTempG(grd21: Int) {
+            // should be called from within another propose function
+
+            if grd21 == 0 {
+                tempG = tempRC[0] * 3 + tempRC[1]
+            } // end if
+        } // end func proposeTempG
+
         func isSquareTaken(grd10: Int, row10: Int, col10: Int) -> Bool {
             if game[pos(pt1: [grd10, row10, col10])] == under { // tests for under
                 return false
@@ -378,7 +378,7 @@ struct PlayGame {
             // proposeFlag: tempRC is proposed = true; tempRC not proposed = false
             // must set rc = tempRC on return
 
-            // continueFlag = true
+            continueFlag = true
             // proposeFlag = false
             if test {
                 display(m2: testSpcM, msg: "Current player's strategy = \(playerCurrent.strategy)")
@@ -793,7 +793,7 @@ struct PlayGame {
 
         // C O N T I N U E P L A Y   C O D E   H E R E
         gameLoop: repeat {
-            // continueFlag = true
+            continueFlag = true
             displayOpeningInfo()
             // if gamesTotal > 1 include stats?
             // openingInfo()
@@ -808,7 +808,8 @@ struct PlayGame {
             } // end if
 
             // opening grid is choice of first player
-            if !continueProposeGrid() {
+            continueFlag = continueProposeGrid()
+            if !continueFlag {
                 break gameLoop
             } else {
                 g = tempG
@@ -817,7 +818,8 @@ struct PlayGame {
             moveLoop: repeat {
                 // getRC()
                 // tempFlags = chooseProposeRC()
-                if !continueProposeRCorG() {
+                continueFlag = continueProposeRCorG()
+                if !continueFlag {
                     break gameLoop
                 } else {
                     rc = tempRC

@@ -120,41 +120,39 @@
          ?tempC
          tempRC
      func
-         pos(pt1: [Int]) -> Int
-         /*isGridTTT(grd3: Int, tok3: String) -> Int*/
-         hasTTTinGrid(grd3: Int, tok3: String...) -> Int
-         count(grd8: Int, tok8: String...) -> Int
-         isGridDraw(grd15: Int) -> Bool // draw = true; no draw = false
-         displayBigBoard()
-         displayGame()
-             let
-                 horiz
-                 bar
-                 sp3
-                 sp4
-                 sp10
-                 sp11
+    continuePlay() -> Bool // continue = true; quit = false
+        pos(pt1: [Int]) -> Int
+        hasTTTinGrid(grd3: Int, tok3: String...) -> Int
+        count(grd8: Int, tok8: String...) -> Int
+        isGridDraw(grd15: Int) -> Bool // draw = true; no draw = false
+        displayBigBoard()
+        displayGame()
+            let
+                horiz
+                bar
+                sp3
+                sp4
+                sp10
+                sp11
              func
-                 formLabelLine(grd14: Int) -> String
-                     printGridLabel(grd6: Int) -> String
-                 printSpacers()
-         proposeOorT(grd12: Int, tok12: String) //
-         proposeTempG(grd21: Int)
-         continuePlay() -> Bool // continue = true; quit = false
-             func
-                 isSquareTaken(grd10: Int, row10: Int, col10: Int) -> Bool // square is taken = true; square is not taken = false
-                 proposeRandomRC(grd20: Int)
-                 proposeFreeMiddle(grd20: Int)
-                 proposeCorner(grd20: Int, row18: Int, col18: Int)
-                 proposeAdjacentCorner(grd20: Int)
-                 continueProposeRCorG() -> Bool // continue = true; quit = false
-                 continueProposeGrid() -> Bool
-                 convertGridToRC(grd22: Int) -> [Int] {
-                 markBigBoard(grd17: Int, tok17: String)
-                 clearGrid(grd11: Int)
-                 markTokenInGrid(grd16: Int, tok16: String)
-                 clearGrids()
-                 markGrids()
-                 switchPlayers()
-                 determineNextGrid()
+                formLabelLine(grd14: Int) -> String
+                    printGridLabel(grd6: Int) -> String
+                printSpacers()
+        proposeOorT(grd12: Int, tok12: String) //
+        proposeTempG(grd21: Int)
+        isSquareTaken(grd10: Int, row10: Int, col10: Int) -> Bool // square is taken = true; square is not taken = false
+        proposeRandomRC(grd20: Int)
+        proposeFreeMiddle(grd20: Int)
+        proposeCorner(grd20: Int, row18: Int, col18: Int)
+        proposeAdjacentCorner(grd20: Int)
+        continueProposeRCorG() -> Bool // continue = true; quit = false
+        continueProposeGrid() -> Bool
+        convertGridToRC(grd22: Int) -> [Int] {
+        markBigBoard(grd17: Int, tok17: String)
+        clearGrid(grd11: Int)
+        markTokenInGrid(grd16: Int, tok16: String)
+        clearGrids()
+        markGrids()
+        switchPlayers()
+        determineNextGrid()
   */
