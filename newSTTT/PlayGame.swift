@@ -134,7 +134,7 @@ struct PlayGame {
                 } // end if
             } // end func printGridLabel
 
-            // D I S P L A Y G A M E   C O D E   H E R E
+            // F O R M L A B E L L I N E   C O D E   H E R E
             if hasTTTinGrid(grd3: bigBoard, tok3: ex, oh) != 0 {
                 return ""
             } else {

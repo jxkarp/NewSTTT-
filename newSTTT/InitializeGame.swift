@@ -266,7 +266,7 @@ struct InitializeGame {
         continueFlag = true
         initLoop: repeat {
             continueFlag = continueGameType()
-            if !continueFlag() {
+            if !continueFlag {
                 break initLoop
             } // end if !gameTypeLoop
 
@@ -289,13 +289,13 @@ struct InitializeGame {
                 player2.strategy = playerCurrent.strategy
 
                 continueFlag = continueWhoGoesFirst()
-                if !continueFlag() {
+                if !continueFlag {
                     break initLoop
                 } else {
                     continueFlag = continueToken()
-                    if !continueFlag() {
+                    if !continueFlag {
                         break initLoop
-                    // } else {
+                        // } else {
                         // assignCurrentPlayer()
                     } // end if
                 } // end if !whoGoesFirst
@@ -319,13 +319,13 @@ struct InitializeGame {
 
                 // whoGoesFirst
                 continueFlag = continueWhoGoesFirst()
-                if !continueFlag() {
+                if !continueFlag {
                     break initLoop
                 } else {
                     continueFlag = continueToken()
                     if !continueFlag {
                         break initLoop
-                    // } else {
+                        // } else {
                         // assignCurrentPlayer()
                     } // end if
 
@@ -369,7 +369,7 @@ struct InitializeGame {
 
                 // continueMachineStrategy player1
                 continueFlag = continueMachineStrategy()
-                if !continueFlag() {
+                if !continueFlag {
                     // continueFlag = false
                     break initLoop
                 } else {
