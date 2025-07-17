@@ -57,7 +57,7 @@ struct InitializeGame {
     // I N I T I A L I Z E G A M E   F U N C T I O N S
     mutating func continueInitialize() -> Bool {
         func continueGameType() -> Bool {
-            // continueFlag = true
+            continueFlag = true
             gameTypeLoop: repeat {
                 nL()
                 display(msg: iMsg[7]) // What type of game to you want to play?
@@ -188,7 +188,6 @@ struct InitializeGame {
 
         func continueMachineStrategy() -> Bool {
             continueFlag = true
-
             outerStrategyLoop: repeat {
                 innerStrategyLoop: repeat {
                     nL()
@@ -264,9 +263,10 @@ struct InitializeGame {
         } // end func assignCurrentPlayer
 
         // C O N T I N U E I N I T I A L I Z E   C O D E  S T A R T S   H E R E
-        // continueFlag = true <== THIS IS SET IN MAIN!
+        continueFlag = true
         initLoop: repeat {
-            if !continueGameType() {
+            continueFlag = continueGameType()
+            if !continueFlag() {
                 break initLoop
             } // end if !gameTypeLoop
 
@@ -288,12 +288,14 @@ struct InitializeGame {
                 player2.type = playerCurrent.type
                 player2.strategy = playerCurrent.strategy
 
-                if !continueWhoGoesFirst() {
+                continueFlag = continueWhoGoesFirst()
+                if !continueFlag() {
                     break initLoop
                 } else {
-                    if !continueToken() {
+                    continueFlag = continueToken()
+                    if !continueFlag() {
                         break initLoop
-                    } else {
+                    // } else {
                         // assignCurrentPlayer()
                     } // end if
                 } // end if !whoGoesFirst
@@ -316,17 +318,20 @@ struct InitializeGame {
                 player2.strategy = playerCurrent.strategy
 
                 // whoGoesFirst
-                if !continueWhoGoesFirst() {
+                continueFlag = continueWhoGoesFirst()
+                if !continueFlag() {
                     break initLoop
                 } else {
-                    if !continueToken() {
+                    continueFlag = continueToken()
+                    if !continueFlag {
                         break initLoop
-                    } else {
+                    // } else {
                         // assignCurrentPlayer()
                     } // end if
 
-                    if !continueMachineStrategy() {
-                        continueFlag = false
+                    continueFlag = continueMachineStrategy()
+                    if !continueFlag {
+                        // continueFlag = false
                         break initLoop
                     } else {
                         player2.strategy = playerCurrent.strategy
@@ -363,8 +368,9 @@ struct InitializeGame {
                 notifyWhoGoesFirst()
 
                 // continueMachineStrategy player1
-                if !continueMachineStrategy() {
-                    continueFlag = false
+                continueFlag = continueMachineStrategy()
+                if !continueFlag() {
+                    // continueFlag = false
                     break initLoop
                 } else {
                     player1.strategy = playerCurrent.strategy
@@ -372,15 +378,16 @@ struct InitializeGame {
                 } // end if !continueMachineStrategy
 
                 // continueMachineStrategy player2
-                if !continueMachineStrategy() {
-                    continueFlag = false
+                continueFlag = continueMachineStrategy()
+                if !continueFlag {
+                    // continueFlag = false
                     break initLoop
                 } else {
                     player2.strategy = playerCurrent.strategy
                     notifyMachineStrategy(name: player2.name, strat: player2.strategy)
                 } // end if !continueMacineStrategy
             } // end if
-            continueFlag = true
+            // continueFlag = true
             assignCurrentPlayer()
             break initLoop
         } while true // end repeat initLoop
