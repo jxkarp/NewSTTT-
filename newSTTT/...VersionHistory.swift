@@ -8,6 +8,8 @@
     Version Date    Comments
  
     *       250717  Conversion to GitHub
+                    Move playLoop to Main
+                    Ensure playAgainLoop in PLay
 
     12              Check need for tag in displayGame
                     May need to reset tempI1 or make it a private variable so break xxxLoop will execute properly! Or change over to returned tuples that include tempI1
