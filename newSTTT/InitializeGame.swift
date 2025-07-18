@@ -274,7 +274,7 @@ struct InitializeGame {
                 playerCurrent.goesFirst = player2.goesFirst
             } // end if
             if test {
-                display(msg: "Name1 = \(player1.name)\n Type = \(player1.type)\n Token = \(player1.token)\n Strategy = \(player1.strategy)\n Opponent Token = \(player1.oppToken)\n Goes First = \(player1.goesFirst)\n\n Name2 = \(player2.name)\n Type = \(player1.type)\n Token = \(player2.token)\n Strategy = \(player2.strategy)\n Opponent Token = \(player2.oppToken)\n Goes First = \(player2.goesFirst)\n\nCurrent Name = \(playerCurrent.name)\n Type = \(playerCurrent.type)\n Token = \(playerCurrent.token)\n Strategy = \(playerCurrent.strategy)\n Opponent Token = \(playerCurrent.oppToken)\n Goes First = \(playerCurrent.goesFirst)")
+                display(m2: testSpcM, msg: "Name1 = \(player1.name)\n\(testSpcM) Type = \(player1.type)\n\(testSpcM) Token = \(player1.token)\n\(testSpcM) Strategy = \(player1.strategy)\n\(testSpcM) Opponent Token = \(player1.oppToken)\n\(testSpcM) Goes First = \(player1.goesFirst)\n\n\(testSpcM)Name2 = \(player2.name)\n\(testSpcM) Type = \(player1.type)\n\(testSpcM) Token = \(player2.token)\n\(testSpcM) Strategy = \(player2.strategy)\n\(testSpcM) Opponent Token = \(player2.oppToken)\n\(testSpcM) Goes First = \(player2.goesFirst)\n\n\(testSpcM)Current Name = \(playerCurrent.name)\n\(testSpcM) Type = \(playerCurrent.type)\n\(testSpcM) Token = \(playerCurrent.token)\n\(testSpcM) Strategy = \(playerCurrent.strategy)\n\(testSpcM) Opponent Token = \(playerCurrent.oppToken)\n\(testSpcM) Goes First = \(playerCurrent.goesFirst)")
             } // end if test
         } // end func assignCurrentPlayer
 

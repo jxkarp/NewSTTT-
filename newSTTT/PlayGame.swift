@@ -162,13 +162,13 @@ struct PlayGame {
             """) // end display("""
             nL()
             display(msg: mMsg[7], trm: "")
-            if !mmFlag && !test { // pause for Return in either human game
+            if !mmFlag || test { // pause for Return in either human game or test
                 tempS1 = readLine(strippingNewline: true)!
             } else { // don't pause for return in MM game
                 tempS1 = ""
             } // end if
             if test {
-                display(m2: testSpcM, msg: "Inside displayGame: continueFlag = \(continueFlag); tempS1 = \(tempS1)")
+                // display(m2: testSpcM, msg: "Inside displayGame: continueFlag = \(continueFlag); tempS1 = \(tempS1)")
             } // end if test
         } // end func displayGame()
         
