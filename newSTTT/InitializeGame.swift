@@ -191,7 +191,7 @@ struct InitializeGame {
             outerStrategyLoop: repeat {
                 innerStrategyLoop: repeat {
                     nL()
-                    display(msg: iMsg[29] + player2.name + iMsg[30]) // what strategy
+                    display(msg: iMsg[29] + playerCurrent.name + iMsg[30]) // what strategy
                     display(m2: tab2, msg: iMsg[1] + iMsg[31]) // random
                     display(m2: tab2, msg: iMsg[2] + iMsg[32]) // middle
                     display(m2: tab2, msg: iMsg[3] + iMsg[33]) // deny
@@ -349,7 +349,7 @@ struct InitializeGame {
                 getMachinePlayer()
                 player1.name = playerCurrent.name
                 player1.type = playerCurrent.type
-                player1.strategy = playerCurrent.strategy
+                // player1.strategy = playerCurrent.strategy
                 player1.token = oh
 
                 tempI1 = names.firstIndex(of: player1.name)!
@@ -360,7 +360,7 @@ struct InitializeGame {
                 getMachinePlayer()
                 player2.name = playerCurrent.type + sp1 + playerCurrent.name
                 player2.type = playerCurrent.type
-                player2.strategy = playerCurrent.strategy
+                // player2.strategy = playerCurrent.strategy
                 player2.token = ex
 
                 // continueWhoGoesFirst
@@ -374,7 +374,7 @@ struct InitializeGame {
                     break initLoop
                 } else {
                     player1.strategy = playerCurrent.strategy
-                    notifyMachineStrategy(name: player1.name, strat: player2.strategy)
+                    notifyMachineStrategy(name: player1.name, strat: player1.strategy)
                 } // end if !continueMachineStrategy
 
                 // continueMachineStrategy player2
