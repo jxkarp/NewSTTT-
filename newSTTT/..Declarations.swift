@@ -100,7 +100,8 @@
              getMachinePlayer()
              continueMachineStrategy(playr: Int) -> Bool // continue = true; quit = false
              notifyMachineStrategy(name: String, strat: Brain)
-
+             displayPlayerInfo()
+ 
   Struct PlayGame
      let
          under

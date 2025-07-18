@@ -24,7 +24,7 @@ extension String { // needed for testing keyboard input
 } // end extension
 
 // M A I N   C O N S T A N T S
-let testSpcM = "\t\t\t\t\t\t\t\t\t\t"
+let testM = "\t\t\t\t\t\t\t\t\t\t"
 let testBrainM = "\t\t\t\t\t"
 let testBigBoardM = "\t\t\t\t"
 let tab = "\t"

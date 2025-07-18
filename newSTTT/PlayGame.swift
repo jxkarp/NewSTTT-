@@ -382,12 +382,12 @@ struct PlayGame {
             continueFlag = true
             // proposeFlag = false
             if test {
-                display(m2: testSpcM, msg: "Current player's strategy = \(playerCurrent.strategy)")
+                display(m2: testM, msg: "Current player's strategy = \(playerCurrent.strategy)")
             } // end if
             switch playerCurrent.strategy {
             case .random:
                 if test {
-                    display(m2: testSpcM, msg: "Random strategy")
+                    display(m2: testM, msg: "Random strategy")
                 } // end if
                 switch count(grd8: g, tok8: ex, oh) {
                 case 0, 1:
@@ -399,7 +399,7 @@ struct PlayGame {
                 
             case .middle:
                 if test {
-                    display(m2: testSpcM, msg: "Middle strategy")
+                    display(m2: testM, msg: "Middle strategy")
                 } // end if
                 
                 switch count(grd8: g, tok8: ex, oh) {
@@ -427,7 +427,7 @@ struct PlayGame {
                 
             case .deny:
                 if test {
-                    display(m2: testSpcM, msg: "Deny strategy")
+                    display(m2: testM, msg: "Deny strategy")
                 } // end if
                 
                 switch count(grd8: g, tok8: ex, oh) {
@@ -440,7 +440,7 @@ struct PlayGame {
                 
             case .force:
                 if test {
-                    display(m2: testSpcM, msg: "Force strategy")
+                    display(m2: testM, msg: "Force strategy")
                 } // end if
                 switch count(grd8: g, tok8: ex, oh) {
                 case 0, 1:
@@ -455,7 +455,7 @@ struct PlayGame {
                 
             case .corner:
                 if test {
-                    display(m2: testSpcM, msg: "Corner strategy")
+                    display(m2: testM, msg: "Corner strategy")
                 } // end if
                 switch count(grd8: g, tok8: ex, oh) {
                 case 0:
@@ -491,7 +491,7 @@ struct PlayGame {
                 
             case .keyboard:
                 if test {
-                    display(m2: testSpcM, msg: "Keyboard strategy")
+                    display(m2: testM, msg: "Keyboard strategy")
                 } // end if
                 RCLoop: repeat {
                     rowLoop: repeat {

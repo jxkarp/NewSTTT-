@@ -117,7 +117,7 @@ struct InitializeGame {
                     display(msg: iMsg[18] + player1.name + "?") // Do you want to go first, player1.name?
                     display(m2: tab2, msg: mMsg[13] + mMsg[19]) // 1) Yes
                     display(m2: tab2, msg: mMsg[14] + mMsg[20]) // 2) No
-                    display(msg: mMsg[22] + mMsg[22], trm: "") // Please enter 1 or 2
+                    display(msg: mMsg[21] + mMsg[22], trm: "") // Please enter 1 or 2
                     tempS1 = readLine(strippingNewline: true)!
                     if tempS1 == "Q" || tempS1 == "q" {
                         display(msg: mMsg[12]) //  Elected to quit
@@ -159,6 +159,7 @@ struct InitializeGame {
             } // end notifyToken()
 
             // C O N T I N U E T O K E N   C O D E   H E R E
+            displayTestPlayerInfo(tag: "Before")
             continueFlag = true
             outerTokenLoop: repeat {
                 innerTokenLoop: repeat {
@@ -166,7 +167,7 @@ struct InitializeGame {
                     display(msg: icnExclam + player1.name + iMsg[26]) // Player1, do you want to play X or O?
                     display(m2: tab2, msg: sp2 + mMsg[13] + iMsg[27]) // 1) O
                     display(m2: tab2, msg: sp2 + mMsg[14] + iMsg[28]) // 2) X
-                    display(msg: mMsg[22] + mMsg[22], trm: "") // Please enter 1 or 2
+                    display(msg: mMsg[21] + mMsg[22], trm: "") // Please enter 1 or 2
                     tempS1 = readLine(strippingNewline: true)!
                     if tempS1 == "Q" || tempS1 == "q" {
                         nL2()
@@ -184,6 +185,7 @@ struct InitializeGame {
                     } // end if
                 } while !tempS1.isInt // end innterTokenLoop
             } while tempI1 < 1 || tempI1 > 2 // end outerTokenLoop
+            displayTestPlayerInfo(tag: "After")
             return continueFlag
         } // end func continueToken() -> Bool
 
@@ -274,9 +276,13 @@ struct InitializeGame {
                 playerCurrent.goesFirst = player2.goesFirst
             } // end if
             if test {
-                display(m2: testSpcM, msg: "Name1 = \(player1.name)\n\(testSpcM) Type = \(player1.type)\n\(testSpcM) Token = \(player1.token)\n\(testSpcM) Strategy = \(player1.strategy)\n\(testSpcM) Opponent Token = \(player1.oppToken)\n\(testSpcM) Goes First = \(player1.goesFirst)\n\n\(testSpcM)Name2 = \(player2.name)\n\(testSpcM) Type = \(player1.type)\n\(testSpcM) Token = \(player2.token)\n\(testSpcM) Strategy = \(player2.strategy)\n\(testSpcM) Opponent Token = \(player2.oppToken)\n\(testSpcM) Goes First = \(player2.goesFirst)\n\n\(testSpcM)Current Name = \(playerCurrent.name)\n\(testSpcM) Type = \(playerCurrent.type)\n\(testSpcM) Token = \(playerCurrent.token)\n\(testSpcM) Strategy = \(playerCurrent.strategy)\n\(testSpcM) Opponent Token = \(playerCurrent.oppToken)\n\(testSpcM) Goes First = \(playerCurrent.goesFirst)")
+                displayTestPlayerInfo(tag: "After Assign Current Player")
             } // end if test
         } // end func assignCurrentPlayer
+        
+        func displayTestPlayerInfo(tag: String) {
+            display(m2: testM, msg: "\(tag): Name1 = \(player1.name)\n\(testM) Type = \(player1.type)\n\(testM) Token = \(player1.token)\n\(testM) Strategy = \(player1.strategy)\n\(testM) Opponent Token = \(player1.oppToken)\n\(testM) Goes First = \(player1.goesFirst)\n\n\(testM)Name2 = \(player2.name)\n\(testM) Type = \(player1.type)\n\(testM) Token = \(player2.token)\n\(testM) Strategy = \(player2.strategy)\n\(testM) Opponent Token = \(player2.oppToken)\n\(testM) Goes First = \(player2.goesFirst)\n\n\(testM)Current Name = \(playerCurrent.name)\n\(testM) Type = \(playerCurrent.type)\n\(testM) Token = \(playerCurrent.token)\n\(testM) Strategy = \(playerCurrent.strategy)\n\(testM) Opponent Token = \(playerCurrent.oppToken)\n\(testM) Goes First = \(playerCurrent.goesFirst)")
+        } // end displayPlayerInfo()
 
         // C O N T I N U E I N I T I A L I Z E   C O D E  S T A R T S   H E R E
         continueFlag = true
@@ -312,8 +318,6 @@ struct InitializeGame {
                     continueFlag = continueToken()
                     if !continueFlag {
                         break initLoop
-                        // } else {
-                        // assignCurrentPlayer()
                     } // end if
                 } // end if !whoGoesFirst
 
@@ -370,6 +374,7 @@ struct InitializeGame {
                 player1.type = playerCurrent.type
                 // player1.strategy = playerCurrent.strategy
                 player1.token = oh
+                player1.oppToken = ex
 
                 tempI1 = names.firstIndex(of: player1.name)!
                 names.remove(at: tempI1)
@@ -381,6 +386,8 @@ struct InitializeGame {
                 player2.type = playerCurrent.type
                 // player2.strategy = playerCurrent.strategy
                 player2.token = ex
+                player2.oppToken = oh
+                displayTestPlayerInfo(tag: "After MM assign")
 
                 // continueWhoGoesFirst
                 player1.goesFirst = true
