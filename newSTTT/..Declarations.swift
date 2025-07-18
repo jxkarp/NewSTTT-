@@ -147,7 +147,9 @@
         proposeCorner(grd20: Int, row18: Int, col18: Int)
         proposeAdjacentCorner(grd20: Int)
         continueProposeRCorG() -> Bool // continue = true; quit = false
+            testStrategy(type: Brain)
         continueProposeGrid() -> Bool
+            proposeRandomGrid()
         convertGridToRC(grd22: Int) -> [Int] {
         markBigBoard(grd17: Int, tok17: String)
         clearGrid(grd11: Int)

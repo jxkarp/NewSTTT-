@@ -301,7 +301,7 @@ struct PlayGame {
                 } // end if
             } // end for
             
-            proposeTempG(grd21: grd12)
+            // proposeTempG(grd21: grd12)
         } // end func takeOorT
         
         func proposeTempG(grd21: Int) {
@@ -323,9 +323,11 @@ struct PlayGame {
         func proposeRandomRC(grd20: Int) {
             repeat {
                 tempRC = [Int.random(in: 1 ... 3), Int.random(in: 1 ... 3)]
+                tempR = tempRC[0]
+                tempC = tempRC[1]
             } while isSquareTaken(grd10: grd20, row10: tempR, col10: tempC)
             
-            proposeTempG(grd21: grd20)
+            // proposeTempG(grd21: grd20)
         } // end func takeRandomRC
         
         func proposeFreeMiddle(grd20: Int) {
@@ -334,7 +336,7 @@ struct PlayGame {
                 // proposeFlag = true
             } // end if middle is free
             
-            proposeTempG(grd21: grd20)
+            // proposeTempG(grd21: grd20)
         } // end func proposeFreeMiddle
         
         func proposeCorner(grd20: Int, row18: Int, col18: Int) {
@@ -343,7 +345,7 @@ struct PlayGame {
                 // proposeFlag = true
             } // end if
             
-            proposeTempG(grd21: grd20)
+            // proposeTempG(grd21: grd20)
         } // end func proposeCorner
         
         func proposeAdjacentCorner(grd20: Int) {
@@ -366,7 +368,7 @@ struct PlayGame {
                     // proposeFlag = true
                 } // end if
             } // end if
-            proposeTempG(grd21: grd20)
+            // proposeTempG(grd21: grd20)
         } // end func proposeAdjacentCorner(grd20: Int)
         
         func continueProposeRCorG() -> Bool {
@@ -379,6 +381,12 @@ struct PlayGame {
             // proposeFlag: tempRC is proposed = true; tempRC not proposed = false
             // must set rc = tempRC on return
             
+            func testStrategy(type: Brain) {
+                if test {
+                    display(m2: testM, msg: "\(Brain.self) strategy.")
+                } // end if
+            } // end func testStrategy(type: Brain)
+            
             continueFlag = true
             // proposeFlag = false
             if test {
@@ -386,9 +394,7 @@ struct PlayGame {
             } // end if
             switch playerCurrent.strategy {
             case .random:
-                if test {
-                    display(m2: testM, msg: "Random strategy")
-                } // end if
+                testStrategy(type: .random)
                 switch count(grd8: g, tok8: ex, oh) {
                 case 0, 1:
                     proposeRandomRC(grd20: g)
@@ -398,10 +404,7 @@ struct PlayGame {
                 } // end switch count
                 
             case .middle:
-                if test {
-                    display(m2: testM, msg: "Middle strategy")
-                } // end if
-                
+                testStrategy(type: .middle)
                 switch count(grd8: g, tok8: ex, oh) {
                 case 0:
                     
@@ -426,10 +429,7 @@ struct PlayGame {
                 } // end switch count
                 
             case .deny:
-                if test {
-                    display(m2: testM, msg: "Deny strategy")
-                } // end if
-                
+                testStrategy(type: .deny)
                 switch count(grd8: g, tok8: ex, oh) {
                 case 0, 1:
                     proposeRandomRC(grd20: g)
@@ -439,9 +439,7 @@ struct PlayGame {
                 } // end switch count
                 
             case .force:
-                if test {
-                    display(m2: testM, msg: "Force strategy")
-                } // end if
+                testStrategy(type: .force)
                 switch count(grd8: g, tok8: ex, oh) {
                 case 0, 1:
                     
@@ -454,9 +452,7 @@ struct PlayGame {
                 } // end switch count
                 
             case .corner:
-                if test {
-                    display(m2: testM, msg: "Corner strategy")
-                } // end if
+                testStrategy(type: .corner)
                 switch count(grd8: g, tok8: ex, oh) {
                 case 0:
                     
@@ -490,9 +486,7 @@ struct PlayGame {
                 } // end switch count
                 
             case .keyboard:
-                if test {
-                    display(m2: testM, msg: "Keyboard strategy")
-                } // end if
+                testStrategy(type: .keyboard)
                 RCLoop: repeat {
                     rowLoop: repeat {
                         display(msg: pMsg[4])
