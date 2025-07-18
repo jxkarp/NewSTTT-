@@ -8,7 +8,7 @@
 import Foundation
 
 // M A I N   T E S T   V A R I A B L E S
-var test = false
+var test = true
 var testBrain = true
 var testBigBoard = false
 

@@ -80,6 +80,22 @@ struct InitializeGame {
             return continueFlag
         } // end func continueGameType
 
+        /* func notifyWhoGoesFirst(tag: Bool) {
+            nL()
+            if tag {
+                if player1.goesFirst {
+                    // notify
+                    display(msg: iMsg[22] + player1.name + iMsg[24]) // player1 first
+                    display(msg: iMsg[22] + player2.name + iMsg[25]) // player2 second
+                } // end if player1.goFirst
+            } else {
+                    // notify
+                    display(msg: iMsg[23] + player2.name + iMsg[24]) // player2 first
+                    display(msg: iMsg[23] + player1.name + iMsg[25]) // player1 second
+            } // end if
+            
+        } // end notifyWhoGoesFirst() */
+        
         func notifyWhoGoesFirst() {
             nL()
             if player1.goesFirst {
@@ -292,6 +308,7 @@ struct InitializeGame {
                 if !continueFlag {
                     break initLoop
                 } else {
+                    notifyWhoGoesFirst()
                     continueFlag = continueToken()
                     if !continueFlag {
                         break initLoop
@@ -320,6 +337,7 @@ struct InitializeGame {
                 // whoGoesFirst
                 continueFlag = continueWhoGoesFirst()
                 if !continueFlag {
+                    notifyWhoGoesFirst()
                     break initLoop
                 } else {
                     continueFlag = continueToken()
@@ -330,6 +348,7 @@ struct InitializeGame {
                     } // end if
 
                     continueFlag = continueMachineStrategy()
+                    playerCurrent.name = player2.name
                     if !continueFlag {
                         // continueFlag = false
                         break initLoop
@@ -368,6 +387,7 @@ struct InitializeGame {
                 notifyWhoGoesFirst()
 
                 // continueMachineStrategy player1
+                playerCurrent.name = player1.name
                 continueFlag = continueMachineStrategy()
                 if !continueFlag {
                     // continueFlag = false
@@ -378,6 +398,7 @@ struct InitializeGame {
                 } // end if !continueMachineStrategy
 
                 // continueMachineStrategy player2
+                playerCurrent.name = player2.name
                 continueFlag = continueMachineStrategy()
                 if !continueFlag {
                     // continueFlag = false
