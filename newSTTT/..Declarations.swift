@@ -100,7 +100,7 @@
              getMachinePlayer()
              continueMachineStrategy(playr: Int) -> Bool // continue = true; quit = false
              notifyMachineStrategy(name: String, strat: Brain)
-             displayPlayerInfo()
+             testPlayerInfo(location: String)
  
   Struct PlayGame
      let
@@ -155,5 +155,6 @@
         clearGrids()
         markGrids()
         switchPlayers()
-        determineNextGrid()
+        continueDetermineNextGrid() -> Bool
+        testPoint(location: String)
   */

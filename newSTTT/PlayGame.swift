@@ -36,6 +36,8 @@ struct PlayGame {
         ", you must play Grid ", // 15 you must play Grid
         " selected Grid ", // 16 selected Grid
         icnExclam+"Do you want to play again?", // 17 Play again
+        ", it's your turn.", // 18 it's your turn
+        ", you played ", // 19, you played
     ] // end var pMsg
 
     // P L A Y G A M E   V A R I A B L E S
@@ -65,7 +67,7 @@ struct PlayGame {
         
         func hasTTTinGrid(grd3: Int, tok3: String...) -> Int {
             // if return == 0 there is no TTT, else the number that corresponds to which TTT (eg: row1, col3, LtoR diag, etc.)
-            
+            tempI1 = 0
             for w in tok3 {
                 if game[pos(pt1: [grd3, 1, 1])] == w && game[pos(pt1: [grd3, 1, 2])] == w && game[pos(pt1: [grd3, 1, 3])] == w { // TTT in row 1
                     tempI1 = 1
@@ -83,8 +85,6 @@ struct PlayGame {
                     tempI1 = 7
                 } else if game[pos(pt1: [grd3, 1, 3])] == w && game[pos(pt1: [grd3, 2, 2])] == w && game[pos(pt1: [grd3, 3, 1])] == w { // TTT in RL diagonal
                     tempI1 = 8
-                } else { // no TTT in this grid
-                    tempI1 = 0
                 } // end if
             } // end w
             return tempI1
@@ -767,30 +767,38 @@ struct PlayGame {
                 playerCurrent.type = player1.type
                 playerCurrent.strategy = player1.strategy
             } // end if
+            display(msg: icnInfo+"\(playerCurrent.name)"+pMsg[18])
             if testBrain {
                 // display(msg: testSpc+"Player is \(player). Type is \(type). Token is \(token).")
             } // end if
         } // end func switchPlayers
         
-        func determineNextGrid() {
-            /*
-             tempI1 = (r-1)*3 + c
-             if (hasTTTinGrid(grd3: tempI1, tok3: ex, oh) == 0 || !isGridDraw(grd15: tempI1) { // no TTT or Draw in this grid
-             g = tempI1
-             nL()
-             display(msg: icnWarning + "\(playerCurrent.name)"+pMsg[15]+"\(g)!")
-             } else {
-             if !continueProposeGrid() {
-             break gameLoop
-             } else {
-             g = tempG
-             nL()
-             display(msg: icnInfo + "\(playerCurrent.name)"+pMsg[16]+"\(g)")
-             } // end if
-             
-             } // end if
-             */
-        } // end func determineNextGrid
+        func continueDetermineNextGrid() -> Bool {
+            testPoint(location: "Before determine")
+            continueFlag = true
+            tempI1 = (r-1)*3 + c
+            if hasTTTinGrid(grd3: tempI1, tok3: ex, oh) == 0 || !isGridDraw(grd15: tempI1) { // no TTT or Draw in this grid
+                g = (r-1)*3 + c
+                testPoint(location: "After TTT and Draw checks")
+                nL()
+                display(msg: icnWarning + "\(playerCurrent.name)"+pMsg[15]+"\(g)!")
+            } else {
+                continueFlag = continueProposeGrid()
+                if continueFlag {
+                    g = (r-1)*3 + c
+                    nL()
+                    display(msg: icnInfo + "\(playerCurrent.name)"+pMsg[16]+"\(g)")
+                 } // end if
+            } // end if
+            testPoint(location: "After determine")
+            return continueFlag
+        } // end func continueDetermineNextGrid
+        
+        func testPoint(location: String) {
+            if test {
+                display(m2: testM, msg: "\(location): G = \(g) R = \(r) C = \(c)")
+            } // end if
+        } // end func testPoint(location: String)
         
         // C O N T I N U E P L A Y   C O D E   H E R E
         
@@ -811,6 +819,8 @@ struct PlayGame {
                 } // end if
                 
                 // opening grid is choice of first player
+                nL()
+                display(msg: icnInfo+"\(playerCurrent.name)\(pMsg[18]).")
                 continueFlag = continueProposeGrid()
                 if !continueFlag {
                     break gameLoop
@@ -832,6 +842,7 @@ struct PlayGame {
                     
                     // move
                     game[pos(pt1: [g, r, c])] = playerCurrent.token
+                    display(msg: icnInfo+"\(playerCurrent.name)\(pMsg[19])\(playerCurrent.token) in Grid \(g), Row \(r), Column \(c).")
                     
                     // if TTT in Grid
                     if hasTTTinGrid(grd3: g, tok3: playerCurrent.token) != 0 {
@@ -913,9 +924,14 @@ struct PlayGame {
                         } // end if isDrawInGrid
                     } // end if TTT in Grid
                     
+                    displayGame(tag: true)
+                    
                     switchPlayers()
                     
-                    determineNextGrid()
+                    continueFlag = continueDetermineNextGrid()
+                    if !continueFlag {
+                        break gameLoop
+                    }
                     
                 } while continueFlag // end moveLoop ==> check this condition
                 

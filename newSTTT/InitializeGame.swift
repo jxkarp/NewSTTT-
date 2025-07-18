@@ -79,22 +79,6 @@ struct InitializeGame {
             } while tempI1 < 1 || tempI1 > 3 // end gameTypeLoop
             return continueFlag
         } // end func continueGameType
-
-        /* func notifyWhoGoesFirst(tag: Bool) {
-            nL()
-            if tag {
-                if player1.goesFirst {
-                    // notify
-                    display(msg: iMsg[22] + player1.name + iMsg[24]) // player1 first
-                    display(msg: iMsg[22] + player2.name + iMsg[25]) // player2 second
-                } // end if player1.goFirst
-            } else {
-                    // notify
-                    display(msg: iMsg[23] + player2.name + iMsg[24]) // player2 first
-                    display(msg: iMsg[23] + player1.name + iMsg[25]) // player1 second
-            } // end if
-            
-        } // end notifyWhoGoesFirst() */
         
         func notifyWhoGoesFirst() {
             nL()
@@ -159,7 +143,7 @@ struct InitializeGame {
             } // end notifyToken()
 
             // C O N T I N U E T O K E N   C O D E   H E R E
-            displayTestPlayerInfo(tag: "Before")
+            testPlayerInfo(location: "Before")
             continueFlag = true
             outerTokenLoop: repeat {
                 innerTokenLoop: repeat {
@@ -185,7 +169,7 @@ struct InitializeGame {
                     } // end if
                 } while !tempS1.isInt // end innterTokenLoop
             } while tempI1 < 1 || tempI1 > 2 // end outerTokenLoop
-            displayTestPlayerInfo(tag: "After")
+            testPlayerInfo(location: "After")
             return continueFlag
         } // end func continueToken() -> Bool
 
@@ -275,13 +259,13 @@ struct InitializeGame {
                 playerCurrent.oppToken = player1.token
                 playerCurrent.goesFirst = player2.goesFirst
             } // end if
-            if test {
-                displayTestPlayerInfo(tag: "After Assign Current Player")
-            } // end if test
+            testPlayerInfo(location: "After Assign Current Player")
         } // end func assignCurrentPlayer
         
-        func displayTestPlayerInfo(tag: String) {
-            display(m2: testM, msg: "\(tag): Name1 = \(player1.name)\n\(testM) Type = \(player1.type)\n\(testM) Token = \(player1.token)\n\(testM) Strategy = \(player1.strategy)\n\(testM) Opponent Token = \(player1.oppToken)\n\(testM) Goes First = \(player1.goesFirst)\n\n\(testM)Name2 = \(player2.name)\n\(testM) Type = \(player1.type)\n\(testM) Token = \(player2.token)\n\(testM) Strategy = \(player2.strategy)\n\(testM) Opponent Token = \(player2.oppToken)\n\(testM) Goes First = \(player2.goesFirst)\n\n\(testM)Current Name = \(playerCurrent.name)\n\(testM) Type = \(playerCurrent.type)\n\(testM) Token = \(playerCurrent.token)\n\(testM) Strategy = \(playerCurrent.strategy)\n\(testM) Opponent Token = \(playerCurrent.oppToken)\n\(testM) Goes First = \(playerCurrent.goesFirst)")
+        func testPlayerInfo(location: String) {
+            if test {
+                display(m2: testM, msg: "\(location): Name1 = \(player1.name)\n\(testM) Type = \(player1.type)\n\(testM) Token = \(player1.token)\n\(testM) Strategy = \(player1.strategy)\n\(testM) Opponent Token = \(player1.oppToken)\n\(testM) Goes First = \(player1.goesFirst)\n\n\(testM)Name2 = \(player2.name)\n\(testM) Type = \(player1.type)\n\(testM) Token = \(player2.token)\n\(testM) Strategy = \(player2.strategy)\n\(testM) Opponent Token = \(player2.oppToken)\n\(testM) Goes First = \(player2.goesFirst)\n\n\(testM)Current Name = \(playerCurrent.name)\n\(testM) Type = \(playerCurrent.type)\n\(testM) Token = \(playerCurrent.token)\n\(testM) Strategy = \(playerCurrent.strategy)\n\(testM) Opponent Token = \(playerCurrent.oppToken)\n\(testM) Goes First = \(playerCurrent.goesFirst)")
+            } // end if test
         } // end displayPlayerInfo()
 
         // C O N T I N U E I N I T I A L I Z E   C O D E  S T A R T S   H E R E
@@ -387,7 +371,7 @@ struct InitializeGame {
                 // player2.strategy = playerCurrent.strategy
                 player2.token = ex
                 player2.oppToken = oh
-                displayTestPlayerInfo(tag: "After MM assign")
+                testPlayerInfo(location: "After MM assign")
 
                 // continueWhoGoesFirst
                 player1.goesFirst = true

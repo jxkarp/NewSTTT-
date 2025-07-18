@@ -19,6 +19,7 @@ assign()                 : assigns previously determined values
 is() -> Bool             : returns Bool
 has() -> Int             : returns Int; check for == 0 or != 0
 mark(...)                : updates game matrix with value
+test(...)                : displays variable values during testing
 return()                 : ??
 
 
