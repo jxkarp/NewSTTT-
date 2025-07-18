@@ -11,26 +11,26 @@ struct InitializeGame {
     let machine = "machine"
     let iMsg = [
         "*", // 0, because
-        "1) ", // 1)
-        "2) ", // 2)
-        "3) ", // 3)
-        "4) ", // 4)
-        "5) ", // 5)
-        "6) ", // 6)
+        "", //
+        "", //
+        "", //
+        "", //
+        "", //
+        "", //
         icnExclam + "What type of game do you want to play?", // 7
         "human ", // 8 human
         "machine ", // 9 machine
         "v. ", // 10 v.
         icnQMark + "Please enter a number from 1 to 3", // 11 Enter 1-3
-        ", or Q to quit: ", // 12 or Q to quit:
+        "", // 12
         "", // 13
         "", // 14
         "", // 15
         icnInfo + "You selected ", // 16 You selected
         ", please enter your name: ", // 17 what is your name
         icnExclam + "Do you want to go first, ", // 18 Go first?
-        "Yes", // 19 Yes
-        "No", // 20 No
+        "", // 19
+        "", // 20
         icnQMark + "Please enter 1 or 2", // 21 enter 1 or 2
         icnInfo + "Player ", // 22 Player
         icnInfo + "Opponent ", // 23 Opponent
@@ -61,10 +61,10 @@ struct InitializeGame {
             gameTypeLoop: repeat {
                 nL()
                 display(msg: iMsg[7]) // What type of game to you want to play?
-                display(m2: tab2, msg: iMsg[1] + iMsg[8] + iMsg[10] + iMsg[8]) //  1) human v. human
-                display(m2: tab2, msg: iMsg[2] + iMsg[8] + iMsg[10] + iMsg[9]) //  2) human v. machine
-                display(m2: tab2, msg: iMsg[3] + iMsg[9] + iMsg[10] + iMsg[9]) //  3) machine v. machine
-                display(msg: iMsg[11] + iMsg[12], trm: "") // enter 1..3 or Q
+                display(m2: tab2, msg: mMsg[13] + iMsg[8] + iMsg[10] + iMsg[8]) //  1) human v. human
+                display(m2: tab2, msg: mMsg[14] + iMsg[8] + iMsg[10] + iMsg[9]) //  2) human v. machine
+                display(m2: tab2, msg: mMsg[15] + iMsg[9] + iMsg[10] + iMsg[9]) //  3) machine v. machine
+                display(msg: iMsg[11] + mMsg[22], trm: "") // enter 1..3 or Q
                 tempS1 = readLine(strippingNewline: true)!
                 if tempS1 == "Q" || tempS1 == "q" {
                     nL2()
@@ -115,9 +115,9 @@ struct InitializeGame {
                 innerWhoFirstLoop: repeat {
                     nL()
                     display(msg: iMsg[18] + player1.name + "?") // Do you want to go first, player1.name?
-                    display(m2: tab2, msg: iMsg[1] + iMsg[19]) // 1) Yes
-                    display(m2: tab2, msg: iMsg[2] + iMsg[20]) // 2) No
-                    display(msg: iMsg[21] + iMsg[12], trm: "") // Please enter 1 or 2
+                    display(m2: tab2, msg: mMsg[13] + mMsg[19]) // 1) Yes
+                    display(m2: tab2, msg: mMsg[14] + mMsg[20]) // 2) No
+                    display(msg: mMsg[22] + mMsg[22], trm: "") // Please enter 1 or 2
                     tempS1 = readLine(strippingNewline: true)!
                     if tempS1 == "Q" || tempS1 == "q" {
                         display(msg: mMsg[12]) //  Elected to quit
@@ -164,9 +164,9 @@ struct InitializeGame {
                 innerTokenLoop: repeat {
                     nL()
                     display(msg: icnExclam + player1.name + iMsg[26]) // Player1, do you want to play X or O?
-                    display(m2: tab2, msg: sp2 + iMsg[1] + iMsg[27]) // 1) O
-                    display(m2: tab2, msg: sp2 + iMsg[2] + iMsg[28]) // 2) X
-                    display(msg: iMsg[21] + iMsg[12], trm: "") // Please enter 1 or 2
+                    display(m2: tab2, msg: sp2 + mMsg[13] + iMsg[27]) // 1) O
+                    display(m2: tab2, msg: sp2 + mMsg[14] + iMsg[28]) // 2) X
+                    display(msg: mMsg[22] + mMsg[22], trm: "") // Please enter 1 or 2
                     tempS1 = readLine(strippingNewline: true)!
                     if tempS1 == "Q" || tempS1 == "q" {
                         nL2()
@@ -208,12 +208,12 @@ struct InitializeGame {
                 innerStrategyLoop: repeat {
                     nL()
                     display(msg: iMsg[29] + playerCurrent.name + iMsg[30]) // what strategy
-                    display(m2: tab2, msg: iMsg[1] + iMsg[31]) // random
-                    display(m2: tab2, msg: iMsg[2] + iMsg[32]) // middle
-                    display(m2: tab2, msg: iMsg[3] + iMsg[33]) // deny
-                    display(m2: tab2, msg: iMsg[4] + iMsg[34]) // force
-                    display(m2: tab2, msg: iMsg[5] + iMsg[35]) // corner
-                    display(msg: iMsg[36] + iMsg[12], trm: "") // Please enter 1 to 5
+                    display(m2: tab2, msg: mMsg[13] + iMsg[31]) // random
+                    display(m2: tab2, msg: mMsg[14] + iMsg[32]) // middle
+                    display(m2: tab2, msg: mMsg[15] + iMsg[33]) // deny
+                    display(m2: tab2, msg: mMsg[16] + iMsg[34]) // force
+                    display(m2: tab2, msg: mMsg[17] + iMsg[35]) // corner
+                    display(msg: iMsg[36] + mMsg[22], trm: "") // Please enter 1 to 5
 
                     tempS1 = readLine(strippingNewline: true)!
 

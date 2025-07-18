@@ -59,6 +59,17 @@ let mMsg = [
     icnWarning + "You can't play this grid: it already has a Tic Tac Toe.", // 10 already TTT
     icnWarning + "You cant play this grid: it is already a draw.", // 11 already a draw
     icnInfo + "You elected to quit.", // 12 You elected to quit
+    "1) ", // 13)
+    "2) ", // 14)
+    "3) ", // 15)
+    "4) ", // 16)
+    "5) ", // 17)
+    "6) ", // 18)
+    "Yes", // 19 Yes
+    "No", // 20 No
+    icnQMark + "Please enter 1 or 2", // 21 enter 1 or 2
+    ", or Q to quit: ", // 22 or Q to quit:
+
 ] // end mMsg
 
 // M A I N   V A R I A B L E S

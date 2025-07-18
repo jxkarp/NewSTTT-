@@ -7,12 +7,14 @@
 /*
     Version Date    Comments
  
-    *       250717  Conversion to GitHub
-                    Move playLoop to Main
-                    Ensure playAgainLoop in PLay
+            250718  Bugs in MachineStrategy
+ 
+    *       250717  √ Conversion to GitHub
+                    X Move playLoop to main
+                    Ensure AgainLoop in Play
 
     12              Check need for tag in displayGame
-                    May need to reset tempI1 or make it a private variable so break xxxLoop will execute properly! Or change over to returned tuples that include tempI1
+                    X? May need to reset tempI1 or make it a private variable so break xxxLoop will execute properly! Or change over to returned tuples that include tempI1
  
     11      250715  √ Change isTTTinGrid to hasTTTinGrid
                     √ Rework isGridTTT to consider only count, not cound and TTT
