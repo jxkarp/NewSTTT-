@@ -7,6 +7,10 @@
 /*
     Version Date    Comments
  
+            250720  Resume Version History now!
+                    Various bugs
+                    Smart Random strategy
+ 
             250718  Bugs in MachineStrategy
  
     *       250717  √ Conversion to GitHub
