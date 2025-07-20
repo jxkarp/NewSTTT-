@@ -10,7 +10,7 @@ import Foundation
 // M A I N   T E S T   V A R I A B L E S
 var test = false
 var testBrain = false
-var testBigBoard = true
+var testBigBoard = false
 
 // M A I N   E X T E N S I O N S
 extension String { // needed for testing keyboard input
@@ -142,7 +142,12 @@ display(m2: "", msg: mMsg[3], trm: "") // Welcome
 // display(m2: testBigBoardM, msg: "before gameLoop")
 
 continueFlag = true
-// quitLoop: repeat {
+
+if !initializeGame.continueInitialize() || !playGame.continuePlay() {
+    nL2()
+    display(msg: mMsg[12])
+} // end if
+/* // quitLoop: repeat {
      mainLoop: repeat {
         // display(m2: testBrainM, msg: "inside top gameLoop")
 
@@ -169,7 +174,7 @@ continueFlag = true
      */
     
 // } while true // end quitLoop
-
+*/
 nL()
 display(m2: "", msg: mMsg[4]) // Thanks for playing
 // display(m1: "", msg: mMsg[2]) // Bye Jack

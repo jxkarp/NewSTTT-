@@ -66,49 +66,59 @@ struct PlayGame {
         } // end func pos(pt1: [Int]) -> Int
         
         func displayGameStats() {
+            // display(m2: testM, msg: "Inside displayGameStats")
             var temp1 = player1.name
             var temp2 = player2.name
 
             while temp1.count < 18 {
-                temp1 = player1.name + " "
+                temp1 = temp1 + " "
+                // display(m2: testM, msg: "Inside temp1")
             } // end while
             while temp2.count < 18 {
-                temp2 = player2.name + " "
+                temp2 = temp2 + " "
+                // display(m2: testM, msg: "Inside temp2")
             } // end while
             var gW1 = String(player1.gamesWon)
             var gL1 = String(player1.gamesLost)
-            var gT1 = String(player1.gamesDrawn)
+            var gD1 = String(player1.gamesDrawn)
             var gW2 = String(player2.gamesWon)
             var gL2 = String(player2.gamesLost)
-            var gT2 = String(player2.gamesDrawn)
+            var gD2 = String(player2.gamesDrawn)
             var gC = String(gameCount)
 
             while gW1.count < 8 {
                 gW1 = " " + gW1
+                // display(m2: testM, msg: "Inside gW1")
             } // end while
             while gL1.count < 8 {
                 gL1 = " " + gL1
+                // display(m2: testM, msg: "Inside gL1")
             } // end while
-            while gT1.count < 8 {
-                gT1 = " " + gT1
+            while gD1.count < 8 {
+                gD1 = " " + gD1
+                // display(m2: testM, msg: "Inside gD1")
             } // end while
             while gW2.count < 8 {
                 gW2 = " " + gW2
+                // display(m2: testM, msg: "Inside gW2")
             } // end while
             while gL2.count < 8 {
                 gL2 = " " + gL2
+                // display(m2: testM, msg: "Inside gL2")
             } // end while
-            while gT2.count < 8 {
-                gT2 = " " + gT2
+            while gD2.count < 8 {
+                gD2 = " " + gD2
+                // display(m2: testM, msg: "Inside gD2")
             } // end while
             while gC.count < 8 {
                 gC = " " + gC
+                // display(m2: testM, msg: "Inside gC")
             } // end while
 
             display(msg: icnHand + "G A M E   S T A T I S T I C S")
-            display(msg: "                    Won    Lost   Drawn   Total")
-            display(msg: temp1 + gW1 + gL1 + gT1 + gC)
-            display(msg: temp2 + gW2 + gL2 + gT2 + gC)
+            display(msg: "                        Won    Lost   Drawn   Total")
+            display(msg: temp1 + gW1 + gL1 + gD1 + gC)
+            display(msg: temp2 + gW2 + gL2 + gD2 + gC)
         } // end displayGameStats()
 
         func displayOpeningInfo() {
@@ -582,6 +592,8 @@ struct PlayGame {
                     } // end if
                 } while hasTTTinGrid(grd3: tempG, tok3: ex, oh) != nil || count(grd8: tempG, tok8: ex, oh) == 9 // end outerGridLoop
             } // end switch strategy
+            nL2()
+            display(msg: icnInfo+"\(playerCurrent.name) \(pMsg[16]) \(tempG).") // player selected grid #
             return continueFlag
         } // end  func chooseProposeGrid() -> (continueFlag, proposeFlag)
         
@@ -691,6 +703,7 @@ struct PlayGame {
                 playerCurrent.type = player1.type
                 playerCurrent.strategy = player1.strategy
             } // end if
+            nL2()
             display(msg: icnInfo+"\(playerCurrent.name)"+pMsg[18])
             if testBrain {
                 // display(msg: testSpc+"Player is \(player). Type is \(type). Token is \(token).")
@@ -819,7 +832,7 @@ struct PlayGame {
                         display(msg: pMsg[12] + "\(g)" + pMsg[13]) // Grid is a draw
                         
                         // mark bigBoard
-                        markBigBoard(grd17: bigBoard, tok17: draw)
+                        markBigBoard(grd17: g, tok17: draw)
                         
                         // mark Token in Grid
                         markTokenInGrid(grd16: g, tok16: draw)
