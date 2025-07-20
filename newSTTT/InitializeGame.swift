@@ -30,7 +30,7 @@ struct InitializeGame {
         ", please enter your name: ", // 17 what is your name
         icnExclam + "Do you want to go first, ", // 18 Go first?
         "", // 19
-        "", // 20
+        Brain.smartRandom.rawValue, // 20
         icnQMark + "Please enter 1 or 2", // 21 enter 1 or 2
         icnInfo + "Player ", // 22 Player
         icnInfo + "Opponent ", // 23 Opponent
@@ -46,7 +46,7 @@ struct InitializeGame {
         Brain.deny.rawValue, // 33 deny
         Brain.force.rawValue, // 34 force
         Brain.corner.rawValue, // 35 corner
-        icnQMark + "Please enter a number from 1 to 5", // 36 enter 1 to 5
+        icnQMark + "Please enter a number from 1 to 6", // 36 enter 1 to 5
         "token ", // 37 token
     ] // end iMsg
 
@@ -199,6 +199,7 @@ struct InitializeGame {
                     display(m2: tab2, msg: mMsg[15] + iMsg[33]) // deny
                     display(m2: tab2, msg: mMsg[16] + iMsg[34]) // force
                     display(m2: tab2, msg: mMsg[17] + iMsg[35]) // corner
+                    display(m2: tab2, msg: mMsg[18] + iMsg[20]) // smart Random
                     display(msg: iMsg[36] + mMsg[22], trm: "") // Please enter 1 to 5
 
                     tempS1 = readLine(strippingNewline: true)!
@@ -210,7 +211,7 @@ struct InitializeGame {
                         break innerStrategyLoop
                     } else if tempS1.isInt {
                         tempI1 = Int(tempS1)!
-                        if tempI1 >= 1 && tempI1 <= 5 {
+                        if tempI1 >= 1 && tempI1 <= 6 {
                             switch tempI1 {
                             case 1:
                                 tempS2 = Brain.random.rawValue
@@ -227,10 +228,13 @@ struct InitializeGame {
                             case 5:
                                 tempS2 = Brain.corner.rawValue
                                 playerCurrent.strategy = .corner
+                            case 6:
+                                tempS2 = Brain.smartRandom.rawValue
+                                playerCurrent.strategy = .smartRandom
                             default: tempS2 = "none"
                             } // end switch
                         } else {
-                            errorOutOfRange(upper: 5)
+                            errorOutOfRange(upper: 6)
                         } // end if
                     } // end if
 

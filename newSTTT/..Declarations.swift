@@ -145,7 +145,7 @@
         proposeFreeMiddle(grd20: Int)
         proposeCorner(grd20: Int, row18: Int, col18: Int)
         proposeAdjacentCorner(grd20: Int)
-        continueProposeRCorG() -> Bool // continue = true; quit = false
+        continueProposeRC() -> Bool // continue = true; quit = false
             testStrategy(type: Brain)
         continueProposeGrid() -> Bool
             proposeRandomGrid()

@@ -99,6 +99,7 @@ var playGame = PlayGame()
 // B R A I N   E N U M
 enum Brain: String {
     case random = "Random"
+    case smartRandom = "Smart Random"
     case middle = "Middle"
     case deny = "Deny"
     case force = "Force"
@@ -129,7 +130,7 @@ func errorOutOfRange(upper: Int) {
     if upper < 0 {
         tempS1 = "less than 1."
     }
-    display(msg: icnWarning + mMsg[8] + tempS1) // Not in range
+    display(msg: mMsg[8] + tempS1) // Not in range
     display(msg: sp2 + mMsg[9]) // Try again
 } // end errorOutOfRange
 

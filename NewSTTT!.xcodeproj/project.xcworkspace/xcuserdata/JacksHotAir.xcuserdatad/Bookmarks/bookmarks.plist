@@ -503,13 +503,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>296</string>
+					<string>428</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>295</string>
+					<string>427</string>
 					<key>Timestamp</key>
-					<string>774731275.681392</string>
+					<string>774737685.28929</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -525,10 +525,10 @@ struct PlayGame {
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>        func continueProposeRCorG() -&gt; Bool {
+				<string>        func continueProposeRC() -&gt; Bool {
 </string>
 				<key>leading</key>
-				<string>        } // end func takeRandomRC
+				<string>
                 
 </string>
 				<key>trailing</key>
@@ -548,13 +548,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>460</string>
+					<string>602</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>459</string>
+					<string>601</string>
 					<key>Timestamp</key>
-					<string>774731275.681386</string>
+					<string>774737762.383409</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
