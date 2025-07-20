@@ -43,7 +43,7 @@ struct PlayGame {
     // P L A Y G A M E   V A R I A B L E S
 
     // the super matrix (grid = 0) and the nine visible grids (1-9)
-    var game = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"]
+    var game = [ "_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_" ]
 
     // Don't touch this!!! Make a copy!!!
     // var game = [ "_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_" ] // for reference
@@ -627,15 +627,15 @@ struct PlayGame {
             game[pos(pt1: [bigBoard, tmpRC[0], tmpRC[1]])] = tok17
         } // end func markBigBoard(grd17: Int, tok17: String)
         
-        func clearGrid(grd11: Int) {
+        func clearGrid(grd11: Int, tok11: String) {
             for i in 0 ... 8 {
-                game[grd11 * 9 + i] = " "
+                game[grd11 * 9 + i] = tok11
             } // end for i
         } // end func clearGrid(grd11: Int, char: String)
         
         func markTokenInGrid(grd16: Int, tok16: String) {
             // clear Grid
-            clearGrid(grd11: grd16)
+            clearGrid(grd11: grd16, tok11: sp1)
             if tok16 == ex {
                 game[grd16 * 9 + 0] = tok16
                 game[grd16 * 9 + 2] = tok16
@@ -661,9 +661,9 @@ struct PlayGame {
             } // end if
         } // end func markTokenInGrid(grd16: Int, tok16: String)
         
-        func clearGrids() {
+        func clearGrids(tok30: String) {
             for x in 1 ... 9 {
-                clearGrid(grd11: x)
+                clearGrid(grd11: x, tok11: tok30)
             } // end for
         } // end func clearGrids
         
@@ -673,13 +673,13 @@ struct PlayGame {
                     for z in 1 ... 3 { // for each col in bigBoard
                         x = (y-1)*3 + z
                         if game[pos(pt1: [bigBoard, y, z])] == ex { // mark ex
-                            display(m2: testM, msg: "Grid \(x) marked with \(ex)")
+                            // display(m2: testM, msg: "Grid \(x) marked with \(ex)")
                             markTokenInGrid(grd16: x, tok16: ex)
                         } else if game[pos(pt1: [bigBoard, y, z])] == oh { // mark oh
-                            display(m2: testM, msg: "Grid \(x) marked with \(oh)")
+                            // display(m2: testM, msg: "Grid \(x) marked with \(oh)")
                             markTokenInGrid(grd16: x, tok16: oh)
                         } else if game[pos(pt1: [bigBoard, y, z])] == draw { // mark draw
-                            display(m2: testM, msg: "Grid \(x) marked with \(draw)")
+                            // display(m2: testM, msg: "Grid \(x) marked with \(draw)")
                             markTokenInGrid(grd16: x, tok16: draw)
                         } // end if mark tokens
                     } // end for z
@@ -748,6 +748,8 @@ struct PlayGame {
                 // if gamesTotal > 1 include stats?
                 // openingInfo()
                 
+                clearGrids(tok30: under)
+                
                 // show the empty board and pauseIt
                 displayGame(tag: false)
                 if tempS1 == "Q" || tempS1 == "q" {
@@ -804,7 +806,7 @@ struct PlayGame {
                             display(msg: pMsg[10] + "\(playerCurrent.name)" + pMsg[11])
                             
                             // clear grids
-                            clearGrids()
+                            clearGrids(tok30: sp1)
                             
                             // mark boards with TTTs and Draws
                             markGrids()
@@ -846,7 +848,7 @@ struct PlayGame {
                             display(msg: pMsg[14])
                             
                             // clear grids
-                            clearGrids()
+                            clearGrids(tok30: sp1)
                             
                             // mark boards with TTTs and Draws
                             markGrids()

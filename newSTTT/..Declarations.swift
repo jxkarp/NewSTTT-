@@ -91,7 +91,6 @@
              continueGameType() -> Bool // continue = true; quit = false
              notifyWhoGoesFirst()
              continueWhoGoesFirst() -> Bool // continue = true; quit = false
-
              continueToken() -> Bool // continue = true; quit = false
                  notifyToken()
              getHumanPlayer(tag: String)
@@ -152,9 +151,9 @@
             proposeRandomGrid()
         convertGridToRC(grd22: Int) -> [Int] {
         markBigBoard(grd17: Int, tok17: String)
-        clearGrid(grd11: Int)
+        clearGrid(grd11: Int, tok11: String)
         markTokenInGrid(grd16: Int, tok16: String)
-        clearGrids()
+        clearGrids(tok30: String)
         markGrids()
         switchPlayers()
         continueDetermineNextGrid() -> Bool
