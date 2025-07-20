@@ -123,7 +123,7 @@
      func
     continuePlay() -> Bool // continue = true; quit = false
         pos(pt1: [Int]) -> Int
-        hasTTTinGrid(grd3: Int, tok3: String...) -> Int
+        hasTTTinGrid(grd3: Int, tok3: String...) -> Int?
         count(grd8: Int, tok8: String...) -> Int
         isGridDraw(grd15: Int) -> Bool // draw = true; no draw = false
         displayBigBoard()

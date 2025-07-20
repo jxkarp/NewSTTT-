@@ -216,9 +216,9 @@ struct PlayGame {
         
         func </string>
 				<key>trailing</key>
-				<string>(grd3: Int, tok3: String...) -&gt; Int {
+				<string>(grd3: Int, tok3: String...) -&gt; Int? {
             // if return == 0 there is no TTT, else the number that corresponds to which TTT (eg: row1, col3, LtoR diag, etc.)
-            tempI1 = 0
+            var tttGrid: Int?
 </string>
 			</dict>
 			<key>type</key>
@@ -230,15 +230,15 @@ struct PlayGame {
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>19</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>92</string>
+					<string>94</string>
 					<key>StartingColumnNumber</key>
-					<string>18</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>92</string>
+					<string>93</string>
 					<key>Timestamp</key>
-					<string>774564968.0029581</string>
+					<string>774705981.665228</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -254,15 +254,16 @@ struct PlayGame {
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>(</string>
+				<string>        func count(grd8: Int, tok8: String...) -&gt; Int { // counts tokens in the grid
+</string>
 				<key>leading</key>
-				<string>        } // end func hasTTTinGrid(grd3: Int, tok3: String...) -&gt; Int
+				<string>        } // end func hasTTTinGrid(grd3: Int, tok3: String...) -&gt; Int?
         
-        func count</string>
+</string>
 				<key>trailing</key>
-				<string>grd8: Int, tok8: String...) -&gt; Int { // counts tokens in the grid
-            var c = 0
+				<string>            var c = 0
             for j in tok8 {
+                for i in 0 ... 8 { // for each cell in the grid
 </string>
 			</dict>
 			<key>type</key>
@@ -274,15 +275,15 @@ struct PlayGame {
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>23</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>104</string>
+					<string>106</string>
 					<key>StartingColumnNumber</key>
-					<string>13</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>104</string>
+					<string>105</string>
 					<key>Timestamp</key>
-					<string>774564973.736685</string>
+					<string>774705981.665216</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -298,15 +299,16 @@ struct PlayGame {
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>isGridDraw</string>
+				<string>        func isGridDraw(grd15: Int) -&gt; Bool {
+</string>
 				<key>leading</key>
 				<string>        } // end func count
         
-        func </string>
+</string>
 				<key>trailing</key>
-				<string>(grd15: Int) -&gt; Bool {
-            if count(grd8: grd15, tok8: ex, oh) == 9 {
+				<string>            if count(grd8: grd15, tok8: ex, oh) == 9 {
                 return true // draw
+            } else { // no TTT and count = 9
 </string>
 			</dict>
 			<key>type</key>
@@ -318,15 +320,15 @@ struct PlayGame {
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>28</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>112</string>
+					<string>114</string>
 					<key>StartingColumnNumber</key>
-					<string>13</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>112</string>
+					<string>113</string>
 					<key>Timestamp</key>
-					<string>774564988.005028</string>
+					<string>774705981.665254</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -342,15 +344,16 @@ struct PlayGame {
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>displayBigBoard</string>
+				<string>        func displayBigBoard() {
+</string>
 				<key>leading</key>
 				<string>        } // end func isGridDraw(grd15) -&gt; Bool
         
-        func </string>
+</string>
 				<key>trailing</key>
-				<string>() {
-            print("""
+				<string>            print("""
                     \n\t\t\(sp7)\(game[pos(pt1: [0, 1, 1])])\(sp2)\(game[pos(pt1: [0, 1, 2])])\(sp2)\(game[pos(pt1: [0, 1, 3])])\n\t\t\(sp7)\(game[pos(pt1: [0, 2, 1])])\(sp2)\(game[pos(pt1: [0, 2, 2])])\(sp2)\(game[pos(pt1: [0, 2, 3])])\n\t\t\(sp7)\(game[pos(pt1: [0, 3, 1])])\(sp2)\(game[pos(pt1: [0, 3, 2])])\(sp2)\(game[pos(pt1: [0, 3, 3])])
+            """) // end print
 </string>
 			</dict>
 			<key>type</key>
@@ -364,57 +367,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>178</string>
+					<string>180</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>178</string>
-					<key>Timestamp</key>
-					<string>774567660.759957</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>newSTTT/PlayGame.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string></string>
-				<key>leading</key>
-				<string>        } // end func meaningless
-        
-</string>
-				<key>trailing</key>
-				<string>        func isSquareTaken(grd10: Int, row10: Int, col10: Int) -&gt; Bool {
-            if game[pos(pt1: [grd10, row10, col10])] == under { // tests for under
-                return false
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
 					<string>179</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>178</string>
 					<key>Timestamp</key>
-					<string>774567642.277095</string>
+					<string>774705981.665248</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -453,13 +412,58 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>187</string>
+					<string>180</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>186</string>
+					<string>179</string>
 					<key>Timestamp</key>
-					<string>774567642.3039401</string>
+					<string>774705981.665242</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>newSTTT/PlayGame.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>        func isSquareTaken(grd10: Int, row10: Int, col10: Int) -&gt; Bool {
+</string>
+				<key>leading</key>
+				<string>        } // end func meaningless
+        
+</string>
+				<key>trailing</key>
+				<string>            if game[pos(pt1: [grd10, row10, col10])] == under { // tests for under
+                return false
+            } else {
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>188</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>187</string>
+					<key>Timestamp</key>
+					<string>774705981.665222</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -498,13 +502,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>197</string>
+					<string>198</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>196</string>
+					<string>197</string>
 					<key>Timestamp</key>
-					<string>774568140.950804</string>
+					<string>774705981.665187</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -543,13 +547,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>361</string>
+					<string>362</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>360</string>
+					<string>361</string>
 					<key>Timestamp</key>
-					<string>774568335.356256</string>
+					<string>774705981.6652369</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>

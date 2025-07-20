@@ -8,9 +8,9 @@
 import Foundation
 
 // M A I N   T E S T   V A R I A B L E S
-var test = true
-var testBrain = true
-var testBigBoard = false
+var test = false
+var testBrain = false
+var testBigBoard = true
 
 // M A I N   E X T E N S I O N S
 extension String { // needed for testing keyboard input
@@ -160,7 +160,7 @@ func displayOpeningInfo() {
         display(m2: tab2, msg: icnInfo + player1.name + " playing " + player1.token + tempS1, trm: "") // player1 stats
     } // end if goFirst
     nL()
-    if gameCount > 1 {
+    if gameCount >= 1 {
         displayGameStats()
     } // end if
 } // end func displayOpeningInfo()
@@ -228,21 +228,21 @@ display(m2: "", msg: mMsg[3], trm: "") // Welcome
 // display(m2: testBigBoardM, msg: "before gameLoop")
 
 continueFlag = true
-quitLoop: repeat {
-    gameLoop: repeat {
+// quitLoop: repeat {
+     mainLoop: repeat {
         // display(m2: testBrainM, msg: "inside top gameLoop")
 
         if !initializeGame.continueInitialize() {
-            break gameLoop
+            break mainLoop
         } else if !playGame.continuePlay() {
-            break gameLoop
+            break mainLoop
         } // end if
 
-        break gameLoop
+       //  break mainLoop
 
-    } while true // end gameLoop
+    } while true // end mainLoop
 
-    if !continueFlag {
+    /* if !continueFlag {
         display(msg: mMsg[12]) // You elected to quit
         break quitLoop
     } else {
@@ -252,8 +252,9 @@ quitLoop: repeat {
             break quitLoop
         } // end if
     } // end if
-
-} while true // end quitLoop
+     */
+    
+// } while true // end quitLoop
 
 nL()
 display(m2: "", msg: mMsg[4]) // Thanks for playing

@@ -68,7 +68,7 @@ struct InitializeGame {
                 tempS1 = readLine(strippingNewline: true)!
                 if tempS1 == "Q" || tempS1 == "q" {
                     nL2()
-                    display(msg: mMsg[12]) //  Elected to quit
+                    // display(msg: mMsg[12]) //  Elected to quit
                     continueFlag = false
                 } else if tempS1.isInt {
                     tempI1 = Int(tempS1)!
@@ -104,7 +104,7 @@ struct InitializeGame {
                     display(msg: mMsg[21] + mMsg[22], trm: "") // Please enter 1 or 2
                     tempS1 = readLine(strippingNewline: true)!
                     if tempS1 == "Q" || tempS1 == "q" {
-                        display(msg: mMsg[12]) //  Elected to quit
+                        // display(msg: mMsg[12]) //  Elected to quit
                         continueFlag = false
                         break innerWhoFirstLoop
                     } else if tempS1.isInt {
@@ -155,7 +155,7 @@ struct InitializeGame {
                     tempS1 = readLine(strippingNewline: true)!
                     if tempS1 == "Q" || tempS1 == "q" {
                         nL2()
-                        display(msg: mMsg[12]) //  Elected to quit
+                        // display(msg: mMsg[12]) //  Elected to quit
                         continueFlag = false
                         break innerTokenLoop
                     } else if tempS1.isInt {
@@ -205,7 +205,7 @@ struct InitializeGame {
 
                     if tempS1 == "Q" || tempS1 == "q" {
                         nL2()
-                        display(msg: mMsg[12]) // Quit message
+                        // display(msg: mMsg[12]) // Quit message
                         continueFlag = false
                         break innerStrategyLoop
                     } else if tempS1.isInt {
