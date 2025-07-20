@@ -65,6 +65,94 @@ struct PlayGame {
             return pt1[0] * 9 + (pt1[1] - 1) * 3 + pt1[2] - 1
         } // end func pos(pt1: [Int]) -> Int
         
+        func displayGameStats() {
+            var temp1 = player1.name
+            var temp2 = player2.name
+
+            while temp1.count < 18 {
+                temp1 = player1.name + " "
+            } // end while
+            while temp2.count < 18 {
+                temp2 = player2.name + " "
+            } // end while
+            var gW1 = String(player1.gamesWon)
+            var gL1 = String(player1.gamesLost)
+            var gT1 = String(player1.gamesDrawn)
+            var gW2 = String(player2.gamesWon)
+            var gL2 = String(player2.gamesLost)
+            var gT2 = String(player2.gamesDrawn)
+            var gC = String(gameCount)
+
+            while gW1.count < 8 {
+                gW1 = " " + gW1
+            } // end while
+            while gL1.count < 8 {
+                gL1 = " " + gL1
+            } // end while
+            while gT1.count < 8 {
+                gT1 = " " + gT1
+            } // end while
+            while gW2.count < 8 {
+                gW2 = " " + gW2
+            } // end while
+            while gL2.count < 8 {
+                gL2 = " " + gL2
+            } // end while
+            while gT2.count < 8 {
+                gT2 = " " + gT2
+            } // end while
+            while gC.count < 8 {
+                gC = " " + gC
+            } // end while
+
+            display(msg: icnHand + "G A M E   S T A T I S T I C S")
+            display(msg: "                    Won    Lost   Drawn   Total")
+            display(msg: temp1 + gW1 + gL1 + gT1 + gC)
+            display(msg: temp2 + gW2 + gL2 + gT2 + gC)
+        } // end displayGameStats()
+
+        func displayOpeningInfo() {
+            nL()
+            display(msg: mMsg[5]) // This match
+
+            if player1.goesFirst { // player1 goes first
+                if player1.type == "machine" {
+                    tempS1 = ", with strategy \(player1.strategy.rawValue)"
+                } else {
+                    tempS1 = ""
+                } // end if
+                display(m2: tab2, msg: icnInfo + player1.name + " playing " + player1.token + tempS1) // player1 stats
+
+                display(m2: tab2 + tab2, msg: mMsg[6]) // v.
+
+                if player2.type == "machine" {
+                    tempS1 = ", with strategy \(player2.strategy.rawValue)"
+                } else { //
+                    tempS1 = ""
+                } // end if
+                display(m2: tab2, msg: icnInfo + player2.name + " playing " + player2.token + tempS1, trm: "") // player2 stats
+
+            } else { // player 2 goes first
+                if player2.type == "machine" {
+                    tempS1 = ", with strategy \(player2.strategy.rawValue)"
+                } else {
+                    tempS1 = ""
+                } // end if
+                display(m2: tab2, msg: icnInfo + player2.name + " playing " + player2.token + tempS1) // player2 stats
+                display(m2: tab2 + tab2, msg: mMsg[6]) // v.
+                if player1.type == "machine" {
+                    tempS1 = ", with strategy \(player1.strategy.rawValue)"
+                } else {
+                    tempS1 = ""
+                } // end if
+                display(m2: tab2, msg: icnInfo + player1.name + " playing " + player1.token + tempS1, trm: "") // player1 stats
+            } // end if goFirst
+            nL()
+            if gameCount >= 1 {
+                displayGameStats()
+            } // end if
+        } // end func displayOpeningInfo()
+        
         func hasTTTinGrid(grd3: Int, tok3: String...) -> Int? {
             // if return == 0 there is no TTT, else the number that corresponds to which TTT (eg: row1, col3, LtoR diag, etc.)
             var tttGrid: Int?
@@ -790,6 +878,10 @@ struct PlayGame {
                         // notifyToken()
                         break gameLoop
                     } else if tempI1 == 2 {
+                        if gameCount >= 1{
+                            nL()
+                            displayGameStats()
+                        } // end if
                         nL2()
                         // display(msg: mMsg[12]) // Quit message
                         continueFlag = false

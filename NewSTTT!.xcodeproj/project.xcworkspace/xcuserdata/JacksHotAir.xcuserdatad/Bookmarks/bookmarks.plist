@@ -186,15 +186,15 @@ struct PlayGame {
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>25</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>67</string>
+					<string>156</string>
 					<key>StartingColumnNumber</key>
-					<string>13</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>67</string>
+					<string>155</string>
 					<key>Timestamp</key>
-					<string>774564958.836895</string>
+					<string>774727619.411451</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -210,15 +210,16 @@ struct PlayGame {
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>hasTTTinGrid</string>
+				<string>        func hasTTTinGrid(grd3: Int, tok3: String...) -&gt; Int? {
+</string>
 				<key>leading</key>
-				<string>        } // end func pos(pt1: [Int]) -&gt; Int
+				<string>        } // end func displayOpeningInfo()
         
-        func </string>
+</string>
 				<key>trailing</key>
-				<string>(grd3: Int, tok3: String...) -&gt; Int? {
-            // if return == 0 there is no TTT, else the number that corresponds to which TTT (eg: row1, col3, LtoR diag, etc.)
+				<string>            // if return == 0 there is no TTT, else the number that corresponds to which TTT (eg: row1, col3, LtoR diag, etc.)
             var tttGrid: Int?
+            // tempI1 = 0
 </string>
 			</dict>
 			<key>type</key>
@@ -232,13 +233,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>94</string>
+					<string>182</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>93</string>
+					<string>181</string>
 					<key>Timestamp</key>
-					<string>774705981.665228</string>
+					<string>774727619.411433</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -277,13 +278,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>106</string>
+					<string>194</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>105</string>
+					<string>193</string>
 					<key>Timestamp</key>
-					<string>774705981.665216</string>
+					<string>774727619.411424</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -322,13 +323,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>114</string>
+					<string>202</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>113</string>
+					<string>201</string>
 					<key>Timestamp</key>
-					<string>774705981.665254</string>
+					<string>774727619.4114389</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -367,13 +368,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>180</string>
+					<string>268</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>179</string>
+					<string>267</string>
 					<key>Timestamp</key>
-					<string>774705981.665248</string>
+					<string>774727619.411386</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -412,13 +413,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>180</string>
+					<string>268</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>179</string>
+					<string>267</string>
 					<key>Timestamp</key>
-					<string>774705981.665242</string>
+					<string>774727619.411397</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -457,13 +458,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>188</string>
+					<string>276</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>187</string>
+					<string>275</string>
 					<key>Timestamp</key>
-					<string>774705981.665222</string>
+					<string>774727619.411409</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -502,13 +503,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>198</string>
+					<string>286</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>197</string>
+					<string>285</string>
 					<key>Timestamp</key>
-					<string>774705981.665187</string>
+					<string>774727619.411297</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -547,13 +548,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>362</string>
+					<string>450</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>361</string>
+					<string>449</string>
 					<key>Timestamp</key>
-					<string>774705981.6652369</string>
+					<string>774727619.41137</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>

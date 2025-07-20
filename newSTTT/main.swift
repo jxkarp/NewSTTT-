@@ -115,6 +115,7 @@ func nL() { print("\n") }
 
 func nL2() { print("\n\n") }
 
+// currently unused
 func returnToken(tok1: String, flag1: Bool = true) -> String {
     if flag1 {
         return tok1.uppercased()
@@ -122,48 +123,6 @@ func returnToken(tok1: String, flag1: Bool = true) -> String {
         return tok1.lowercased()
     } // end if
 } // end func returnToken(tok1: String, flag1: Bool = true) -> String
-
-func displayOpeningInfo() {
-    nL()
-    display(msg: mMsg[5]) // This match
-
-    if player1.goesFirst { // player1 goes first
-        if player1.type == "machine" {
-            tempS1 = ", with strategy \(player1.strategy.rawValue)"
-        } else {
-            tempS1 = ""
-        } // end if
-        display(m2: tab2, msg: icnInfo + player1.name + " playing " + player1.token + tempS1) // player1 stats
-
-        display(m2: tab2 + tab2, msg: mMsg[6]) // v.
-
-        if player2.type == "machine" {
-            tempS1 = ", with strategy \(player2.strategy.rawValue)"
-        } else { //
-            tempS1 = ""
-        } // end if
-        display(m2: tab2, msg: icnInfo + player2.name + " playing " + player2.token + tempS1, trm: "") // player2 stats
-
-    } else { // player 2 goes first
-        if player2.type == "machine" {
-            tempS1 = ", with strategy \(player2.strategy.rawValue)"
-        } else {
-            tempS1 = ""
-        } // end if
-        display(m2: tab2, msg: icnInfo + player2.name + " playing " + player2.token + tempS1) // player2 stats
-        display(m2: tab2 + tab2, msg: mMsg[6]) // v.
-        if player1.type == "machine" {
-            tempS1 = ", with strategy \(player1.strategy.rawValue)"
-        } else {
-            tempS1 = ""
-        } // end if
-        display(m2: tab2, msg: icnInfo + player1.name + " playing " + player1.token + tempS1, trm: "") // player1 stats
-    } // end if goFirst
-    nL()
-    if gameCount >= 1 {
-        displayGameStats()
-    } // end if
-} // end func displayOpeningInfo()
 
 func errorOutOfRange(upper: Int) {
     tempS1 = "greater than \(upper)."
@@ -174,51 +133,6 @@ func errorOutOfRange(upper: Int) {
     display(msg: sp2 + mMsg[9]) // Try again
 } // end errorOutOfRange
 
-func displayGameStats() {
-    var temp1 = player1.name
-    var temp2 = player2.name
-
-    while temp1.count < 18 {
-        temp1 = player1.name + " "
-    } // end while
-    while temp2.count < 18 {
-        temp2 = player2.name + " "
-    } // end while
-    var gW1 = String(player1.gamesWon)
-    var gL1 = String(player1.gamesLost)
-    var gT1 = String(player1.gamesDrawn)
-    var gW2 = String(player2.gamesWon)
-    var gL2 = String(player2.gamesLost)
-    var gT2 = String(player2.gamesDrawn)
-    var gC = String(gameCount)
-
-    while gW1.count < 8 {
-        gW1 = " " + gW1
-    } // end while
-    while gL1.count < 8 {
-        gL1 = " " + gL1
-    } // end while
-    while gT1.count < 8 {
-        gT1 = " " + gT1
-    } // end while
-    while gW2.count < 8 {
-        gW2 = " " + gW2
-    } // end while
-    while gL2.count < 8 {
-        gL2 = " " + gL2
-    } // end while
-    while gT2.count < 8 {
-        gT2 = " " + gT2
-    } // end while
-    while gC.count < 8 {
-        gC = " " + gC
-    } // end while
-
-    display(msg: icnHand + "G A M E   S T A T I S T I C S")
-    display(msg: "                    Won    Lost   Drawn   Total")
-    display(msg: temp1 + gW1 + gL1 + gT1 + gC)
-    display(msg: temp2 + gW2 + gL2 + gT2 + gC)
-}
 
 // M A I N   T H E   G A M E
 
