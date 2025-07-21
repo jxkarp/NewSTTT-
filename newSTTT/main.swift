@@ -9,8 +9,9 @@ import Foundation
 
 // M A I N   T E S T   V A R I A B L E S
 var test = false
-var testBrain = false
-var testBigBoard = false
+var testBrain = true
+var testBigBoard = true
+var testOT = true
 
 // M A I N   E X T E N S I O N S
 extension String { // needed for testing keyboard input
