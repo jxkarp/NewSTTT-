@@ -7,6 +7,37 @@
 
 /*
  
+ Algorithm: proposeOorT for Grid
+ 
+ if count(bigBoard) > 1 // ie two or more tokens are in bigBoard, therefore this algorithm belongs in default:
+ 
+ check bigboard first for threats, then opportunities
+    if threat1 is found
+        propose the grid
+        if threat2 is found
+            propose the grid
+            if threat3 ... continue cascade
+                propose the grid
+                ...
+                    if lastThreat is found
+                        propose the grid
+                    } else
+                        if opp1 is found
+                            propose grid
+                            ...
+                                if lastOpp is found
+                                    propose grid
+                                } else
+                                    for each grid 1...9
+                                        if threat1 is found
+                        }
+                    } // end if
+            }
+        }
+    } else
+        propose random grid <== is this needed?
+    } end if
+ 
  func proposeAdjacentCorner(grd20: Int) {
      if isSquareTaken(grd10: grd20, row10: 1, col10: 1) || isSquareTaken(grd10: grd20, row10: 3, col10: 3) {
          // else if a corner is taken, take an adjacent corner
