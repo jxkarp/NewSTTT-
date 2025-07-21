@@ -936,6 +936,7 @@ struct PlayGame {
                 // openingInfo()
                 
                 clearGrids(tok30: under)
+                clearGrid(grd11: bigBoard, tok11: under)
                 
                 // show the empty board and pauseIt
                 displayGame(tag: false)
