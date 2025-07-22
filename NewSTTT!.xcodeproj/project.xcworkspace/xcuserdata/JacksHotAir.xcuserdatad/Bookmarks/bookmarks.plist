@@ -142,15 +142,15 @@ struct PlayGame {
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>12</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>63</string>
+					<string>65</string>
 					<key>StartingColumnNumber</key>
-					<string>8</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>63</string>
+					<string>64</string>
 					<key>Timestamp</key>
-					<string>774564950.886567</string>
+					<string>774818094.455232</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -166,15 +166,16 @@ struct PlayGame {
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>func</string>
+				<string>        func pos(pt1: [Int]) -&gt; Int { // pos returns the index to the array game
+</string>
 				<key>leading</key>
 				<string>    // P L A Y G A M E   F U N C T I O N S
     mutating func continuePlay() -&gt; Bool {
-        </string>
+</string>
 				<key>trailing</key>
-				<string> pos(pt1: [Int]) -&gt; Int { // pos returns the index to the array game
-            return pt1[0] * 9 + (pt1[1] - 1) * 3 + pt1[2] - 1
+				<string>            return pt1[0] * 9 + (pt1[1] - 1) * 3 + pt1[2] - 1
         } // end func pos(pt1: [Int]) -&gt; Int
+        
 </string>
 			</dict>
 			<key>type</key>
@@ -188,13 +189,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>166</string>
+					<string>167</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>165</string>
+					<string>166</string>
 					<key>Timestamp</key>
-					<string>774731275.681406</string>
+					<string>774818094.455103</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -233,13 +234,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>192</string>
+					<string>193</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>191</string>
+					<string>192</string>
 					<key>Timestamp</key>
-					<string>774731275.681411</string>
+					<string>774818094.455192</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -278,13 +279,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>204</string>
+					<string>205</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>203</string>
+					<string>204</string>
 					<key>Timestamp</key>
-					<string>774731275.6813999</string>
+					<string>774818094.455217</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -323,13 +324,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>212</string>
+					<string>213</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>211</string>
+					<string>212</string>
 					<key>Timestamp</key>
-					<string>774731275.681417</string>
+					<string>774818094.455224</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -368,13 +369,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>279</string>
+					<string>280</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>278</string>
+					<string>279</string>
 					<key>Timestamp</key>
-					<string>774748171.243392</string>
+					<string>774818094.45524</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -413,13 +414,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>279</string>
+					<string>280</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>278</string>
+					<string>279</string>
 					<key>Timestamp</key>
-					<string>774748171.243408</string>
+					<string>774818094.455251</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -458,13 +459,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
+					<string>288</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
 					<string>287</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>286</string>
 					<key>Timestamp</key>
-					<string>774748171.243353</string>
+					<string>774818094.455209</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -503,13 +504,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>373</string>
+					<string>395</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>372</string>
+					<string>394</string>
 					<key>Timestamp</key>
-					<string>774790513.921509</string>
+					<string>774829636.235011</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -528,8 +529,8 @@ struct PlayGame {
 				<string>        func continueProposeRC() -&gt; Bool {
 </string>
 				<key>leading</key>
-				<string>
-                
+				<string>        } // end func testStrategy(type: Brain)
+
 </string>
 				<key>trailing</key>
 				<string>            // returns continueFlag
@@ -548,13 +549,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>547</string>
+					<string>563</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>546</string>
+					<string>562</string>
 					<key>Timestamp</key>
-					<string>774790513.921389</string>
+					<string>774829647.564683</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>

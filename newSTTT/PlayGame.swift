@@ -58,6 +58,7 @@ struct PlayGame {
     var tempC = 0
     var tempRC = [1, 1]
     var tempB = false // ??? now that error tuple is removed
+    var proposeFlag = false
 
     // P L A Y G A M E   F U N C T I O N S
     mutating func continuePlay() -> Bool {
@@ -262,7 +263,7 @@ struct PlayGame {
             } // end if
             nL()
             display(msg: mMsg[7], trm: "")
-            if !mmFlag || test { // pause for Return in either human game or test
+            if !mmFlag || test || testOT { // pause for Return in either human game, test, testOT
                 tempS1 = readLine(strippingNewline: true)!
             } else { // don't pause for return in MM game
                 tempS1 = ""
@@ -294,82 +295,103 @@ struct PlayGame {
             // proposeTempG(grd21: grd20)
         } // end func takeRandomRC
         
-        func proposeOorT(grd12: Int, tok12: String...) {
+        func proposeOorT(grd12: Int, tok12: String) {
             //  Opportunity = called with token
             //  Threat = called with oppToken
             // called with both playerCurrent.oppToken and playerCurrent.token checks first for threats, then for opportunities in one call
-            // // returns proposeFlag
-            func testOT() {
-                display(m2: testM, msg: "Token = \(tok12) tempRC = \(tempRC)")
+            // returns proposeFlag
+            func testOT(txt: String = "") {
+                display(m2: testM, msg: txt+" Token = \(tok12) tempRC = \(tempRC) propose = \(proposeFlag)")
             } // end func testOT(txt: String)
             
-            for x in tok12 {
-                if ((game[pos(pt1: [grd12, 1, 1])] == x && game[pos(pt1: [grd12, 1, 2])] == x && game[pos(pt1: [grd12, 1, 3])] == under) || // row 1, 11, 12, -> 13
-                    (game[pos(pt1: [grd12, 2, 3])] == x && game[pos(pt1: [grd12, 3, 3])] == x && game[pos(pt1: [grd12, 1, 3])] == under) || // col 3, 23, 33 -> 13
-                    (game[pos(pt1: [grd12, 2, 2])] == x && game[pos(pt1: [grd12, 3, 1])] == x && game[pos(pt1: [grd12, 1, 3])] == under)) // diag R to L, 22, 31 -> 13
-                {
-                    tempRC = [1, 3]
-                    testOT()
-                    // proposeFlag = true
-                } else if ((game[pos(pt1: [grd12, 1, 1])] == x && game[pos(pt1: [grd12, 1, 3])] == x && game[pos(pt1: [grd12, 1, 2])] == under) || // row 1, 11, 13 -> 12
-                    (game[pos(pt1: [grd12, 2, 1])] == x && game[pos(pt1: [grd12, 3, 1])] == x && game[pos(pt1: [grd12, 1, 1])] == under)) // col 2, 22, 32 -> 12
-                {
-                    tempRC = [1, 2]
-                    testOT()
-                    // proposeFlag = true
-                } else if ((game[pos(pt1: [grd12, 1, 2])] == x && game[pos(pt1: [grd12, 1, 3])] == x && game[pos(pt1: [grd12, 1, 1])] == under) || // row 1, 12, 13 -> 11
-                    (game[pos(pt1: [grd12, 2, 1])] == x && game[pos(pt1: [grd12, 3, 1])] == x && game[pos(pt1: [grd12, 1, 1])] == under) || // col 1, 21, 31 -> 11
-                    (game[pos(pt1: [grd12, 2, 2])] == x && game[pos(pt1: [grd12, 3, 3])] == x && game[pos(pt1: [grd12, 1, 1])] == under)) // diag L to R, 22, 33 -> 11
-                {
-                    tempRC = [1, 1]
-                    testOT()
-                    // proposeFlag = true
-                } else if ((game[pos(pt1: [grd12, 2, 1])] == x && game[pos(pt1: [grd12, 2, 2])] == x && game[pos(pt1: [grd12, 2, 3])] == under) || // row 2, 21, 22, -> 23
-                    (game[pos(pt1: [grd12, 1, 3])] == x && game[pos(pt1: [grd12, 3, 3])] == x && game[pos(pt1: [grd12, 2, 3])] == under)) // col 3, 13, 33 -> 23
-                {
-                    tempRC = [2, 3]
-                    testOT()
-                    // proposeFlag = true
-                } else if ((game[pos(pt1: [grd12, 2, 1])] == x && game[pos(pt1: [grd12, 2, 3])] == x && game[pos(pt1: [grd12, 2, 2])] == under) || // row 2, 21, 23 -> 22
-                    (game[pos(pt1: [grd12, 1, 2])] == x && game[pos(pt1: [grd12, 3, 2])] == x && game[pos(pt1: [grd12, 2, 2])] == under) || // col 2, 12, 32 -> 22
-                    (game[pos(pt1: [grd12, 1, 1])] == x && game[pos(pt1: [grd12, 3, 3])] == x && game[pos(pt1: [grd12, 2, 2])] == under) || // diag L to R, 11, 33 -> 22
-                    (game[pos(pt1: [grd12, 1, 3])] == x && game[pos(pt1: [grd12, 3, 1])] == x && game[pos(pt1: [grd12, 2, 2])] == under)) // diag R to L, 13, 31 -> 22
-                {
-                    tempRC = [2, 2]
-                    testOT()
-                    // proposeFlag = true
-                } else if ((game[pos(pt1: [grd12, 2, 2])] == x && game[pos(pt1: [grd12, 2, 3])] == x && game[pos(pt1: [grd12, 2, 1])] == under) || // row 2, 22, 23 -> 21
-                    (game[pos(pt1: [grd12, 1, 1])] == x && game[pos(pt1: [grd12, 3, 1])] == x && game[pos(pt1: [grd12, 2, 1])] == under)) // col 1, 11, 31 -> 21
-                {
-                    tempRC = [2, 1]
-                    testOT()
-                    // proposeFlag = true
-                } else if ((game[pos(pt1: [grd12, 3, 1])] == x && game[pos(pt1: [grd12, 3, 2])] == x && game[pos(pt1: [grd12, 3, 3])] == under) || // row 3, 31, 32, -> 33
-                    (game[pos(pt1: [grd12, 1, 3])] == x && game[pos(pt1: [grd12, 2, 3])] == x && game[pos(pt1: [grd12, 3, 3])] == under) || // col 3, 13, 23 -> 33
-                    (game[pos(pt1: [grd12, 1, 1])] == x && game[pos(pt1: [grd12, 2, 2])] == x && game[pos(pt1: [grd12, 3, 3])] == under)) // diag L to R, 11, 22 -> 33
-                {
-                    tempRC = [3, 3]
-                    testOT()
-                    // proposeFlag = true
-                } else if ((game[pos(pt1: [grd12, 3, 1])] == x && game[pos(pt1: [grd12, 3, 3])] == x && game[pos(pt1: [grd12, 3, 2])] == under) || // row 3, 31, 33 -> 32
-                    (game[pos(pt1: [grd12, 1, 2])] == x && game[pos(pt1: [grd12, 2, 2])] == x && game[pos(pt1: [grd12, 3, 2])] == under)) // col 2, 12, 22 -> 32
-                {
-                    tempRC = [3, 2]
-                    testOT()
-                    // proposeFlag = true
-                } else if ((game[pos(pt1: [grd12, 3, 2])] == x && game[pos(pt1: [grd12, 3, 3])] == x && game[pos(pt1: [grd12, 3, 1])] == under) || // row 3, 32, 33 -> 31
-                    (game[pos(pt1: [grd12, 1, 1])] == x && game[pos(pt1: [grd12, 2, 1])] == x && game[pos(pt1: [grd12, 3, 1])] == under) || // col 1, 11, 21 -> 31
-                    (game[pos(pt1: [grd12, 1, 3])] == x && game[pos(pt1: [grd12, 2, 2])] == x && game[pos(pt1: [grd12, 3, 1])] == under)) // diag R to L, 13, 22 -> 31
-                {
-                    tempRC = [3, 1]
-                    testOT()
-                } // end if
+            proposeFlag = false
+            testOT(txt: "Start:")
+            if ((game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 1, 2])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == under) ||
+                (game[pos(pt1: [grd12, 2, 3])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == under) ||
+                (game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == under)) {
+                // row 1, 11, 12, -> 13
+                // col 3, 23, 33 -> 13
+                // diag R to L, 22, 31 -> 13
+                tempRC = [1, 3]
+                proposeFlag = true
                 testOT()
-            } // end for
+            } else if ((game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 1, 2])] == under) ||
+                (game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 1, 1])] == under)) {
+                // row 1, 11, 13 -> 12
+                // col 2, 22, 32 -> 12
+                tempRC = [1, 2]
+                proposeFlag = true
+                testOT()
+            } else if ((game[pos(pt1: [grd12, 1, 2])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 1, 1])] == under) ||
+                (game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 1, 1])] == under) ||
+                (game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 1, 1])] == under)) {
+                // row 1, 12, 13 -> 11
+                // col 1, 21, 31 -> 11
+                // diag L to R, 22, 33 -> 11
+                tempRC = [1, 1]
+                proposeFlag = true
+                testOT()
+            } else if ((game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == under) ||
+                (game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == under)) {
+                // row 2, 21, 22, -> 23
+                // col 3, 13, 33 -> 23
+                tempRC = [2, 3]
+                proposeFlag = true
+                testOT()
+            } else if ((game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == under) ||
+                (game[pos(pt1: [grd12, 1, 2])] == tok12 && game[pos(pt1: [grd12, 3, 2])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == under) ||
+                (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == under) ||
+                (game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == under)) {
+                // row 2, 21, 23 -> 22
+                // col 2, 12, 32 -> 22
+                // diag L to R, 11, 33 -> 22
+                // diag R to L, 13, 31 -> 22
+                tempRC = [2, 2]
+                proposeFlag = true
+                testOT()
+            } else if ((game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == tok12 && game[pos(pt1: [grd12, 2, 1])] == under) ||
+                (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 2, 1])] == under)) {
+                // row 2, 22, 23 -> 21
+                // col 1, 11, 31 -> 21
+                tempRC = [2, 1]
+                proposeFlag = true
+                testOT()
+            } else if ((game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 3, 2])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == under) ||
+                (game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == under) ||
+                (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == under)) {
+                // row 3, 31, 32, -> 33
+                // col 3, 13, 23 -> 33
+                // diag L to R, 11, 22 -> 33
+                tempRC = [3, 3]
+                proposeFlag = true
+                testOT()
+            } else if ((game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 3, 2])] == under) ||
+                (game[pos(pt1: [grd12, 1, 2])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 3, 2])] == under)) {
+                // row 3, 31, 33 -> 32
+                // col 2, 12, 22 -> 32
+                tempRC = [3, 2]
+                proposeFlag = true
+                testOT()
+            } else if ((game[pos(pt1: [grd12, 3, 2])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == under) ||
+                (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == under) ||
+                (game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == under)) {
+                // row 3, 32, 33 -> 31
+                // col 1, 11, 21 -> 31
+                // diag R to L, 13, 22 -> 31
+                tempRC = [3, 1]
+                proposeFlag = true
+                testOT()
+            } // end if
+            testOT(txt: "Finish:")
             
         } // end func proposeOorT
 
-                
+        func testStrategy(type: Brain) {
+            if testBrain {
+                display(m2: testM, msg: "\(Brain.self) strategy.")
+            } // end if
+        } // end func testStrategy(type: Brain)
+
         func continueProposeRC() -> Bool {
             // returns continueFlag
             // must set rc = tempRC on return
@@ -379,12 +401,6 @@ struct PlayGame {
             // continueFlag: continue = true; quit = false
             // proposeFlag: tempRC is proposed = true; tempRC not proposed = false
             // must set rc = tempRC on return
-            
-            func testStrategy(type: Brain) {
-                if test {
-                    display(m2: testM, msg: "\(Brain.self) strategy.")
-                } // end if
-            } // end func testStrategy(type: Brain)
             
             continueFlag = true
             // proposeFlag = false
@@ -409,7 +425,7 @@ struct PlayGame {
                     proposeRandomRC(grd20: g)
                 default:
                     proposeRandomRC(grd20: g)
-                    proposeOorT(grd12: 0, tok12: playerCurrent.oppToken, playerCurrent.token)
+                    proposeOorT(grd12: bigBoard, tok12: playerCurrent.oppToken)
                 } // end switch count
 
             case .middle:
@@ -554,12 +570,19 @@ struct PlayGame {
                 } // end if
             } // end func testTempG(location: String)
             
+            func testRandomGrid() {
+                if testBrain {
+                    display(m2: testM, msg: "proposeRandomGrid = \(tempG)")
+                } // end if
+            } // end func testRandomGrid()
+
             func proposeRandomGrid() {
-                testTempG(location: "Before proposeRandomGrid()")
+                                
                 repeat {
                     tempG = Int.random(in: 1 ... 9)
                 } while hasTTTinGrid(grd3: tempG, tok3: ex, oh) != nil || isGridDraw(grd15: tempG)
-                testTempG(location: "After proposeRandomGrid()")
+                testRandomGrid()
+                display(m2: testM, msg: "proposeRandomGrid = \(tempG)")
             } // end func getRandomGrid()
             
             // C H O O S E P R O P O S E G R I D   C O D E   H E R E
@@ -573,48 +596,47 @@ struct PlayGame {
             
             switch playerCurrent.strategy {
             case .random:
-                
-                switch count(grd8: g, tok8: ex, oh) {
-                case 0, 1:
-                    proposeRandomGrid()
+                switch count(grd8: g, tok8: ex, oh, draw) {
                 default:
                     proposeRandomGrid()
                 } // end switch count
+                testStrategy(type: .random)
                 
             case .smartRandom:
-
-                switch count(grd8: g, tok8: ex, oh) {
+                switch count(grd8: g, tok8: ex, oh, draw) {
                 case 0, 1:
                     proposeRandomGrid()
                 default:
                     proposeRandomGrid()
-                    proposeOorT(grd12: 0, tok12: playerCurrent.oppToken, playerCurrent.token)
-                    tempG = (tempRC[0]-1)*3 + tempRC[1]
+                    if proposeFlag {
+                        proposeOorT(grd12: bigBoard, tok12: playerCurrent.oppToken)
+                        tempG = (tempRC[0]-1)*3 + tempRC[1]
+                    } // end if
                 } // end switch count
-
-            case .middle:
+                testStrategy(type: .smartRandom)
                 
-                switch count(grd8: g, tok8: ex, oh) {
+            case .middle:
+                switch count(grd8: g, tok8: ex, oh, draw) {
                 case 0, 1:
                     proposeRandomGrid()
                 default:
                     proposeRandomGrid()
                     // proposeOorT(grd12: 0, tok12: playerCurrent.oppToken, playerCurrent.token)
                 } // end switch count
+                testStrategy(type: .middle)
                 
             case .deny:
-                
-                switch count(grd8: g, tok8: ex, oh) {
+                switch count(grd8: g, tok8: ex, oh, draw) {
                 case 0, 1:
                     proposeRandomGrid()
                 default:
                     proposeRandomGrid()
                     // proposeOorT(grd12: 0, tok12: playerCurrent.oppToken, playerCurrent.token)
                 } // end switch count
+                testStrategy(type: .deny)
                 
             case .force:
-                
-                switch count(grd8: g, tok8: ex, oh) {
+                switch count(grd8: g, tok8: ex, oh, draw) {
                 case 0, 1:
                     proposeRandomGrid()
                 default:
@@ -652,18 +674,19 @@ struct PlayGame {
                  tempI1 = pnt[0]
                  
                  */
-            case .corner:
+                testStrategy(type: .force)
                 
-                switch count(grd8: g, tok8: ex, oh) {
+            case .corner:
+                switch count(grd8: g, tok8: ex, oh, draw) {
                 case 0, 1:
                     proposeRandomGrid()
                 default:
                     proposeRandomGrid()
                     // proposeOorT(grd12: 0, tok12: playerCurrent.oppToken, playerCurrent.token)
                 } // end switch count
+                testStrategy(type: .corner)
                 
             case .keyboard:
-                
                 outerGridLoop: repeat {
                     innerGridLoop: repeat {
                         display(msg: pMsg[2]) // What grid to play
@@ -678,16 +701,16 @@ struct PlayGame {
                             errorOutOfRange(upper: 9)
                         } // end if
                     } while tempG < 1 || tempG > 9 // end innerGridLoop
-                    if hasTTTinGrid(grd3: tempG, tok3: ex, oh) != 0 {
+                    if hasTTTinGrid(grd3: tempG, tok3: ex, oh) != nil {
                         display(msg: mMsg[10]) // already a TTT
                         display(msg: mMsg[9]) // please try again
-                    } else if count(grd8: tempI1, tok8: ex, oh) == 9 {
+                    } else if count(grd8: tempI1, tok8: ex, oh, draw) == 9 {
                         display(msg: mMsg[11]) // already a draw
                         display(msg: mMsg[9]) // please try again
                     } else {
                         break outerGridLoop
                     } // end if
-                } while hasTTTinGrid(grd3: tempG, tok3: ex, oh) != nil || count(grd8: tempG, tok8: ex, oh) == 9 // end outerGridLoop
+                } while hasTTTinGrid(grd3: tempG, tok3: ex, oh) != nil || count(grd8: tempG, tok8: ex, oh, draw) == 9 // end outerGridLoop
             } // end switch strategy
             nL2()
             display(msg: icnInfo+"\(playerCurrent.name) \(pMsg[16]) \(tempG).") // player selected grid #

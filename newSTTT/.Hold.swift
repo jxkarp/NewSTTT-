@@ -29,7 +29,14 @@
                                     propose grid
                                 } else
                                     for each grid 1...9
-                                        if threat1 is found
+                                        if !(grid has TTT(ex, oh) or isDraw)
+                                            propose grid
+                                            if !(grid has TTT(ex, oh) or isDraw)
+                                                propose grid
+                                                ... cascade threats then opps
+                                            }
+                                        }
+                                    } // next grid
                         }
                     } // end if
             }
