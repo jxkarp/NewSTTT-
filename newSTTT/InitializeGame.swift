@@ -6,6 +6,7 @@
 
 // I N I T I A L I Z E G A M E   S T R U C T
 struct InitializeGame {
+    // INITIALIZEGAME Constants, Variables, Functions
     // I N I T I A L I Z E G A M E   C O N S T A N T S
     let human = "human"
     let machine = "machine"
@@ -272,6 +273,7 @@ struct InitializeGame {
             } // end if test
         } // end displayPlayerInfo()
 
+        // CONTINUEINITIALIZE CODE
         // C O N T I N U E I N I T I A L I Z E   C O D E  S T A R T S   H E R E
         continueFlag = true
         initLoop: repeat {

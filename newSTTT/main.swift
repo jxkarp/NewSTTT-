@@ -7,11 +7,12 @@
 
 import Foundation
 
+// MAIN Test Variables, Extensions, Constants, Variables
 // M A I N   T E S T   V A R I A B L E S
 var test = false
-var testBrain = true
-var testBigBoard = true
-var testOT = true
+var testBrain = false
+var testBigBoard = false
+var testOT = false
 
 // M A I N   E X T E N S I O N S
 extension String { // needed for testing keyboard input
@@ -28,6 +29,7 @@ extension String { // needed for testing keyboard input
 let testM = "\t\t\t\t\t\t\t\t\t\t"
 let testBrainM = "\t\t\t\t\t"
 let testBigBoardM = "\t\t\t\t"
+let testOTM = "\t\t\t\t\t\t\t\t\t\t  "
 let tab = "\t"
 let tab2 = "\t\t"
 let icnHand = "✋ " // U+270B
@@ -46,6 +48,8 @@ let sp2 = "  "
 let ex = "X"
 let oh = "O"
 let draw = "D"
+let R = "→ "
+let L = "← "
 let mMsg = [
     "*", // 0, because
     icnHand + "Hi, Jack!", // 1 Hi, Jack
@@ -85,6 +89,7 @@ var gameCount = 0
 
 var continueFlag = false // continue = true; quit = false
 
+// MAIN STRUCTS Player, InitializeGame, PlayGame, Brain Enum
 // P L A Y E R  S T R U C T
 // creates variables name, type, token, gamesWon
 var player1 = Player()
@@ -108,6 +113,7 @@ enum Brain: String {
     case keyboard = "Keyboard"
 } // end enum Brain
 
+// MAIN FUNCTIONS
 // M A I N   F U N C T I O N S
 func display(m1: String = "\t\t", m2: String = "", msg: String, trm: String = "\n") { // prints msg with new line
     print(m1 + m2 + "\(msg)", terminator: trm)
@@ -135,8 +141,7 @@ func errorOutOfRange(upper: Int) {
     display(msg: sp2 + mMsg[9]) // Try again
 } // end errorOutOfRange
 
-
-// M A I N   T H E   G A M E
+// MAIN CODE
 
 // display(m1: "", msg: mMsg[1]) // Hi Jack
 

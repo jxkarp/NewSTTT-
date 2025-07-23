@@ -10,59 +10,15 @@
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>10</string>
-					<key>EndingLineNumber</key>
-					<string>9</string>
-					<key>StartingColumnNumber</key>
-					<string>9</string>
-					<key>StartingLineNumber</key>
-					<string>9</string>
-					<key>Timestamp</key>
-					<string>774564911.6907049</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>newSTTT/PlayGame.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>L</string>
-				<key>leading</key>
-				<string>// P L A Y G A M E   S T R U C T
-struct PlayGame {
-    // P </string>
-				<key>trailing</key>
-				<string> A Y G A M E C O N S T A N T S
-    let under = "_"
-    let sp6 = "      "
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>8</string>
-					<key>EndingLineNumber</key>
-					<string>19</string>
-					<key>StartingColumnNumber</key>
 					<string>7</string>
+					<key>EndingLineNumber</key>
+					<string>9</string>
+					<key>StartingColumnNumber</key>
+					<string>3</string>
 					<key>StartingLineNumber</key>
-					<string>19</string>
+					<string>9</string>
 					<key>Timestamp</key>
-					<string>774564923.370504</string>
+					<string>774887668.869301</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -71,22 +27,22 @@ struct PlayGame {
 					<key>payload</key>
 					<dict>
 						<key>relative-path</key>
-						<string>newSTTT/PlayGame.swift</string>
+						<string>newSTTT/main.swift</string>
 					</dict>
 				</dict>
 			</dict>
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string> </string>
+				<string>MAIN</string>
 				<key>leading</key>
-				<string>    let tttAs = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
+				<string>import Foundation
 
-    let</string>
+// </string>
 				<key>trailing</key>
-				<string>pMsg = [
-        "*", // 0 because 0
-        "Press return to continue, or Q to quit: ", // 1 Press return
+				<string> Test Variables, Extensions, Constants, Variables
+// M A I N   T E S T   V A R I A B L E S
+var test = false
 </string>
 			</dict>
 			<key>type</key>
@@ -98,15 +54,194 @@ struct PlayGame {
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>12</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>42</string>
+					<string>92</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>91</string>
+					<key>Timestamp</key>
+					<string>774916384.8443789</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>newSTTT/main.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>// MAIN STRUCTS Player, InitializeGame, PlayGame, Brain Enum
+</string>
+				<key>leading</key>
+				<string>var continueFlag = false // continue = true; quit = false
+
+</string>
+				<key>trailing</key>
+				<string>// P L A Y E R  S T R U C T
+// creates variables name, type, token, gamesWon
+var player1 = Player()
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>116</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>115</string>
+					<key>Timestamp</key>
+					<string>774916384.844355</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>newSTTT/main.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>// MAIN FUNCTIONS
+</string>
+				<key>leading</key>
+				<string>} // end enum Brain
+
+</string>
+				<key>trailing</key>
+				<string>// M A I N   F U N C T I O N S
+func display(m1: String = "\t\t", m2: String = "", msg: String, trm: String = "\n") { // prints msg with new line
+    print(m1 + m2 + "\(msg)", terminator: trm)
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>144</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>143</string>
+					<key>Timestamp</key>
+					<string>774916384.8443871</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>newSTTT/main.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>// MAIN CODE
+</string>
+				<key>leading</key>
+				<string>} // end errorOutOfRange
+
+</string>
+				<key>trailing</key>
+				<string>
+// display(m1: "", msg: mMsg[1]) // Hi Jack
+
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>31</string>
+					<key>EndingLineNumber</key>
+					<string>8</string>
+					<key>StartingColumnNumber</key>
+					<string>22</string>
+					<key>StartingLineNumber</key>
+					<string>8</string>
+					<key>Timestamp</key>
+					<string>774888104.814888</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>newSTTT/InitializeGame.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>Constants</string>
+				<key>leading</key>
+				<string>// I N I T I A L I Z E G A M E   S T R U C T
+struct InitializeGame {
+    // INITIALIZEGAME </string>
+				<key>trailing</key>
+				<string>, Variables, Functions
+    // I N I T I A L I Z E G A M E   C O N S T A N T S
+    let human = "human"
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>29</string>
+					<key>EndingLineNumber</key>
+					<string>275</string>
 					<key>StartingColumnNumber</key>
 					<string>11</string>
 					<key>StartingLineNumber</key>
-					<string>42</string>
+					<string>275</string>
 					<key>Timestamp</key>
-					<string>774564940.954698</string>
+					<string>774888175.245018</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -115,67 +250,111 @@ struct PlayGame {
 					<key>payload</key>
 					<dict>
 						<key>relative-path</key>
-						<string>newSTTT/PlayGame.swift</string>
+						<string>newSTTT/InitializeGame.swift</string>
 					</dict>
 				</dict>
 			</dict>
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>A</string>
+				<string>CONTINUEINITIALIZE</string>
 				<key>leading</key>
-				<string>    ] // end var pMsg
+				<string>        } // end displayPlayerInfo()
 
-    // P L </string>
+        // </string>
 				<key>trailing</key>
-				<string> Y G A M E   V A R I A B L E S
+				<string> CODE
+        // C O N T I N U E I N I T I A L I Z E   C O D E  S T A R T S   H E R E
+        continueFlag = true
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>15</string>
+					<key>EndingLineNumber</key>
+					<string>9</string>
+					<key>StartingColumnNumber</key>
+					<string>7</string>
+					<key>StartingLineNumber</key>
+					<string>9</string>
+					<key>Timestamp</key>
+					<string>774888360.557315</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>newSTTT/PlayGame.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>PLAYGAME</string>
+				<key>leading</key>
+				<string>// P L A Y G A M E   S T R U C T
+struct PlayGame {
+    // </string>
+				<key>trailing</key>
+				<string> Constants, Variables, Functions
+    // P L A Y G A M E C O N S T A N T S
+    let under = "_"
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>936</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>935</string>
+					<key>Timestamp</key>
+					<string>774931650.9837919</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>newSTTT/PlayGame.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>        // PLAYGAME CODE
+</string>
+				<key>leading</key>
+				<string>        } // end func testPoint(location: String)
 
-    // the super matrix (grid = 0) and the nine visible grids (1-9)
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>65</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>64</string>
-					<key>Timestamp</key>
-					<string>774818094.455232</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>newSTTT/PlayGame.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>        func pos(pt1: [Int]) -&gt; Int { // pos returns the index to the array game
-</string>
-				<key>leading</key>
-				<string>    // P L A Y G A M E   F U N C T I O N S
-    mutating func continuePlay() -&gt; Bool {
 </string>
 				<key>trailing</key>
-				<string>            return pt1[0] * 9 + (pt1[1] - 1) * 3 + pt1[2] - 1
-        } // end func pos(pt1: [Int]) -&gt; Int
-        
+				<string>        // C O N T I N U E P L A Y   C O D E   H E R E
+
+        againLoop: repeat {
 </string>
 			</dict>
 			<key>type</key>
@@ -187,285 +366,15 @@ struct PlayGame {
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>167</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>166</string>
-					<key>Timestamp</key>
-					<string>774818094.455103</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>newSTTT/PlayGame.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>        func hasTTTinGrid(grd3: Int, tok3: String...) -&gt; Int? {
-</string>
-				<key>leading</key>
-				<string>        } // end func displayOpeningInfo()
-        
-</string>
-				<key>trailing</key>
-				<string>            // if return == 0 there is no TTT, else the number that corresponds to which TTT (eg: row1, col3, LtoR diag, etc.)
-            var tttGrid: Int?
-            // tempI1 = 0
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>193</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>192</string>
-					<key>Timestamp</key>
-					<string>774818094.455192</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>newSTTT/PlayGame.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>        func count(grd8: Int, tok8: String...) -&gt; Int { // counts tokens in the grid
-</string>
-				<key>leading</key>
-				<string>        } // end func hasTTTinGrid(grd3: Int, tok3: String...) -&gt; Int?
-        
-</string>
-				<key>trailing</key>
-				<string>            var c = 0
-            for j in tok8 {
-                for i in 0 ... 8 { // for each cell in the grid
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>205</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>204</string>
-					<key>Timestamp</key>
-					<string>774818094.455217</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>newSTTT/PlayGame.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>        func isGridDraw(grd15: Int) -&gt; Bool {
-</string>
-				<key>leading</key>
-				<string>        } // end func count
-        
-</string>
-				<key>trailing</key>
-				<string>            if count(grd8: grd15, tok8: ex, oh) == 9 {
-                return true // draw
-            } else { // no TTT and count = 9
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>213</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>212</string>
-					<key>Timestamp</key>
-					<string>774818094.455224</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>newSTTT/PlayGame.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>        func displayBigBoard() {
-</string>
-				<key>leading</key>
-				<string>        } // end func isGridDraw(grd15) -&gt; Bool
-        
-</string>
-				<key>trailing</key>
-				<string>            print("""
-                    \n\t\t\(testM)\(game[pos(pt1: [0, 1, 1])])\(sp2)\(game[pos(pt1: [0, 1, 2])])\(sp2)\(game[pos(pt1: [0, 1, 3])])\n\t\t\(testM)\(game[pos(pt1: [0, 2, 1])])\(sp2)\(game[pos(pt1: [0, 2, 2])])\(sp2)\(game[pos(pt1: [0, 2, 3])])\n\t\t\(testM)\(game[pos(pt1: [0, 3, 1])])\(sp2)\(game[pos(pt1: [0, 3, 2])])\(sp2)\(game[pos(pt1: [0, 3, 3])])
-            """) // end print
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>280</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>279</string>
-					<key>Timestamp</key>
-					<string>774818094.45524</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>newSTTT/PlayGame.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>        func isSquareTaken(grd10: Int, row10: Int, col10: Int) -&gt; Bool {
-</string>
-				<key>leading</key>
-				<string>        } // end func meaningless
-        
-</string>
-				<key>trailing</key>
-				<string>            if game[pos(pt1: [grd10, row10, col10])] == under { // tests for under
-                return false
-            } else {
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>280</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>279</string>
-					<key>Timestamp</key>
-					<string>774818094.455251</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>newSTTT/PlayGame.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>        func isSquareTaken(grd10: Int, row10: Int, col10: Int) -&gt; Bool {
-</string>
-				<key>leading</key>
-				<string>        } // end func meaningless
-        
-</string>
-				<key>trailing</key>
-				<string>            if game[pos(pt1: [grd10, row10, col10])] == under { // tests for under
-                return false
-            } else {
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
+					<string>24</string>
 					<key>EndingLineNumber</key>
 					<string>288</string>
 					<key>StartingColumnNumber</key>
-					<string>0</string>
+					<string>13</string>
 					<key>StartingLineNumber</key>
-					<string>287</string>
+					<string>288</string>
 					<key>Timestamp</key>
-					<string>774818094.455209</string>
+					<string>774904741.3733</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -481,61 +390,15 @@ struct PlayGame {
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>        func proposeRandomRC(grd20: Int) {
-</string>
+				<string>proposeOorT</string>
 				<key>leading</key>
 				<string>        } // end func isSquareTaken(grd10: Int, row10: Int, col10: Int) -&gt; Bool
-        
-</string>
-				<key>trailing</key>
-				<string>            repeat {
-                tempRC = [Int.random(in: 1 ... 3), Int.random(in: 1 ... 3)]
-                tempR = tempRC[0]
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>395</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>394</string>
-					<key>Timestamp</key>
-					<string>774829636.235011</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>newSTTT/PlayGame.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>        func continueProposeRC() -&gt; Bool {
-</string>
-				<key>leading</key>
-				<string>        } // end func testStrategy(type: Brain)
 
-</string>
+        func </string>
 				<key>trailing</key>
-				<string>            // returns continueFlag
-            // must set rc = tempRC on return
-            
+				<string>(grd12: Int, tok12: String, grid: Bool) {
+            //  Opportunity = called with token
+            //  Threat = called with oppToken
 </string>
 			</dict>
 			<key>type</key>
@@ -549,13 +412,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>563</string>
+					<string>437</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>562</string>
+					<string>436</string>
 					<key>Timestamp</key>
-					<string>774829647.564683</string>
+					<string>774931650.983564</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -574,12 +437,57 @@ struct PlayGame {
 				<string>        func continueProposeGrid() -&gt; Bool {
 </string>
 				<key>leading</key>
-				<string>        } // end continueProposeRCorG() -&gt; Bool
-        
+				<string>        } // end func proposeOorT
+
 </string>
 				<key>trailing</key>
 				<string>            // returns (continueFlag, proposeFlag)
             // must set g = tempG on return
+
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>601</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>600</string>
+					<key>Timestamp</key>
+					<string>774931650.983814</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>newSTTT/PlayGame.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>        func continueProposeRC() -&gt; Bool {
+</string>
+				<key>leading</key>
+				<string>        } // end  func continueProposeGrid() -&gt; Bool
+
+</string>
+				<key>trailing</key>
+				<string>            // returns continueFlag
+            // must set rc = tempRC on return
             
 </string>
 			</dict>
