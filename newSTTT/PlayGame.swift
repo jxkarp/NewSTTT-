@@ -624,8 +624,6 @@ struct PlayGame {
                 testRCStrategy(prefix: L, type: .random)
             } // end func proposeRandomRC(grd20: Int)
 
-
-
             // C H O O S E P R O P O S E R C   C O D E   H E R E
             // returns (continueFlag, proposeFlag)
             // continueFlag: continue = true; quit = false

@@ -7,7 +7,8 @@
 /*
     Version Date    Comments
  
-            250723  Start of Day
+            250723  ..STTT, .brainTypeForceDeny, .brainTypeMiddle from earlier work
+                    Clean up final display
  
             250722  SmartRandom and ProposeOorT!!!
  

@@ -151,17 +151,16 @@
             meaningless()
             isSquareTaken(grd10: Int, row10: Int, col10: Int) -> Bool // square is taken = true; square is not taken = false
             proposeOorT(grd12: Int, tok12: String)
-                testOTG
+                testOTG(prefix: String)
+                testOTRC(prefix: String
             continueProposeGrid() -> Bool
                 testGridStrategy(prefix: String, type: Brain)
                 testTempG(location: String)
                 proposeRandomGrid()
-                    testRandomGrid()
             continueProposeRC() -> Bool // continue = true; quit = false
                 testRCStrategy(type: Brain)
                 testTempRC(location: String)
                 proposeRandomRC(grd20: Int)
-                    testRandomRC()
             convertGridToRC(grd22: Int) -> [Int] {
             markBigBoard(grd17: Int, tok17: String)
             clearGrid(grd11: Int, tok11: String)
