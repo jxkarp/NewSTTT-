@@ -259,10 +259,10 @@ struct PlayGame {
                 \n\(sp11)\(sp1)\(printSpacers())\n\(formLabelLine(grd14: 1))\(sp11)\(sp2)\(game[pos(pt1: [1, 1, 1])])\(sp2)\(game[pos(pt1: [1, 1, 2])])\(sp2)\(game[pos(pt1: [1, 1, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [2, 1, 1])])\(sp2)\(game[pos(pt1: [2, 1, 2])])\(sp2)\(game[pos(pt1: [2, 1, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [3, 1, 1])])\(sp2)\(game[pos(pt1: [3, 1, 2])])\(sp2)\(game[pos(pt1: [3, 1, 3])])\n\(sp11)\(sp2)\(game[pos(pt1: [1, 2, 1])])\(sp2)\(game[pos(pt1: [1, 2, 2])])\(sp2)\(game[pos(pt1: [1, 2, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [2, 2, 1])])\(sp2)\(game[pos(pt1: [2, 2, 2])])\(sp2)\(game[pos(pt1: [2, 2, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [3, 2, 1])])\(sp2)\(game[pos(pt1: [3, 2, 2])])\(sp2)\(game[pos(pt1: [3, 2, 3])])\n\(sp11)\(sp2)\(game[pos(pt1: [1, 3, 1])])\(sp2)\(game[pos(pt1: [1, 3, 2])])\(sp2)\(game[pos(pt1: [1, 3, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [2, 3, 1])])\(sp2)\(game[pos(pt1: [2, 3, 2])])\(sp2)\(game[pos(pt1: [2, 3, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [3, 3, 1])])\(sp2)\(game[pos(pt1: [3, 3, 2])])\(sp2)\(game[pos(pt1: [3, 3, 3])])\n\(tab2)\(sp4)\(horiz)\n\(formLabelLine(grd14: 4))\(sp11)\(sp2)\(game[pos(pt1: [4, 1, 1])])\(sp2)\(game[pos(pt1: [4, 1, 2])])\(sp2)\(game[pos(pt1: [4, 1, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [5, 1, 1])])\(sp2)\(game[pos(pt1: [5, 1, 2])])\(sp2)\(game[pos(pt1: [5, 1, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [6, 1, 1])])\(sp2)\(game[pos(pt1: [6, 1, 2])])\(sp2)\(game[pos(pt1: [6, 1, 3])])\n\(sp11)\(sp2)\(game[pos(pt1: [4, 2, 1])])\(sp2)\(game[pos(pt1: [4, 2, 2])])\(sp2)\(game[pos(pt1: [4, 2, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [5, 2, 1])])\(sp2)\(game[pos(pt1: [5, 2, 2])])\(sp2)\(game[pos(pt1: [5, 2, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [6, 2, 1])])\(sp2)\(game[pos(pt1: [6, 2, 2])])\(sp2)\(game[pos(pt1: [6, 2, 3])])\n\(sp11)\(sp2)\(game[pos(pt1: [4, 3, 1])])\(sp2)\(game[pos(pt1: [4, 3, 2])])\(sp2)\(game[pos(pt1: [4, 3, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [5, 3, 1])])\(sp2)\(game[pos(pt1: [5, 3, 2])])\(sp2)\(game[pos(pt1: [5, 3, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [6, 3, 1])])\(sp2)\(game[pos(pt1: [6, 3, 2])])\(sp2)\(game[pos(pt1: [6, 3, 3])])\n\(tab2)\(sp4)\(horiz)\n\(formLabelLine(grd14: 7))\(sp11)\(sp2)\(game[pos(pt1: [7, 1, 1])])\(sp2)\(game[pos(pt1: [7, 1, 2])])\(sp2)\(game[pos(pt1: [7, 1, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [8, 1, 1])])\(sp2)\(game[pos(pt1: [8, 1, 2])])\(sp2)\(game[pos(pt1: [8, 1, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [9, 1, 1])])\(sp2)\(game[pos(pt1: [9, 1, 2])])\(sp2)\(game[pos(pt1: [9, 1, 3])])\n\(sp11)\(sp2)\(game[pos(pt1: [7, 2, 1])])\(sp2)\(game[pos(pt1: [7, 2, 2])])\(sp2)\(game[pos(pt1: [7, 2, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [8, 2, 1])])\(sp2)\(game[pos(pt1: [8, 2, 2])])\(sp2)\(game[pos(pt1: [8, 2, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [9, 2, 1])])\(sp2)\(game[pos(pt1: [9, 2, 2])])\(sp2)\(game[pos(pt1: [9, 2, 3])])\n\(sp11)\(sp2)\(game[pos(pt1: [7, 3, 1])])\(sp2)\(game[pos(pt1: [7, 3, 2])])\(sp2)\(game[pos(pt1: [7, 3, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [8, 3, 1])])\(sp2)\(game[pos(pt1: [8, 3, 2])])\(sp2)\(game[pos(pt1: [8, 3, 3])])\(sp2)\(bar)\(sp2)\(game[pos(pt1: [9, 3, 1])])\(sp2)\(game[pos(pt1: [9, 3, 2])])\(sp2)\(game[pos(pt1: [9, 3, 3])])\n\(sp11)\(sp1)\(printSpacers())
             """) // end display("""
             if testBigBoard {
-                nL()
+                // nL()
                 displayBigBoard()
             } // end if
-            nL()
+            // nL()
             display(msg: mMsg[7], trm: "")
             if !mmFlag || test || testOT { // pause for Return in either human game, test, testOT
                 tempS1 = readLine(strippingNewline: true)!
@@ -474,9 +474,15 @@ struct PlayGame {
                     proposeRandomGrid()
                 } // end switch count
             case .smartRandom:
-                switch count(grd8: g, tok8: ex, oh, draw) {
+                switch count(grd8: bigBoard, tok8: ex, oh, draw) {
                 case 0, 1:
                     proposeRandomGrid()
+                    for x in 1...9 {
+                        if count(grd8: x, tok8: ex, oh) > 1  {
+                            proposeOorT(grd12: x, tok12: playerCurrent.oppToken, grid: true)
+                            proposeOorT(grd12: x, tok12: playerCurrent.token, grid: true)
+                        } // end if
+                    } // end for
                 default:
                     proposeRandomGrid()
                     proposeOorT(grd12: bigBoard, tok12: playerCurrent.oppToken, grid: true)
@@ -881,8 +887,14 @@ struct PlayGame {
 
         func switchPlayers() {
             // print("p = \(player) p1 = \(player1.name), p2 = \(player2.name)")
-
-            if playerCurrent.name == player1.name { // Player1 is the current player
+            func testSwitchPlayers(prefix: String) {
+                if testBrain {
+                    display(m2: testM, msg: prefix + "\(playerCurrent.name) is current player")
+                } // end if
+            } // end func switchPlayers
+            testSwitchPlayers(prefix: R)
+            if playerCurrent.name == player1.name { //Player1 is the current player
+                testSwitchPlayers(prefix: R)
                 playerCurrent.name = player2.name
                 playerCurrent.token = player2.token
                 playerCurrent.oppToken = player1.token
@@ -895,6 +907,7 @@ struct PlayGame {
                 playerCurrent.type = player1.type
                 playerCurrent.strategy = player1.strategy
             } // end if
+            testSwitchPlayers(prefix: L)
             nL2()
             display(msg: icnInfo + "\(playerCurrent.name)" + pMsg[18])
             if testBrain {
@@ -903,13 +916,13 @@ struct PlayGame {
         } // end func switchPlayers
 
         func continueDetermineNextGrid() -> Bool {
-            testPoint(location: "Start: determineNextGrid")
+            // testPoint(location: "\(R)determineNextGrid")
             continueFlag = true
             tempI1 = (r - 1) * 3 + c
             if hasTTTinGrid(grd3: tempI1, tok3: ex, oh) == nil && !isGridDraw(grd15: tempI1) { // no TTT or Draw in this grid: next grid is computed here
-                testPoint(location: "Before TTT and Draw assignment")
+                // testPoint(location: "\(R)TTT and Draw assignment")
                 g = tempI1
-                testPoint(location: "After TTT and Draw assignment")
+                testPoint(location: "\(L)determine: computed")
                 nL()
                 display(msg: icnWarning + "\(playerCurrent.name)" + pMsg[15] + "\(g)!")
             } else {
@@ -919,15 +932,15 @@ struct PlayGame {
                     g = tempG
                     // nL()
                     // display(msg: icnInfo + "\(playerCurrent.name)" + pMsg[16] + "\(g)")
+                    testPoint(location: "\(L)determine: choice")
                 } // end if
             } // end if
-            testPoint(location: "After determine")
             return continueFlag
         } // end func continueDetermineNextGrid
 
         func testPoint(location: String) {
             if test {
-                display(m2: testM, msg: "\(location): G = \(g) R = \(r) C = \(c)")
+                display(m2: testM, msg: "\(location): G: \(g) R: \(r) C: \(c)")
             } // end if
         } // end func testPoint(location: String)
 

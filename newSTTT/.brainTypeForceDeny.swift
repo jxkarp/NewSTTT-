@@ -8,8 +8,15 @@
 /*
  
  Deny opponent the same grid as you (the same grid you just played?)
- Force opponent to concentrate TTTs in bad grids
  
+    g   6       grid just played
+
+    repeat
+        proposeRandomGrid
+    while tempI1 = g
+    convertGridToRC(grd22: tempI1) // this forces play to a different grid
+ 
+ Force opponent to concentrate TTTs in bad grids
  
  idk what i meant by this
  
@@ -23,6 +30,5 @@
     421     7       31
     423     8       32
     432     9       33
-
  
  */

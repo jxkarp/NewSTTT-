@@ -168,6 +168,7 @@
             clearGrids(tok30: String)
             markGrids()
             switchPlayers()
+                testSwitchPlayers
             continueDetermineNextGrid() -> Bool
             testPoint(location: String)
 
