@@ -166,7 +166,7 @@ struct PlayGame {
         } // end func displayOpeningInfo()
 
         func hasTTTinGrid(grd3: Int, tok3: String...) -> Int? {
-            // if return == 0 there is no TTT, else the number that corresponds to which TTT (eg: row1, col3, LtoR diag, etc.)
+            // if tttGrid == nil there is no TTT, else tttGrid != nil there is a TTT. tttGrid is the number that corresponds to which TTT (eg: row1, col3, LtoR diag, etc.)
             var tttGrid: Int?
             // tempI1 = 0
             for w in tok3 {
@@ -291,24 +291,27 @@ struct PlayGame {
             //  Threat = called with oppToken
             // called with both playerCurrent.oppToken and playerCurrent.token checks first for threats, then for opportunities in one call
             // returns proposeFlag
-            func testOTG(prefix: String) {
+            func testOTG(prefix: String, loc: String) {
                 if testOT {
                     if testBrain {
-                        display(m2: testOTM, msg: "\(prefix)OTG: flag: \(proposeFlag) | tempG: \(tempG)")
+                        display(m2: testOTM, msg: "\(prefix)OTG: flag: \(proposeFlag) | tempG: \(tempG) \(loc)")
                     } // end if
                 } // end if
             } // end func testOTG()
-            func testOTRC(prefix: String) {
+            func testOTRC(prefix: String, loc: String) {
                 if testOT {
                     if testBrain {
-                        display(m2: testOTM, msg: "\(prefix)OTRC: flag = \(proposeFlag) | tempRC: \(tempRC)")
+                        display(m2: testOTM, msg: "\(prefix)OTRC: propose: \(proposeFlag) | tempRC: \(tempRC) \(loc)")
                     } // end if
                 } // end if
             } // end func testOTG()
 
             proposeFlag = false
-            testOTG(prefix: R)
-            testOTRC(prefix: R)
+            if grid {
+                testOTG(prefix: R, loc: "Start")
+            } else {
+                testOTRC(prefix: R, loc: "Start")
+            } // end if
             if (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 1, 2])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == under) ||
                 (game[pos(pt1: [grd12, 2, 3])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == under) ||
                 (game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == under) {
@@ -318,10 +321,10 @@ struct PlayGame {
                 proposeFlag = true
                 if grid {
                     tempG = 3
-                    testOTG(prefix: L)
+                    testOTG(prefix: L, loc: "Row1, Col3, DiagRtoL")
                 } else {
                     tempRC = [1, 3]
-                    testOTRC(prefix: L)
+                    testOTRC(prefix: L, loc: "Row1, Col3, DiagRtoL")
                 } // end if
             } else if (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 1, 2])] == under) ||
                 (game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 1, 1])] == under) {
@@ -330,10 +333,10 @@ struct PlayGame {
                 proposeFlag = true
                 if grid {
                     tempG = 2
-                    testOTG(prefix: L)
+                    testOTG(prefix: L, loc: "Row1, Col2")
                 } else {
                     tempRC = [1, 2]
-                    testOTRC(prefix: L)
+                    testOTRC(prefix: L, loc: "Row1, Col2")
                 } // end if
             } else if (game[pos(pt1: [grd12, 1, 2])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 1, 1])] == under) ||
                 (game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 1, 1])] == under) ||
@@ -344,10 +347,10 @@ struct PlayGame {
                 proposeFlag = true
                 if grid {
                     tempG = 1
-                    testOTG(prefix: L)
+                    testOTG(prefix: L, loc: "Row1, Col1, DiagLtoR")
                 } else {
                     tempRC = [1, 1]
-                    testOTRC(prefix: L)
+                    testOTRC(prefix: L, loc: "Row1, Col1, DiagLtoR")
                 } // end if
             } else if (game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == under) ||
                 (game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == under) {
@@ -356,10 +359,10 @@ struct PlayGame {
                 proposeFlag = true
                 if grid {
                     tempG = 6
-                    testOTG(prefix: L)
+                    testOTG(prefix: L, loc: "Row2, Col3")
                 } else {
                     tempRC = [2, 3]
-                    testOTRC(prefix: L)
+                    testOTRC(prefix: L, loc: "Row2, Col3")
                 } // end if
             } else if (game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == under) ||
                 (game[pos(pt1: [grd12, 1, 2])] == tok12 && game[pos(pt1: [grd12, 3, 2])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == under) ||
@@ -372,10 +375,10 @@ struct PlayGame {
                 proposeFlag = true
                 if grid {
                     tempG = 5
-                    testOTG(prefix: L)
+                    testOTG(prefix: L, loc: "Row2, Col2, DiagLtoR, DiagRtoL")
                 } else {
                     tempRC = [2, 2]
-                    testOTRC(prefix: L)
+                    testOTRC(prefix: L, loc: "Row2, Col2, DiagLtoR, DiagRtoL")
                 } // end if
             } else if (game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == tok12 && game[pos(pt1: [grd12, 2, 1])] == under) ||
                 (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 2, 1])] == under) {
@@ -384,10 +387,10 @@ struct PlayGame {
                 proposeFlag = true
                 if grid {
                     tempG = 4
-                    testOTG(prefix: L)
+                    testOTG(prefix: L, loc: "Row2, Col1")
                 } else {
                     tempRC = [2, 1]
-                    testOTRC(prefix: L)
+                    testOTRC(prefix: L, loc: "Row2, Col1")
                 } // end if
             } else if (game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 3, 2])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == under) ||
                 (game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == under) ||
@@ -398,10 +401,10 @@ struct PlayGame {
                 proposeFlag = true
                 if grid {
                     tempG = 9
-                    testOTG(prefix: L)
+                    testOTG(prefix: L, loc: "Row3, Col3")
                 } else {
                     tempRC = [3, 3]
-                    testOTRC(prefix: L)
+                    testOTRC(prefix: L, loc: "Row3, Col3")
                 } // end if
             } else if (game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 3, 2])] == under) ||
                 (game[pos(pt1: [grd12, 1, 2])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 3, 2])] == under) {
@@ -410,10 +413,10 @@ struct PlayGame {
                 proposeFlag = true
                 if grid {
                     tempG = 8
-                    testOTG(prefix: L)
+                    testOTG(prefix: L, loc: "Row3, Col2")
                 } else {
                     tempRC = [3, 2]
-                    testOTRC(prefix: L)
+                    testOTRC(prefix: L, loc: "Row3, Col2")
                 } // end if
             } else if (game[pos(pt1: [grd12, 3, 2])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == under) ||
                 (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == under) ||
@@ -424,16 +427,25 @@ struct PlayGame {
                 proposeFlag = true
                 if grid {
                     tempG = 7
-                    testOTG(prefix: L)
+                    testOTG(prefix: L, loc: "Row3, Col1, DiagRtoL")
                 } else {
                     tempRC = [3, 1]
-                    testOTRC(prefix: L)
+                    testOTRC(prefix: L, loc: "Row3, Col1, DiagnRtoL")
                 } // end if
             } // end if
-            testOTG(prefix: L)
-            testOTRC(prefix: L)
+            if grid {
+                testOTG(prefix: L, loc: "Finish")
+            } else {
+                testOTRC(prefix: L, loc: "Finish")
+            } // end if
         } // end func proposeOorT
 
+        func testPlayerCurrentStrategy() {
+            if testBrain {
+                display(m2: testM, msg: "\(playerCurrent.name)'s strategy: \(playerCurrent.strategy) Token: \(playerCurrent.token)")
+            } // end if
+        } // end func testPlayerCurrentStrategy
+        
         func continueProposeGrid() -> Bool {
             // returns (continueFlag, proposeFlag)
             // must set g = tempG on return
@@ -445,7 +457,7 @@ struct PlayGame {
             } // end func testStrategy(type: Brain)
 
             func testTempG(location: String) {
-                if test {
+                if testBrain {
                     display(m2: testM, msg: "\(location): tempG: \(tempG)")
                 } // end if
             } // end func testTempG(location: String)
@@ -466,10 +478,10 @@ struct PlayGame {
 
             continueFlag = true
             // proposeFlag = false
-
+            testPlayerCurrentStrategy()
             switch playerCurrent.strategy {
             case .random:
-                switch count(grd8: g, tok8: ex, oh, draw) {
+                switch count(grd8: tempG, tok8: ex, oh, draw) {
                 default:
                     proposeRandomGrid()
                 } // end switch count
@@ -478,7 +490,7 @@ struct PlayGame {
                 case 0, 1:
                     proposeRandomGrid()
                     for x in 1...9 {
-                        if count(grd8: x, tok8: ex, oh) > 1  {
+                        if count(grd8: x, tok8: ex, oh) > 1  && hasTTTinGrid(grd3: x, tok3: ex, oh) != nil && !isGridDraw(grd15: x) {
                             proposeOorT(grd12: x, tok12: playerCurrent.oppToken, grid: true)
                             proposeOorT(grd12: x, tok12: playerCurrent.token, grid: true)
                         } // end if
@@ -487,6 +499,14 @@ struct PlayGame {
                     proposeRandomGrid()
                     proposeOorT(grd12: bigBoard, tok12: playerCurrent.oppToken, grid: true)
                     proposeOorT(grd12: bigBoard, tok12: playerCurrent.token, grid: true)
+                    if !proposeFlag {
+                        for x in 1...9 {
+                            if count(grd8: x, tok8: ex, oh) > 1 && hasTTTinGrid(grd3: x, tok3: ex, oh) != nil && !isGridDraw(grd15: x) {
+                                proposeOorT(grd12: x, tok12: playerCurrent.oppToken, grid: true)
+                                proposeOorT(grd12: x, tok12: playerCurrent.token, grid: true)
+                            } // end if
+                        } // end for
+                    } // end if
                 } // end switch count
             case .middle:
                 meaningless()
@@ -610,7 +630,7 @@ struct PlayGame {
             
             func testRCStrategy(prefix: String, type: Brain) {
                 if testBrain {
-                    display(m2: testM, msg: "\(prefix) Brain: \(type) tempRC: \(tempRC)")
+                    display(m2: testM, msg: "\(prefix)Brain: \(type) tempRC: \(tempRC)")
                 } // end if
             } // end func testRCStrategy(type: Brain)
             
@@ -638,72 +658,70 @@ struct PlayGame {
 
             continueFlag = true
             // proposeFlag = false
-            if test {
-                display(m2: testM, msg: "Current player's strategy = \(playerCurrent.strategy)")
-            } // end if
+            testPlayerCurrentStrategy()
             switch playerCurrent.strategy {
             case .random:
-                switch count(grd8: g, tok8: ex, oh) {
+                switch count(grd8: tempG, tok8: ex, oh) {
                 default:
-                    proposeRandomRC(grd20: g)
+                    proposeRandomRC(grd20: tempG)
                 } // end switch count
             case .smartRandom:
-               switch count(grd8: g, tok8: ex, oh) {
+                switch count(grd8: tempG, tok8: ex, oh) {
                 case 0, 1:
-                    proposeRandomRC(grd20: g)
+                    proposeRandomRC(grd20: tempG)
                 default:
-                   proposeRandomRC(grd20: g)
-                   proposeOorT(grd12: g, tok12: playerCurrent.oppToken, grid: false)
-                   proposeOorT(grd12: g, tok12: playerCurrent.token, grid: false)
+                   proposeRandomRC(grd20: tempG)
+                   proposeOorT(grd12: tempG, tok12: playerCurrent.oppToken, grid: false)
+                   proposeOorT(grd12: tempG, tok12: playerCurrent.token, grid: false)
                 } // end switch count
             case .middle:
                 meaningless()
                 /*
-                switch count(grd8: g, tok8: ex, oh) {
+                switch count(grd8: tempG, tok8: ex, oh) {
                 case 0:
-                    proposeRandomRC(grd20: g)
-                    // proposeFreeMiddle(grd20: g)
+                    proposeRandomRC(grd20: tempG)
+                    // proposeFreeMiddle(grd20: tempG)
 
                 case 1:
-                    proposeRandomRC(grd20: g)
-                    // proposeCorner(grd20: g, row18: 1, col18: 1)
-                    // proposeCorner(grd20: g, row18: 1, col18: 3)
-                    // proposeCorner(grd20: g, row18: 3, col18: 1)
-                    // proposeCorner(grd20: g, row18: 3, col18: 3)
-                    // proposeFreeMiddle(grd20: g)
+                    proposeRandomRC(grd20: tempG)
+                    // proposeCorner(grd20: tempG, row18: 1, col18: 1)
+                    // proposeCorner(grd20: tempG, row18: 1, col18: 3)
+                    // proposeCorner(grd20: tempG, row18: 3, col18: 1)
+                    // proposeCorner(grd20: tempG, row18: 3, col18: 3)
+                    // proposeFreeMiddle(grd20: tempG)
 
                 default:
-                    proposeRandomRC(grd20: g)
-                    // proposeCorner(grd20: g, row18: 1, col18: 1)
-                    // proposeCorner(grd20: g, row18: 1, col18: 3)
-                    // proposeCorner(grd20: g, row18: 3, col18: 1)
-                    // proposeCorner(grd20: g, row18: 3, col18: 3)
-                    // proposeFreeMiddle(grd20: g)
-                    // proposeOorT(grd12: 0, tok12: playerCurrent.oppToken, playerCurrent.token)
+                    proposeRandomRC(grd20: tempG)
+                    // proposeCorner(grd20: tempG, row18: 1, col18: 1)
+                    // proposeCorner(grd20: tempG, row18: 1, col18: 3)
+                    // proposeCorner(grd20: tempG, row18: 3, col18: 1)
+                    // proposeCorner(grd20: tempG, row18: 3, col18: 3)
+                    // proposeFreeMiddle(grd20: tempG)
+                    // proposeOorT(grd12: bigBoard, tok12: playerCurrent.oppToken, playerCurrent.token)
                 } // end switch count
                 testRCStrategy(type: .middle)
                 */
             case .deny:
                 meaningless()
                 /*
-                switch count(grd8: g, tok8: ex, oh) {
+                switch count(grd8: tempG, tok8: ex, oh) {
                 case 0, 1:
-                    proposeRandomRC(grd20: g)
+                    proposeRandomRC(grd20: tempG)
                 default:
-                    proposeRandomRC(grd20: g)
-                    // proposeOorT(grd12: 0, tok12: playerCurrent.oppToken, playerCurrent.token)
+                    proposeRandomRC(grd20: tempG)
+                    // proposeOorT(grd12: bigBoard, tok12: playerCurrent.oppToken, playerCurrent.token)
                 } // end switch count
                 testRCStrategy(type: .deny)
                 */
             case .force:
                 meaningless()
                 /*
-                switch count(grd8: g, tok8: ex, oh) {
+                switch count(grd8: tempG, tok8: ex, oh) {
                 case 0, 1:
-                    proposeRandomRC(grd20: g)
+                    proposeRandomRC(grd20: tempG)
                 default:
-                    proposeRandomRC(grd20: g)
-                    // proposeOorT(grd12: 0, tok12: playerCurrent.oppToken, playerCurrent.token)
+                    proposeRandomRC(grd20: tempG)
+                    // proposeOorT(grd12: bigBoard, tok12: playerCurrent.oppToken, playerCurrent.token)
                 } // end switch count
                 testRCStrategy(type: .force)
                 */
@@ -711,41 +729,41 @@ struct PlayGame {
                 meaningless()
                 /*
                 testRCStrategy(type: .corner)
-                switch count(grd8: g, tok8: ex, oh) {
+                switch count(grd8: tempG, tok8: ex, oh) {
                 case 0:
-                    proposeRandomRC(grd20: g)
-                // proposeCorner(grd20: g, row18: 1, col18: 1)
+                    proposeRandomRC(grd20: tempG)
+                // proposeCorner(grd20: tempG, row18: 1, col18: 1)
                 case 1:
-                    proposeRandomRC(grd20: g)
-                    /* if isSquareTaken(grd10: g, row10: 1, col10: 1) {
+                    proposeRandomRC(grd20: tempG)
+                    /* if isSquareTaken(grd10: tempG, row10: 1, col10: 1) {
                         meaningless()
-                        // proposeCorner(grd20: g, row18: 3, col18: 3)
-                    } else if isSquareTaken(grd10: g, row10: 1, col10: 3) {
+                        // proposeCorner(grd20: tempG, row18: 3, col18: 3)
+                    } else if isSquareTaken(grd10: tempG, row10: 1, col10: 3) {
                         meaningless()
-                        // proposeCorner(grd20: g, row18: 3, col18: 1)
-                    } else if isSquareTaken(grd10: g, row10: 3, col10: 3) {
+                        // proposeCorner(grd20: tempG, row18: 3, col18: 1)
+                    } else if isSquareTaken(grd10: tempG, row10: 3, col10: 3) {
                         meaningless()
-                        // proposeCorner(grd20: g, row18: 1, col18: 3)
-                    } else if isSquareTaken(grd10: g, row10: 3, col10: 3) {
+                        // proposeCorner(grd20: tempG, row18: 1, col18: 3)
+                    } else if isSquareTaken(grd10: tempG, row10: 3, col10: 3) {
                         meaningless()
-                        //proposeCorner(grd20: g, row18: 1, col18: 1)
+                        //proposeCorner(grd20: tempG, row18: 1, col18: 1)
                     } // end if */
                 default:
                     proposeRandomRC(grd20: g)
-                    /* if isSquareTaken(grd10: g, row10: 1, col10: 1) {
+                    /* if isSquareTaken(grd10: tempG, row10: 1, col10: 1) {
                          meaningless()
-                         // proposeCorner(grd20: g, row18: 3, col18: 3)
-                     } else if isSquareTaken(grd10: g, row10: 1, col10: 3) {
+                         // proposeCorner(grd20: tempG, row18: 3, col18: 3)
+                     } else if isSquareTaken(grd10: tempG, row10: 1, col10: 3) {
                          meaningless()
-                         // proposeCorner(grd20: g, row18: 3, col18: 1)
-                     } else if isSquareTaken(grd10: g, row10: 3, col10: 3) {
+                         // proposeCorner(grd20: tempG, row18: 3, col18: 1)
+                     } else if isSquareTaken(grd10: tempG, row10: 3, col10: 3) {
                          meaningless()
-                         // proposeCorner(grd20: g, row18: 1, col18: 3)
-                     } else if isSquareTaken(grd10: g, row10: 3, col10: 3) {
+                         // proposeCorner(grd20: tempG, row18: 1, col18: 3)
+                     } else if isSquareTaken(grd10: tempG, row10: 3, col10: 3) {
                          meaningless()
-                         // proposeCorner(grd20: g, row18: 1, col18: 1)
+                         // proposeCorner(grd20: tempG, row18: 1, col18: 1)
                      } // end if */
-                    // proposeOorT(grd12: 0, tok12: playerCurrent.oppToken, playerCurrent.token)
+                    // proposeOorT(grd12: tempG, tok12: playerCurrent.oppToken, playerCurrent.token)
                 } // end switch count
                 testRCStrategy(type: .corner)
                 */
@@ -782,17 +800,17 @@ struct PlayGame {
                         } // end if
                     } while tempC < 1 || tempC > 3 // end rowLoop
 
-                    if isSquareTaken(grd10: g, row10: tempI1, col10: tempI2) {
+                    if isSquareTaken(grd10: tempG, row10: tempI1, col10: tempI2) {
                         display(msg: pMsg[7])
                         display(msg: pMsg[8])
                     } // end if
 
-                } while isSquareTaken(grd10: g, row10: tempI1, col10: tempI2) // end RCLoop
+                } while isSquareTaken(grd10: tempG, row10: tempI1, col10: tempI2) // end RCLoop
 
                 tempRC = [tempR, tempC]
                 testRCStrategy(prefix: L, type: .keyboard)
             } // end switch strategy
-            // proposeTempG(grd21: g)
+            // proposeTempG(grd21: tempG)
             return continueFlag
         } // end continueProposeRCorG() -> Bool
 
@@ -919,9 +937,9 @@ struct PlayGame {
             // testPoint(location: "\(R)determineNextGrid")
             continueFlag = true
             tempI1 = (r - 1) * 3 + c
-            if hasTTTinGrid(grd3: tempI1, tok3: ex, oh) == nil && !isGridDraw(grd15: tempI1) { // no TTT or Draw in this grid: next grid is computed here
+            if hasTTTinGrid(grd3: tempI1, tok3: ex) == nil && hasTTTinGrid(grd3: tempI1, tok3: oh) == nil && !isGridDraw(grd15: tempI1) { // no TTT or Draw in this grid: next grid is computed here
                 // testPoint(location: "\(R)TTT and Draw assignment")
-                g = tempI1
+                tempG = tempI1
                 testPoint(location: "\(L)determine: computed")
                 nL()
                 display(msg: icnWarning + "\(playerCurrent.name)" + pMsg[15] + "\(g)!")
@@ -972,8 +990,6 @@ struct PlayGame {
                 continueFlag = continueProposeGrid()
                 if !continueFlag {
                     break gameLoop
-                } else {
-                    g = tempG
                 } // end if
 
                 moveLoop: repeat {
@@ -983,6 +999,7 @@ struct PlayGame {
                     if !continueFlag {
                         break gameLoop
                     } else {
+                        g = tempG
                         rc = tempRC
                         r = rc[0]
                         c = rc[1]
@@ -1010,7 +1027,7 @@ struct PlayGame {
 
                             // notify
                             nL()
-                            display(msg: pMsg[10] + "\(playerCurrent.name)" + pMsg[11])
+                            display(msg: pMsg[10] + "\(playerCurrent.name)," + pMsg[11])
 
                             // clear grids
                             clearGrids(tok30: sp1)

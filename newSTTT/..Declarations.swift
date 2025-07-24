@@ -153,6 +153,7 @@
             proposeOorT(grd12: Int, tok12: String)
                 testOTG(prefix: String)
                 testOTRC(prefix: String
+            testplayerCurrentStrategy
             continueProposeGrid() -> Bool
                 testGridStrategy(prefix: String, type: Brain)
                 testTempG(location: String)

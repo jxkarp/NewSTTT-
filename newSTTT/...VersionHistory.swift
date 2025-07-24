@@ -7,6 +7,8 @@
 /*
     Version Date    Comments
  
+            250724  SmartRandom may be working
+ 
             250723  ..STTT, .brainTypeForceDeny, .brainTypeMiddle from earlier work
                     Clean up final display
  
