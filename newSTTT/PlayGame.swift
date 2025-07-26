@@ -470,6 +470,15 @@ struct PlayGame {
                 testGridStrategy(prefix: L, type: .random)
             } // end func getRandomGrid()
 
+            func proposeSmallBoardOorTG() {
+                for x in 1...9 {
+                    if count(grd8: x, tok8: ex, oh) > 1  && hasTTTinGrid(grd3: x, tok3: ex) != nil && hasTTTinGrid(grd3: x, tok3: oh) != nil && !isGridDraw(grd15: x) {
+                        proposeOorT(grd12: x, tok12: playerCurrent.oppToken, grid: true)
+                        proposeOorT(grd12: x, tok12: playerCurrent.token, grid: true)
+                    } // end if
+                } // end for
+            } // end func proposeSmallBoards()
+            
             // C H O O S E P R O P O S E G R I D   C O D E   H E R E
             // returns (continueFlag, proposeFlag)
             // continueFlag: continue = true; quit = false
@@ -481,31 +490,18 @@ struct PlayGame {
             testPlayerCurrentStrategy()
             switch playerCurrent.strategy {
             case .random:
-                switch count(grd8: tempG, tok8: ex, oh, draw) {
-                default:
-                    proposeRandomGrid()
-                } // end switch count
+                proposeRandomGrid()
             case .smartRandom:
                 switch count(grd8: bigBoard, tok8: ex, oh, draw) {
                 case 0, 1:
                     proposeRandomGrid()
-                    for x in 1...9 {
-                        if count(grd8: x, tok8: ex, oh) > 1  && hasTTTinGrid(grd3: x, tok3: ex, oh) != nil && !isGridDraw(grd15: x) {
-                            proposeOorT(grd12: x, tok12: playerCurrent.oppToken, grid: true)
-                            proposeOorT(grd12: x, tok12: playerCurrent.token, grid: true)
-                        } // end if
-                    } // end for
+                    proposeSmallBoardOorTG()
                 default:
                     proposeRandomGrid()
                     proposeOorT(grd12: bigBoard, tok12: playerCurrent.oppToken, grid: true)
                     proposeOorT(grd12: bigBoard, tok12: playerCurrent.token, grid: true)
                     if !proposeFlag {
-                        for x in 1...9 {
-                            if count(grd8: x, tok8: ex, oh) > 1 && hasTTTinGrid(grd3: x, tok3: ex, oh) != nil && !isGridDraw(grd15: x) {
-                                proposeOorT(grd12: x, tok12: playerCurrent.oppToken, grid: true)
-                                proposeOorT(grd12: x, tok12: playerCurrent.token, grid: true)
-                            } // end if
-                        } // end for
+                        proposeSmallBoardOorTG()
                     } // end if
                 } // end switch count
             case .middle:
@@ -522,18 +518,21 @@ struct PlayGame {
                 testGridStrategy(prefix: L, type: .middle)
                 */
             case .deny:
-                meaningless()
-                /*
                 testGridStrategy(prefix: R, type: .deny)
-                switch count(grd8: g, tok8: ex, oh, draw) {
+                switch count(grd8: bigBoard, tok8: ex, oh, draw) {
                 case 0, 1:
-                    proposeRandomGrid()
+                    tempG = g
+                    repeat {
+                        proposeRandomGrid()
+                    } while tempG == g // end while
                 default:
-                    proposeRandomGrid()
+                    tempG = g
+                    repeat {
+                        proposeRandomGrid()
+                    } while tempG == g // end while
                     // proposeOorT(grd12: 0, tok12: playerCurrent.oppToken, playerCurrent.token)
                 } // end switch count
                 testGridStrategy(prefix: L, type: .deny)
-                */
             case .force:
                 meaningless()
                 /*

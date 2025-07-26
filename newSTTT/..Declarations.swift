@@ -158,6 +158,7 @@
                 testGridStrategy(prefix: String, type: Brain)
                 testTempG(location: String)
                 proposeRandomGrid()
+                proposeSmallBoardOorTG()
             continueProposeRC() -> Bool // continue = true; quit = false
                 testRCStrategy(type: Brain)
                 testTempRC(location: String)
