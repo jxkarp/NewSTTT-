@@ -42,7 +42,7 @@
 				<key>trailing</key>
 				<string> Test Variables, Extensions, Constants, Variables
 // M A I N   T E S T   V A R I A B L E S
-var test = true
+var test = false
 </string>
 			</dict>
 			<key>type</key>
@@ -56,13 +56,13 @@ var test = true
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>92</string>
+					<string>93</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>91</string>
+					<string>92</string>
 					<key>Timestamp</key>
-					<string>774916384.8443789</string>
+					<string>775571303.268572</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -101,13 +101,13 @@ var player1 = Player()
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>116</string>
+					<string>117</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>115</string>
+					<string>116</string>
 					<key>Timestamp</key>
-					<string>774916384.844355</string>
+					<string>775571303.268551</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -146,13 +146,13 @@ func display(m1: String = "\t\t", m2: String = "", msg: String, trm: String = "\
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>144</string>
+					<string>145</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>143</string>
+					<string>144</string>
 					<key>Timestamp</key>
-					<string>774916384.8443871</string>
+					<string>775571303.268582</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -233,15 +233,15 @@ struct InitializeGame {
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>29</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>275</string>
+					<string>280</string>
 					<key>StartingColumnNumber</key>
-					<string>11</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>275</string>
+					<string>279</string>
 					<key>Timestamp</key>
-					<string>774888175.245018</string>
+					<string>775500270.2820899</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -257,15 +257,16 @@ struct InitializeGame {
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>CONTINUEINITIALIZE</string>
+				<string>        // CONTINUEINITIALIZE CODE
+</string>
 				<key>leading</key>
 				<string>        } // end displayPlayerInfo()
 
-        // </string>
+</string>
 				<key>trailing</key>
-				<string> CODE
-        // C O N T I N U E I N I T I A L I Z E   C O D E  S T A R T S   H E R E
+				<string>        // C O N T I N U E I N I T I A L I Z E   C O D E  S T A R T S   H E R E
         continueFlag = true
+        initLoop: repeat {
 </string>
 			</dict>
 			<key>type</key>
@@ -323,13 +324,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>964</string>
+					<string>1038</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>963</string>
+					<string>1037</string>
 					<key>Timestamp</key>
-					<string>775091527.894459</string>
+					<string>775705940.4696929</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -366,15 +367,15 @@ struct PlayGame {
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>24</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>288</string>
+					<string>327</string>
 					<key>StartingColumnNumber</key>
-					<string>13</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>288</string>
+					<string>326</string>
 					<key>Timestamp</key>
-					<string>774904741.3733</string>
+					<string>775705940.4697</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -390,15 +391,16 @@ struct PlayGame {
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>proposeOorT</string>
+				<string>        func proposeOorT(grd12: Int, tok12: String, grid: Bool) {
+</string>
 				<key>leading</key>
 				<string>        } // end func isSquareTaken(grd10: Int, row10: Int, col10: Int) -&gt; Bool
 
-        func </string>
+</string>
 				<key>trailing</key>
-				<string>(grd12: Int, tok12: String, grid: Bool) {
-            //  Opportunity = called with token
+				<string>            //  Opportunity = called with token
             //  Threat = called with oppToken
+            // called with both playerCurrent.oppToken and playerCurrent.token checks first for threats, then for opportunities in one call
 </string>
 			</dict>
 			<key>type</key>
@@ -412,13 +414,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>449</string>
+					<string>508</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>448</string>
+					<string>507</string>
 					<key>Timestamp</key>
-					<string>775049445.313375</string>
+					<string>775705940.4696341</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -457,13 +459,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>626</string>
+					<string>695</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>625</string>
+					<string>694</string>
 					<key>Timestamp</key>
-					<string>775091527.894423</string>
+					<string>775705940.469685</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>

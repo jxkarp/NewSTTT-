@@ -9,10 +9,11 @@ import Foundation
 
 // MAIN Test Variables, Extensions, Constants, Variables
 // M A I N   T E S T   V A R I A B L E S
-var test = true
-var testBrain = true
+var test = false
+var testBrain = false
 var testBigBoard = true
-var testOT = true
+var testOT = false
+var testRC = true
 
 // M A I N   E X T E N S I O N S
 extension String { // needed for testing keyboard input

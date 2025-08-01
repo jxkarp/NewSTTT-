@@ -47,7 +47,7 @@ struct InitializeGame {
         Brain.deny.rawValue, // 33 deny
         Brain.force.rawValue, // 34 force
         Brain.corner.rawValue, // 35 corner
-        icnQMark + "Please enter a number from 1 to 6", // 36 enter 1 to 5
+        icnQMark + "Please enter a number from 1 to 2", // 36 enter 1 to 5
         "token ", // 37 token
     ] // end iMsg
 
@@ -196,11 +196,12 @@ struct InitializeGame {
                     nL()
                     display(msg: iMsg[29] + playerCurrent.name + iMsg[30]) // what strategy
                     display(m2: tab2, msg: mMsg[13] + iMsg[31]) // random
-                    display(m2: tab2, msg: mMsg[14] + iMsg[32]) // middle
+                    display(m2: tab2, msg: mMsg[14] + iMsg[20]) // smart Random
+                    /* display(m2: tab2, msg: mMsg[14] + iMsg[32]) // middle
                     display(m2: tab2, msg: mMsg[15] + iMsg[33]) // deny
                     display(m2: tab2, msg: mMsg[16] + iMsg[34]) // force
-                    display(m2: tab2, msg: mMsg[17] + iMsg[35]) // corner
-                    display(m2: tab2, msg: mMsg[18] + iMsg[20]) // smart Random
+                    display(m2: tab2, msg: mMsg[17] + iMsg[35]) // corner */
+
                     display(msg: iMsg[36] + mMsg[22], trm: "") // Please enter 1 to 5
 
                     tempS1 = readLine(strippingNewline: true)!
@@ -218,6 +219,9 @@ struct InitializeGame {
                                 tempS2 = Brain.random.rawValue
                                 playerCurrent.strategy = .random
                             case 2:
+                                tempS2 = Brain.smartRandom.rawValue
+                                playerCurrent.strategy = .smartRandom
+                           /* case 2:
                                 tempS2 = Brain.middle.rawValue
                                 playerCurrent.strategy = .middle
                             case 3:
@@ -229,10 +233,10 @@ struct InitializeGame {
                             case 5:
                                 tempS2 = Brain.corner.rawValue
                                 playerCurrent.strategy = .corner
-                            case 6:
-                                tempS2 = Brain.smartRandom.rawValue
-                                playerCurrent.strategy = .smartRandom
-                            default: tempS2 = "none"
+                             */
+                            default:
+                                tempS2 = Brain.random.rawValue
+                                playerCurrent.strategy = .random
                             } // end switch
                         } else {
                             errorOutOfRange(upper: 6)

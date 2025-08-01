@@ -63,7 +63,16 @@ struct PlayGame {
 
     // P L A Y G A M E   F U N C T I O N S
     mutating func continuePlay() -> Bool {
-        func pos(pt1: [Int]) -> Int { // pos returns the index to the array game
+        func pos(pt1: [Int]) -> Int {
+            // pos returns the index to the array game
+            // pt1 is the matrix [grid, row, column]
+            // 0 >= grid <= 9
+            // 1 >= row <= 3
+            // 1 >= column <= 3
+            // 0 >= return <= 89
+            if pt1[0] < 0 || pt1[0] > 9 || pt1[1] < 1 || pt1[1] > 3 || pt1[2] < 1 || pt1[2] > 3 {
+                display(m2: tab2, msg: "Func: pos. Error: grid = \(pt1[0]); row = \(pt1[1]); column = \(pt1[2]). Out of range.")
+            } // end if
             return pt1[0] * 9 + (pt1[1] - 1) * 3 + pt1[2] - 1
         } // end func pos(pt1: [Int]) -> Int
 
@@ -166,9 +175,9 @@ struct PlayGame {
         } // end func displayOpeningInfo()
 
         func hasTTTinGrid(grd3: Int, tok3: String...) -> Int? {
-            // if tttGrid == nil there is no TTT, else tttGrid != nil there is a TTT. tttGrid is the number that corresponds to which TTT (eg: row1, col3, LtoR diag, etc.)
+            // if tttGrid == nil there is no TTT, else tttGrid != nil there is a TTT
+            // tttGrid is the number that corresponds to which TTT (eg: 1=row1; 2=row2; 3=row3; 4=col1; 5=col2; 6=col3; 7=LtoR diag; 8=RtoL diag)
             var tttGrid: Int?
-            // tempI1 = 0
             for w in tok3 {
                 if game[pos(pt1: [grd3, 1, 1])] == w && game[pos(pt1: [grd3, 1, 2])] == w && game[pos(pt1: [grd3, 1, 3])] == w { // TTT in row 1
                     tttGrid = 1
@@ -193,23 +202,42 @@ struct PlayGame {
 
         func count(grd8: Int, tok8: String...) -> Int { // counts tokens in the grid
             var c = 0
-            for j in tok8 {
-                for i in 0 ... 8 { // for each cell in the grid
-                    if game[grd8 * 9 + i] == j {
-                        c += 1
-                    } // end if
-                } // end for i
-            } // end for j
+            if grd8 < 0 || grd8 > 9 {
+                display(m2: tab2, msg: "Func: count. Error: grid = \(grd8). Out of range.")
+            } else {
+                for j in tok8 {
+                    for i in 0 ... 8 { // for each cell in the grid
+                        if game[grd8 * 9 + i] == j {
+                            c += 1
+                        } // end if
+                    } // end for i
+                } // end for j
+            } // end if
             return c
         } // end func count
 
         func isGridDraw(grd15: Int) -> Bool {
+            if grd15 < 1 || grd15 > 9 {
+                display(m2: tab2, msg: "Func: isGridDraw. Error: grid = \(grd15). Out of range.")
+            } else if grd15 == 0 {
+                display(m2: tab2, msg: "Func: isGridDraw. Error: grid = \(grd15). Out of range.")
+            } // end if
+            
+            // end if
+            if game[pos(pt1: [bigBoard, convertGridToRC(grd22: grd15, txt22: "IsGridDraw")[0], convertGridToRC(grd22: grd15, txt22: "IsGridDraw")[1]])] == draw {
+                return true // draw
+            } else { // 
+                return false // no draw
+            } // end if
+        } // end func isGridDraw(grd15) -> Bool
+        
+        /* func isGridDraw(grd15: Int) -> Bool {
             if count(grd8: grd15, tok8: ex, oh) == 9 {
                 return true // draw
             } else { // no TTT and count = 9
                 return false // no draw
             } // end if
-        } // end func isGridDraw(grd15) -> Bool
+        } // end func isGridDraw(grd15) -> Bool */
 
         func displayBigBoard() {
             print("""
@@ -230,7 +258,10 @@ struct PlayGame {
 
             func formLabelLine(grd14: Int) -> String {
                 func printGridLabel(grd6: Int) -> String {
-                    if (hasTTTinGrid(grd3: grd6, tok3: ex, oh) != nil) || isGridDraw(grd15: grd6) {
+                    if grd6 < 0 || grd6 > 9 {
+                        display(m2: tab2, msg: "Func: printGridLabel. Error: grid = \(grd6). Out of range.")
+                    } // end if
+                    if (hasTTTinGrid(grd3: grd6, tok3: ex) != nil) || hasTTTinGrid(grd3: grd6, tok3: oh) != nil || isGridDraw(grd15: grd6) || grd6 != 0 {
                         return sp7
                     } else { // is big grid TTT
                         return "Grid" + sp1 + String(grd6) + sp1
@@ -238,7 +269,11 @@ struct PlayGame {
                 } // end func printGridLabel
 
                 // F O R M L A B E L L I N E   C O D E   H E R E
-                if hasTTTinGrid(grd3: bigBoard, tok3: ex, oh) != nil {
+                if grd14 < 0 || grd14 > 9 {
+                    display(m2: tab2, msg: "Func: formLabelLine. Error: grid = \(grd14). Out of range.")
+                } // end if
+                if hasTTTinGrid(grd3: bigBoard, tok3: ex) != nil || hasTTTinGrid(grd3: bigBoard, tok3: oh) != nil {
+                    // ADD || isGridDraw || grd14 != 0       ?!?
                     return ""
                 } else {
                     return "\(tab2)\(sp6)\(printGridLabel(grd6: grd14))\(sp1)\(bar)\(sp3)\(printGridLabel(grd6: grd14 + 1))\(sp1)\(bar)\(sp3)\(printGridLabel(grd6: grd14 + 2))\n"
@@ -246,7 +281,7 @@ struct PlayGame {
             } // end func formLabelLine
 
             func printSpacers() -> String {
-                if hasTTTinGrid(grd3: bigBoard, tok3: ex, oh) != nil || isGridDraw(grd15: bigBoard) {
+                if hasTTTinGrid(grd3: bigBoard, tok3: ex) != nil || hasTTTinGrid(grd3: bigBoard, tok3: oh) != nil || isGridDraw(grd15: bigBoard) {
                     return ""
                 } else {
                     return "\(sp10)\(bar)\(sp11)\(bar)"
@@ -279,6 +314,9 @@ struct PlayGame {
         } // end func meaningless
 
         func isSquareTaken(grd10: Int, row10: Int, col10: Int) -> Bool {
+            if grd10 < 0 || grd10 > 9 || row10 < 1 || row10 > 3 || col10 < 1 || col10 > 3 {
+                display(m2: tab2, msg: "Func: isSquareTaken. Error: grid = \(grd10); row = \(row10); column = \(col10). Out of range.")
+            } // end if
             if game[pos(pt1: [grd10, row10, col10])] == under { // tests for under
                 return false
             } else {
@@ -305,7 +343,10 @@ struct PlayGame {
                     } // end if
                 } // end if
             } // end func testOTG()
-
+            
+            if grd12 < 0 || grd12 > 9 {
+                display(m2: tab2, msg: "Func: proposeOorT. Error: grid = \(grd12). Out of range.")
+            } // end if
             proposeFlag = false
             if grid {
                 testOTG(prefix: R, loc: "Start")
@@ -324,6 +365,8 @@ struct PlayGame {
                     testOTG(prefix: L, loc: "Row1, Col3, DiagRtoL")
                 } else {
                     tempRC = [1, 3]
+                    tempR = 1
+                    tempC = 3
                     testOTRC(prefix: L, loc: "Row1, Col3, DiagRtoL")
                 } // end if
             } else if (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 1, 2])] == under) ||
@@ -336,6 +379,8 @@ struct PlayGame {
                     testOTG(prefix: L, loc: "Row1, Col2")
                 } else {
                     tempRC = [1, 2]
+                    tempR = 1
+                    tempC = 2
                     testOTRC(prefix: L, loc: "Row1, Col2")
                 } // end if
             } else if (game[pos(pt1: [grd12, 1, 2])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 1, 1])] == under) ||
@@ -350,6 +395,8 @@ struct PlayGame {
                     testOTG(prefix: L, loc: "Row1, Col1, DiagLtoR")
                 } else {
                     tempRC = [1, 1]
+                    tempR = 1
+                    tempC = 1
                     testOTRC(prefix: L, loc: "Row1, Col1, DiagLtoR")
                 } // end if
             } else if (game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == under) ||
@@ -362,6 +409,8 @@ struct PlayGame {
                     testOTG(prefix: L, loc: "Row2, Col3")
                 } else {
                     tempRC = [2, 3]
+                    tempR = 2
+                    tempC = 3
                     testOTRC(prefix: L, loc: "Row2, Col3")
                 } // end if
             } else if (game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == under) ||
@@ -378,6 +427,8 @@ struct PlayGame {
                     testOTG(prefix: L, loc: "Row2, Col2, DiagLtoR, DiagRtoL")
                 } else {
                     tempRC = [2, 2]
+                    tempR = 2
+                    tempC = 2
                     testOTRC(prefix: L, loc: "Row2, Col2, DiagLtoR, DiagRtoL")
                 } // end if
             } else if (game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == tok12 && game[pos(pt1: [grd12, 2, 1])] == under) ||
@@ -390,6 +441,8 @@ struct PlayGame {
                     testOTG(prefix: L, loc: "Row2, Col1")
                 } else {
                     tempRC = [2, 1]
+                    tempR = 2
+                    tempC = 1
                     testOTRC(prefix: L, loc: "Row2, Col1")
                 } // end if
             } else if (game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 3, 2])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == under) ||
@@ -404,6 +457,8 @@ struct PlayGame {
                     testOTG(prefix: L, loc: "Row3, Col3")
                 } else {
                     tempRC = [3, 3]
+                    tempR = 3
+                    tempC = 3
                     testOTRC(prefix: L, loc: "Row3, Col3")
                 } // end if
             } else if (game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 3, 2])] == under) ||
@@ -416,6 +471,8 @@ struct PlayGame {
                     testOTG(prefix: L, loc: "Row3, Col2")
                 } else {
                     tempRC = [3, 2]
+                    tempR = 3
+                    tempC = 2
                     testOTRC(prefix: L, loc: "Row3, Col2")
                 } // end if
             } else if (game[pos(pt1: [grd12, 3, 2])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == under) ||
@@ -430,6 +487,8 @@ struct PlayGame {
                     testOTG(prefix: L, loc: "Row3, Col1, DiagRtoL")
                 } else {
                     tempRC = [3, 1]
+                    tempR = 3
+                    tempC = 1
                     testOTRC(prefix: L, loc: "Row3, Col1, DiagnRtoL")
                 } // end if
             } // end if
@@ -466,19 +525,28 @@ struct PlayGame {
                 testGridStrategy(prefix: R, type: .random)
                 repeat {
                     tempG = Int.random(in: 1 ... 9)
-                } while hasTTTinGrid(grd3: tempG, tok3: ex, oh) != nil || isGridDraw(grd15: tempG)
+                } while hasTTTinGrid(grd3: tempG, tok3: ex) != nil || hasTTTinGrid(grd3: tempG, tok3: oh) != nil || isGridDraw(grd15: tempG)
                 testGridStrategy(prefix: L, type: .random)
             } // end func getRandomGrid()
 
             func proposeSmallBoardOorTG() {
+                for x in 1...9 {
+                    if game[pos(pt1:[bigBoard, convertGridToRC(grd22: x, txt22: "proposeSmallBoardOorTG")[0], convertGridToRC(grd22: x, txt22: "proposeSmallBoardOorTG")[1]])] == under {
+                        proposeOorT(grd12: x, tok12: playerCurrent.oppToken, grid: true)
+                        proposeOorT(grd12: x, tok12: playerCurrent.token, grid: true)
+                    } // end if
+                } // end for
+            } // end func proposeSmallBoards()
+ 
+            /*func proposeSmallBoardOorTG() {
                 for x in 1...9 {
                     if count(grd8: x, tok8: ex, oh) > 1  && hasTTTinGrid(grd3: x, tok3: ex) != nil && hasTTTinGrid(grd3: x, tok3: oh) != nil && !isGridDraw(grd15: x) {
                         proposeOorT(grd12: x, tok12: playerCurrent.oppToken, grid: true)
                         proposeOorT(grd12: x, tok12: playerCurrent.token, grid: true)
                     } // end if
                 } // end for
-            } // end func proposeSmallBoards()
-            
+            } // end func proposeSmallBoards() */
+
             // C H O O S E P R O P O S E G R I D   C O D E   H E R E
             // returns (continueFlag, proposeFlag)
             // continueFlag: continue = true; quit = false
@@ -618,6 +686,7 @@ struct PlayGame {
                 } while hasTTTinGrid(grd3: tempG, tok3: ex, oh) != nil || count(grd8: tempG, tok8: ex, oh, draw) == 9 // end outerGridLoop
                 testGridStrategy(prefix: L, type: .keyboard)
             } // end switch strategy
+            // tempG is proposed
             nL2()
             display(msg: icnInfo + "\(playerCurrent.name)\(pMsg[16]) \(tempG).") // player selected grid #
             return continueFlag
@@ -653,7 +722,7 @@ struct PlayGame {
             // returns (continueFlag, proposeFlag)
             // continueFlag: continue = true; quit = false
             // proposeFlag: tempRC is proposed = true; tempRC not proposed = false
-            // must set rc = tempRC on return
+            // must set rc = tempRC; r = rc[0], and c = rc[1] on return
 
             continueFlag = true
             // proposeFlag = false
@@ -667,7 +736,7 @@ struct PlayGame {
             case .smartRandom:
                 switch count(grd8: tempG, tok8: ex, oh) {
                 case 0, 1:
-                    proposeRandomRC(grd20: tempG)
+                proposeRandomRC(grd20: tempG)
                 default:
                    proposeRandomRC(grd20: tempG)
                    proposeOorT(grd12: tempG, tok12: playerCurrent.oppToken, grid: false)
@@ -809,11 +878,11 @@ struct PlayGame {
                 tempRC = [tempR, tempC]
                 testRCStrategy(prefix: L, type: .keyboard)
             } // end switch strategy
-            // proposeTempG(grd21: tempG)
+            // tempRC, tempR, tempC proposed here
             return continueFlag
         } // end continueProposeRCorG() -> Bool
 
-        func convertGridToRC(grd22: Int) -> [Int] {
+        func convertGridToRC(grd22: Int, txt22: String) -> [Int] {
             var tmpRC: [Int] = []
             if grd22 == 1 {
                 tmpRC = [1, 1]
@@ -833,13 +902,15 @@ struct PlayGame {
                 tmpRC = [3, 2]
             } else if grd22 == 9 {
                 tmpRC = [3, 3]
+            } else {
+                display(m2: tab2, msg: txt22 + ". Calling grid: \(grd22)")
             } // end if
             return tmpRC
         } // end func convertGridToRC(grd22: Int)
 
         func markBigBoard(grd17: Int, tok17: String) {
             var tmpRC: [Int] = []
-            tmpRC = convertGridToRC(grd22: grd17)
+            tmpRC = convertGridToRC(grd22: grd17, txt22: "markBigBoard")
             game[pos(pt1: [bigBoard, tmpRC[0], tmpRC[1]])] = tok17
         } // end func markBigBoard(grd17: Int, tok17: String)
 
@@ -935,20 +1006,23 @@ struct PlayGame {
         func continueDetermineNextGrid() -> Bool {
             // testPoint(location: "\(R)determineNextGrid")
             continueFlag = true
-            tempI1 = (r - 1) * 3 + c
+            if testRC {
+                display(m2: tab2, msg: "RC: \(rc), R: \(r), C: \(c)")
+            }
+            tempI1 = (rc[0] - 1) * 3 + rc[1]
             if hasTTTinGrid(grd3: tempI1, tok3: ex) == nil && hasTTTinGrid(grd3: tempI1, tok3: oh) == nil && !isGridDraw(grd15: tempI1) { // no TTT or Draw in this grid: next grid is computed here
                 // testPoint(location: "\(R)TTT and Draw assignment")
                 tempG = tempI1
                 testPoint(location: "\(L)determine: computed")
                 nL()
-                display(msg: icnWarning + "\(playerCurrent.name)" + pMsg[15] + "\(g)!")
+                display(msg: icnWarning + "\(playerCurrent.name)" + pMsg[15] + "\(tempG)!") // must play grid tempG
             } else {
                 // next grid is player's choice
                 continueFlag = continueProposeGrid()
                 if continueFlag {
-                    g = tempG
+                    // g = tempG
                     // nL()
-                    // display(msg: icnInfo + "\(playerCurrent.name)" + pMsg[16] + "\(g)")
+                    // display(msg: icnInfo + "\(playerCurrent.name)" + pMsg[16] + "\(tempG)") // you selected grid tempG
                     testPoint(location: "\(L)determine: choice")
                 } // end if
             } // end if
