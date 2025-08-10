@@ -8,14 +8,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "6D99AB96-68DD-4594-B76B-FC5D12AF676F"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "newSTTT/PlayGame.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1049"
-            endingLineNumber = "1049"
+            startingLineNumber = "1056"
+            endingLineNumber = "1056"
             landmarkName = "continuePlay()"
             landmarkType = "7">
          </BreakpointContent>
@@ -24,14 +24,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "68D2AF4C-6475-4B4E-A7CD-453AA25CE8FC"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "newSTTT/PlayGame.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1053"
-            endingLineNumber = "1053"
+            startingLineNumber = "1060"
+            endingLineNumber = "1060"
             landmarkName = "continuePlay()"
             landmarkType = "7">
          </BreakpointContent>
@@ -40,99 +40,23 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "7BE224C8-F483-490F-A704-8B08049802CB"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "newSTTT/PlayGame.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "527"
-            endingLineNumber = "527"
+            startingLineNumber = "532"
+            endingLineNumber = "532"
             landmarkName = "proposeRandomGrid()"
             landmarkType = "9">
-            <Locations>
-               <Location
-                  uuid = "7BE224C8-F483-490F-A704-8B08049802CB - 914ca9e8bc79040c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "proposeSmallBoardOorTG() -&gt; ()"
-                  moduleName = "newSTTT"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/JacksHotAir/Projects/Programming/STTT/NewSTTT!/newSTTT/PlayGame.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "529"
-                  endingLineNumber = "529">
-               </Location>
-               <Location
-                  uuid = "7BE224C8-F483-490F-A704-8B08049802CB - fb80b736fd27eb84"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "proposeRandomGrid() -&gt; ()"
-                  moduleName = "newSTTT"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/JacksHotAir/Projects/Programming/STTT/NewSTTT!/newSTTT/PlayGame.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "527"
-                  endingLineNumber = "527">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "E37B2502-56A5-4056-B28D-1ACD15E1F000"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "newSTTT/PlayGame.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "529"
-            endingLineNumber = "529"
-            landmarkName = "proposeRandomGrid()"
-            landmarkType = "9">
-            <Locations>
-               <Location
-                  uuid = "E37B2502-56A5-4056-B28D-1ACD15E1F000 - 914ca9e8bc79040c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "proposeSmallBoardOorTG() -&gt; ()"
-                  moduleName = "newSTTT"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/JacksHotAir/Projects/Programming/STTT/NewSTTT!/newSTTT/PlayGame.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "529"
-                  endingLineNumber = "529">
-               </Location>
-               <Location
-                  uuid = "E37B2502-56A5-4056-B28D-1ACD15E1F000 - fb80b736fd27eb46"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "proposeRandomGrid() -&gt; ()"
-                  moduleName = "newSTTT"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/JacksHotAir/Projects/Programming/STTT/NewSTTT!/newSTTT/PlayGame.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "529"
-                  endingLineNumber = "529">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E85AA955-09C9-4E35-A34A-500EE9EA9ED6"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "newSTTT/PlayGame.swift"
@@ -140,6 +64,22 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "534"
             endingLineNumber = "534"
+            landmarkName = "proposeRandomGrid()"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E85AA955-09C9-4E35-A34A-500EE9EA9ED6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "newSTTT/PlayGame.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "539"
+            endingLineNumber = "539"
             landmarkName = "proposeSmallBoardOorTG()"
             landmarkType = "9">
          </BreakpointContent>
@@ -148,46 +88,32 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "B4DA33A2-30BA-4EC0-80D1-FE5C8F9EAD2A"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "newSTTT/PlayGame.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "537"
-            endingLineNumber = "537"
+            startingLineNumber = "542"
+            endingLineNumber = "542"
             landmarkName = "proposeSmallBoardOorTG()"
             landmarkType = "9">
-            <Locations>
-               <Location
-                  uuid = "B4DA33A2-30BA-4EC0-80D1-FE5C8F9EAD2A - a180ca82f2b3fa8b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "continueProposeGrid() -&gt; Swift.Bool"
-                  moduleName = "newSTTT"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/JacksHotAir/Projects/Programming/STTT/NewSTTT!/newSTTT/PlayGame.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "552"
-                  endingLineNumber = "552">
-               </Location>
-               <Location
-                  uuid = "B4DA33A2-30BA-4EC0-80D1-FE5C8F9EAD2A - 914ca9e8bc790304"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "proposeSmallBoardOorTG() -&gt; ()"
-                  moduleName = "newSTTT"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/JacksHotAir/Projects/Programming/STTT/NewSTTT!/newSTTT/PlayGame.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "537"
-                  endingLineNumber = "537">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F1D14093-516F-44D1-906F-989DDFA988D0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "newSTTT/PlayGame.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1077"
+            endingLineNumber = "1077"
+            landmarkName = "continuePlay()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

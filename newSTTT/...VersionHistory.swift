@@ -7,6 +7,10 @@
 /*
     Version Date    Comments
  
+            250810  OorT
+ 
+            250803  isGridDraw
+ 
             250724  SmartRandom may be working
                     Start on .deny
  

@@ -324,13 +324,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>1038</string>
+					<string>1045</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>1037</string>
+					<string>1044</string>
 					<key>Timestamp</key>
-					<string>775705940.4696929</string>
+					<string>776534363.538988</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -349,7 +349,7 @@ struct PlayGame {
 				<string>        // PLAYGAME CODE
 </string>
 				<key>leading</key>
-				<string>        } // end func testPoint(location: String)
+				<string>        } // end func markBigBoardEndOfGame()
 
 </string>
 				<key>trailing</key>
@@ -375,7 +375,7 @@ struct PlayGame {
 					<key>StartingLineNumber</key>
 					<string>326</string>
 					<key>Timestamp</key>
-					<string>775705940.4697</string>
+					<string>776529883.681234</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -414,13 +414,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>508</string>
+					<string>513</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>507</string>
+					<string>512</string>
 					<key>Timestamp</key>
-					<string>775705940.4696341</string>
+					<string>776529883.681217</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -439,7 +439,7 @@ struct PlayGame {
 				<string>        func continueProposeGrid() -&gt; Bool {
 </string>
 				<key>leading</key>
-				<string>        } // end func testPlayerCurrentStrategy
+				<string>        } // end func notifyProposeGrid
         
 </string>
 				<key>trailing</key>
@@ -459,13 +459,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>695</string>
+					<string>689</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>694</string>
+					<string>688</string>
 					<key>Timestamp</key>
-					<string>775705940.469685</string>
+					<string>776529883.681226</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -489,7 +489,7 @@ struct PlayGame {
 </string>
 				<key>trailing</key>
 				<string>            // returns continueFlag
-            // must set rc = tempRC on return
+            // set rc = tempRC on return
             
 </string>
 			</dict>

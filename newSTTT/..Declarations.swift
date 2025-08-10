@@ -135,6 +135,7 @@
             count(grd8: Int, tok8: String...) -> Int
                 var c
             isGridDraw(grd15: Int) -> Bool // draw = true; no draw = false
+            isGridTaken(grd16: Int) -> Bool // taken = true; not taken = false
             displayBigBoard()
             displayGame()
                 let
@@ -173,7 +174,7 @@
                 testSwitchPlayers
             continueDetermineNextGrid() -> Bool
             testPoint(location: String)
-
+            markBigBoardEndOfGame()
  
  Hold
             proposeFreeMiddle(grd20: Int) **Move

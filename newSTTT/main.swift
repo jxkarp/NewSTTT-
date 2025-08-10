@@ -10,9 +10,9 @@ import Foundation
 // MAIN Test Variables, Extensions, Constants, Variables
 // M A I N   T E S T   V A R I A B L E S
 var test = false
-var testBrain = false
+var testBrain = true
 var testBigBoard = true
-var testOT = false
+var testOT = true
 var testRC = true
 
 // M A I N   E X T E N S I O N S

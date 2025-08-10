@@ -217,27 +217,27 @@ struct PlayGame {
         } // end func count
 
         func isGridDraw(grd15: Int) -> Bool {
-            if grd15 < 1 || grd15 > 9 {
+            if count(grd8: grd15, tok8: under) == 0 {
+                return true // draw
+            } else {
+                return false // not a draw yet
+            }
+            /*
+             if grd15 < 1 || grd15 > 9 {
                 display(m2: tab2, msg: "Func: isGridDraw. Error: grid = \(grd15). Out of range.")
             } else if grd15 == 0 {
                 display(m2: tab2, msg: "Func: isGridDraw. Error: grid = \(grd15). Out of range.")
             } // end if
-            
-            // end if
-            if game[pos(pt1: [bigBoard, convertGridToRC(grd22: grd15, txt22: "IsGridDraw")[0], convertGridToRC(grd22: grd15, txt22: "IsGridDraw")[1]])] == draw {
-                return true // draw
-            } else { // 
-                return false // no draw
-            } // end if
+            */
         } // end func isGridDraw(grd15) -> Bool
         
-        /* func isGridDraw(grd15: Int) -> Bool {
-            if count(grd8: grd15, tok8: ex, oh) == 9 {
-                return true // draw
-            } else { // no TTT and count = 9
-                return false // no draw
+        func isGridTaken(grd16: Int) -> Bool {
+            if count(grd8: bigBoard, tok8: under) == 0 || (hasTTTinGrid(grd3: grd16, tok3: ex) != nil) || hasTTTinGrid(grd3: grd16, tok3: oh) != nil || isGridDraw(grd15: grd16) {
+                true
+            } else {
+                false
             } // end if
-        } // end func isGridDraw(grd15) -> Bool */
+        } // end func
 
         func displayBigBoard() {
             print("""
@@ -261,7 +261,7 @@ struct PlayGame {
                     if grd6 < 0 || grd6 > 9 {
                         display(m2: tab2, msg: "Func: printGridLabel. Error: grid = \(grd6). Out of range.")
                     } // end if
-                    if (hasTTTinGrid(grd3: grd6, tok3: ex) != nil) || hasTTTinGrid(grd3: grd6, tok3: oh) != nil || isGridDraw(grd15: grd6) || grd6 != 0 {
+                    if isGridTaken(grd16: grd6) {
                         return sp7
                     } else { // is big grid TTT
                         return "Grid" + sp1 + String(grd6) + sp1
@@ -272,8 +272,8 @@ struct PlayGame {
                 if grd14 < 0 || grd14 > 9 {
                     display(m2: tab2, msg: "Func: formLabelLine. Error: grid = \(grd14). Out of range.")
                 } // end if
-                if hasTTTinGrid(grd3: bigBoard, tok3: ex) != nil || hasTTTinGrid(grd3: bigBoard, tok3: oh) != nil {
-                    // ADD || isGridDraw || grd14 != 0       ?!?
+                if isGridTaken(grd16: grd14) {
+                    // ADD || grd14 != 0       ?!?
                     return ""
                 } else {
                     return "\(tab2)\(sp6)\(printGridLabel(grd6: grd14))\(sp1)\(bar)\(sp3)\(printGridLabel(grd6: grd14 + 1))\(sp1)\(bar)\(sp3)\(printGridLabel(grd6: grd14 + 2))\n"
@@ -281,7 +281,7 @@ struct PlayGame {
             } // end func formLabelLine
 
             func printSpacers() -> String {
-                if hasTTTinGrid(grd3: bigBoard, tok3: ex) != nil || hasTTTinGrid(grd3: bigBoard, tok3: oh) != nil || isGridDraw(grd15: bigBoard) {
+                if isGridTaken(grd16: bigBoard) {
                     return ""
                 } else {
                     return "\(sp10)\(bar)\(sp11)\(bar)"
@@ -505,6 +505,11 @@ struct PlayGame {
             } // end if
         } // end func testPlayerCurrentStrategy
         
+        func notifyProposeGrid() {
+            nL()
+            display(msg: icnInfo + "\(playerCurrent.name)\(pMsg[16])\(tempG).") // player selected grid #
+        } // end func notifyProposeGrid
+        
         func continueProposeGrid() -> Bool {
             // returns (continueFlag, proposeFlag)
             // must set g = tempG on return
@@ -525,7 +530,7 @@ struct PlayGame {
                 testGridStrategy(prefix: R, type: .random)
                 repeat {
                     tempG = Int.random(in: 1 ... 9)
-                } while hasTTTinGrid(grd3: tempG, tok3: ex) != nil || hasTTTinGrid(grd3: tempG, tok3: oh) != nil || isGridDraw(grd15: tempG)
+                } while isGridTaken(grd16: tempG)
                 testGridStrategy(prefix: L, type: .random)
             } // end func getRandomGrid()
 
@@ -537,21 +542,12 @@ struct PlayGame {
                     } // end if
                 } // end for
             } // end func proposeSmallBoards()
- 
-            /*func proposeSmallBoardOorTG() {
-                for x in 1...9 {
-                    if count(grd8: x, tok8: ex, oh) > 1  && hasTTTinGrid(grd3: x, tok3: ex) != nil && hasTTTinGrid(grd3: x, tok3: oh) != nil && !isGridDraw(grd15: x) {
-                        proposeOorT(grd12: x, tok12: playerCurrent.oppToken, grid: true)
-                        proposeOorT(grd12: x, tok12: playerCurrent.token, grid: true)
-                    } // end if
-                } // end for
-            } // end func proposeSmallBoards() */
 
             // C H O O S E P R O P O S E G R I D   C O D E   H E R E
             // returns (continueFlag, proposeFlag)
             // continueFlag: continue = true; quit = false
             // proposeFlag: tempG is proposed = true: tempG is not proposed = false
-            // must set g = tempG on return
+            // set g = tempG on return
 
             continueFlag = true
             // proposeFlag = false
@@ -686,15 +682,13 @@ struct PlayGame {
                 } while hasTTTinGrid(grd3: tempG, tok3: ex, oh) != nil || count(grd8: tempG, tok8: ex, oh, draw) == 9 // end outerGridLoop
                 testGridStrategy(prefix: L, type: .keyboard)
             } // end switch strategy
-            // tempG is proposed
-            nL2()
-            display(msg: icnInfo + "\(playerCurrent.name)\(pMsg[16]) \(tempG).") // player selected grid #
+            notifyProposeGrid()
             return continueFlag
         } // end  func continueProposeGrid() -> Bool
 
         func continueProposeRC() -> Bool {
             // returns continueFlag
-            // must set rc = tempRC on return
+            // set rc = tempRC on return
             
             func testRCStrategy(prefix: String, type: Brain) {
                 if testBrain {
@@ -724,6 +718,7 @@ struct PlayGame {
             // proposeFlag: tempRC is proposed = true; tempRC not proposed = false
             // must set rc = tempRC; r = rc[0], and c = rc[1] on return
 
+            testPoint(location: "continueProposeRC")
             continueFlag = true
             // proposeFlag = false
             testPlayerCurrentStrategy()
@@ -1007,7 +1002,7 @@ struct PlayGame {
             // testPoint(location: "\(R)determineNextGrid")
             continueFlag = true
             if testRC {
-                display(m2: tab2, msg: "RC: \(rc), R: \(r), C: \(c)")
+                display(m2: testM, msg: "RC: \(rc), R: \(r), C: \(c)")
             }
             tempI1 = (rc[0] - 1) * 3 + rc[1]
             if hasTTTinGrid(grd3: tempI1, tok3: ex) == nil && hasTTTinGrid(grd3: tempI1, tok3: oh) == nil && !isGridDraw(grd15: tempI1) { // no TTT or Draw in this grid: next grid is computed here
@@ -1034,6 +1029,18 @@ struct PlayGame {
                 display(m2: testM, msg: "\(location): G: \(g) R: \(r) C: \(c)")
             } // end if
         } // end func testPoint(location: String)
+        
+        func markBigBoardEndOfGame() {
+            // clear grids
+            clearGrids(tok30: sp1)
+
+            // mark boards with TTTs and Draws
+            markGrids()
+
+            // print it!
+            displayGame(tag: true)
+
+        } // end func markBigBoardEndOfGame()
 
         // PLAYGAME CODE
         // C O N T I N U E P L A Y   C O D E   H E R E
@@ -1066,8 +1073,7 @@ struct PlayGame {
                 } // end if
 
                 moveLoop: repeat {
-                    // getRC()
-                    // tempFlags = chooseProposeRC()
+                    testPoint(location: "start of moveLoop")
                     continueFlag = continueProposeRC()
                     if !continueFlag {
                         break gameLoop
@@ -1097,20 +1103,13 @@ struct PlayGame {
                         // if TTT in Game
                         if hasTTTinGrid(grd3: bigBoard, tok3: playerCurrent.token) != nil {
                             // game is over
-
+                            
                             // notify
                             nL()
                             display(msg: pMsg[10] + "\(playerCurrent.name)," + pMsg[11])
-
-                            // clear grids
-                            clearGrids(tok30: sp1)
-
-                            // mark boards with TTTs and Draws
-                            markGrids()
-
-                            // print it!
-                            displayGame(tag: true)
-
+                            
+                            markBigBoardEndOfGame()
+                            
                             // count win and loss
                             gameCount += 1
                             if playerCurrent.name == player1.name {
@@ -1120,8 +1119,25 @@ struct PlayGame {
                                 player2.gamesWon += 1
                                 player1.gamesLost += 1
                             } // end if
+                            
+                            break moveLoop
+                            
+                        } else if isGridDraw(grd15: bigBoard) {
+                            // game is over
+
+                            // notify
+                            nL()
+                            display(msg: pMsg[14])
+
+                            markBigBoardEndOfGame()
+
+                            // count draw
+                            gameCount += 1
+                            player1.gamesDrawn += 1
+                            player2.gamesDrawn += 1
 
                             break moveLoop
+                            
                         } // end if hasTTT in Grid = 0 ie Game
 
                         // if Draw in Grid
@@ -1144,14 +1160,7 @@ struct PlayGame {
                             nL()
                             display(msg: pMsg[14])
 
-                            // clear grids
-                            clearGrids(tok30: sp1)
-
-                            // mark boards with TTTs and Draws
-                            markGrids()
-
-                            // print it!
-                            displayGame(tag: true)
+                            markBigBoardEndOfGame()
 
                             // count draw
                             gameCount += 1
@@ -1159,6 +1168,7 @@ struct PlayGame {
                             player2.gamesDrawn += 1
 
                             break moveLoop
+                            
                         } // end if isDrawInGrid
                     } // end if TTT in Grid
 
@@ -1169,12 +1179,12 @@ struct PlayGame {
                     continueFlag = continueDetermineNextGrid()
                     if !continueFlag {
                         break gameLoop
-                    }
+                    } // end if
 
                 } while continueFlag // end moveLoop ==> check this condition
 
                 nL()
-                display(msg: pMsg[17])
+                display(msg: pMsg[17]) // Do you want to play again
                 display(m2: tab2, msg: mMsg[13] + mMsg[19]) // Yes
                 display(m2: tab2, msg: mMsg[14] + mMsg[20]) // 2) No
                 display(msg: mMsg[21] + mMsg[22], trm: "")
