@@ -221,14 +221,7 @@ struct PlayGame {
                 return true // draw
             } else {
                 return false // not a draw yet
-            }
-            /*
-             if grd15 < 1 || grd15 > 9 {
-                display(m2: tab2, msg: "Func: isGridDraw. Error: grid = \(grd15). Out of range.")
-            } else if grd15 == 0 {
-                display(m2: tab2, msg: "Func: isGridDraw. Error: grid = \(grd15). Out of range.")
             } // end if
-            */
         } // end func isGridDraw(grd15) -> Bool
         
         func isGridTaken(grd16: Int) -> Bool {
@@ -323,8 +316,10 @@ struct PlayGame {
                 return true
             } // end if
         } // end func isSquareTaken(grd10: Int, row10: Int, col10: Int) -> Bool
-
-        func proposeOorT(grd12: Int, tok12: String, grid: Bool) {
+        
+        
+        
+        func proposeOorTG(grd12: Int, tok12: String) {
             //  Opportunity = called with token
             //  Threat = called with oppToken
             // called with both playerCurrent.oppToken and playerCurrent.token checks first for threats, then for opportunities in one call
@@ -336,6 +331,92 @@ struct PlayGame {
                     } // end if
                 } // end if
             } // end func testOTG()
+            
+            if grd12 < 0 || grd12 > 9 {
+                display(m2: tab2, msg: "Func: proposeOorT. Error: grid = \(grd12). Out of range.")
+            } // end if
+            proposeFlag = false
+            
+            testOTG(prefix: R, loc: "Start")
+
+            if ((game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 1, 2])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == under) || (game[pos(pt1: [grd12, 2, 3])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == under) || (game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == under)) && !isGridTaken(grd16: 3) {
+                    // row 1, 11, 12, -> 13
+                    // col 3, 23, 33 -> 13
+                    // diag R to L, 22, 31 -> 13
+                proposeFlag = true
+                tempG = 3
+                testOTG(prefix: L, loc: "Row1, Col3, DiagRtoL")
+                   
+            } else if ((game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 1, 2])] == under) || (game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 1, 1])] == under)) && !isGridTaken(grd16: 2) {
+                    // row 1, 11, 13 -> 12
+                    // col 2, 22, 32 -> 12
+                proposeFlag = true
+                tempG = 2
+                testOTG(prefix: L, loc: "Row1, Col2")
+                    
+            } else if ((game[pos(pt1: [grd12, 1, 2])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 1, 1])] == under) || (game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 1, 1])] == under) || (game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 1, 1])] == under)) && !isGridTaken(grd16: 1) {
+                    // row 1, 12, 13 -> 11
+                    // col 1, 21, 31 -> 11
+                    // diag L to R, 22, 33 -> 11
+                proposeFlag = true
+                tempG = 1
+                testOTG(prefix: L, loc: "Row1, Col1, DiagLtoR")
+                    
+            } else if ((game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == under) || (game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == under)) && !isGridTaken(grd16: 6) {
+                    // row 2, 21, 22, -> 23
+                    // col 3, 13, 33 -> 23
+                proposeFlag = true
+                tempG = 6
+                testOTG(prefix: L, loc: "Row2, Col3")
+                    
+            } else if ((game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == under) || (game[pos(pt1: [grd12, 1, 2])] == tok12 && game[pos(pt1: [grd12, 3, 2])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == under) || (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == under) || (game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == under)) && !isGridTaken(grd16: 5) {
+                    // row 2, 21, 23 -> 22
+                    // col 2, 12, 32 -> 22
+                    // diag L to R, 11, 33 -> 22
+                    // diag R to L, 13, 31 -> 22
+                proposeFlag = true
+                tempG = 5
+                testOTG(prefix: L, loc: "Row2, Col2, DiagLtoR, DiagRtoL")
+                    
+            } else if ((game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == tok12 && game[pos(pt1: [grd12, 2, 1])] == under) || (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 2, 1])] == under)) && !isGridTaken(grd16: 4) {
+                    // row 2, 22, 23 -> 21
+                    // col 1, 11, 31 -> 21
+                proposeFlag = true
+                tempG = 4
+                testOTG(prefix: L, loc: "Row2, Col1")
+                    
+            } else if ((game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 3, 2])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == under) || (game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == under) || (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == under)) && !isGridTaken(grd16: 9) {
+                    // row 3, 31, 32, -> 33
+                    // col 3, 13, 23 -> 33
+                    // diag L to R, 11, 22 -> 33
+                proposeFlag = true
+                tempG = 9
+                testOTG(prefix: L, loc: "Row3, Col3")
+                    
+            } else if ((game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 3, 2])] == under) || (game[pos(pt1: [grd12, 1, 2])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 3, 2])] == under)) && !isGridTaken(grd16: 8) {
+                    // row 3, 31, 33 -> 32
+                    // col 2, 12, 22 -> 32
+                proposeFlag = true
+                tempG = 8
+                testOTG(prefix: L, loc: "Row3, Col2")
+                    
+            } else if ((game[pos(pt1: [grd12, 3, 2])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == under) || (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == under) || (game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == under)) && !isGridTaken(grd16: 7) {
+                // row 3, 32, 33 -> 31
+                // col 1, 11, 21 -> 31
+                // diag R to L, 13, 22 -> 31
+                proposeFlag = true
+                tempG = 7
+                testOTG(prefix: L, loc: "Row3, Col1, DiagRtoL")
+            } // end if
+            
+            testOTG(prefix: L, loc: "Finish")
+        } // end func proposeOorTG
+        
+        func proposeOorTRC(grd12: Int, tok12: String) {
+            //  Opportunity = called with token
+            //  Threat = called with oppToken
+            // called with both playerCurrent.oppToken and playerCurrent.token checks first for threats, then for opportunities in one call
+            // returns proposeFlag
             func testOTRC(prefix: String, loc: String) {
                 if testOT {
                     if testBrain {
@@ -348,156 +429,99 @@ struct PlayGame {
                 display(m2: tab2, msg: "Func: proposeOorT. Error: grid = \(grd12). Out of range.")
             } // end if
             proposeFlag = false
-            if grid {
-                testOTG(prefix: R, loc: "Start")
-            } else {
-                testOTRC(prefix: R, loc: "Start")
-            } // end if
-            if (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 1, 2])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == under) ||
-                (game[pos(pt1: [grd12, 2, 3])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == under) ||
-                (game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == under) {
-                // row 1, 11, 12, -> 13
-                // col 3, 23, 33 -> 13
-                // diag R to L, 22, 31 -> 13
-                proposeFlag = true
-                if grid {
-                    tempG = 3
-                    testOTG(prefix: L, loc: "Row1, Col3, DiagRtoL")
-                } else {
+            
+            testOTRC(prefix: R, loc: "Start")
+        
+                if (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 1, 2])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == under) || (game[pos(pt1: [grd12, 2, 3])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == under) || (game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == under) {
+                    // row 1, 11, 12, -> 13
+                    // col 3, 23, 33 -> 13
+                    // diag R to L, 22, 31 -> 13
+                    proposeFlag = true
                     tempRC = [1, 3]
                     tempR = 1
                     tempC = 3
                     testOTRC(prefix: L, loc: "Row1, Col3, DiagRtoL")
-                } // end if
-            } else if (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 1, 2])] == under) ||
-                (game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 1, 1])] == under) {
-                // row 1, 11, 13 -> 12
-                // col 2, 22, 32 -> 12
-                proposeFlag = true
-                if grid {
-                    tempG = 2
-                    testOTG(prefix: L, loc: "Row1, Col2")
-                } else {
+                   
+                } else if (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 1, 2])] == under) || (game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 1, 1])] == under) {
+                    // row 1, 11, 13 -> 12
+                    // col 2, 22, 32 -> 12
+                    proposeFlag = true
                     tempRC = [1, 2]
                     tempR = 1
                     tempC = 2
                     testOTRC(prefix: L, loc: "Row1, Col2")
-                } // end if
-            } else if (game[pos(pt1: [grd12, 1, 2])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 1, 1])] == under) ||
-                (game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 1, 1])] == under) ||
-                (game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 1, 1])] == under) {
-                // row 1, 12, 13 -> 11
-                // col 1, 21, 31 -> 11
-                // diag L to R, 22, 33 -> 11
-                proposeFlag = true
-                if grid {
-                    tempG = 1
-                    testOTG(prefix: L, loc: "Row1, Col1, DiagLtoR")
-                } else {
+                  
+                } else if (game[pos(pt1: [grd12, 1, 2])] == tok12 && game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 1, 1])] == under) || (game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 1, 1])] == under) || (game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 1, 1])] == under) {
+                    // row 1, 12, 13 -> 11
+                    // col 1, 21, 31 -> 11
+                    // diag L to R, 22, 33 -> 11
+                    proposeFlag = true
                     tempRC = [1, 1]
                     tempR = 1
                     tempC = 1
                     testOTRC(prefix: L, loc: "Row1, Col1, DiagLtoR")
-                } // end if
-            } else if (game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == under) ||
-                (game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == under) {
-                // row 2, 21, 22, -> 23
-                // col 3, 13, 33 -> 23
-                proposeFlag = true
-                if grid {
-                    tempG = 6
-                    testOTG(prefix: L, loc: "Row2, Col3")
-                } else {
+                    
+                } else if (game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == under) || (game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == under) {
+                    // row 2, 21, 22, -> 23
+                    // col 3, 13, 33 -> 23
+                    proposeFlag = true
                     tempRC = [2, 3]
                     tempR = 2
                     tempC = 3
                     testOTRC(prefix: L, loc: "Row2, Col3")
-                } // end if
-            } else if (game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == under) ||
-                (game[pos(pt1: [grd12, 1, 2])] == tok12 && game[pos(pt1: [grd12, 3, 2])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == under) ||
-                (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == under) ||
-                (game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == under) {
-                // row 2, 21, 23 -> 22
-                // col 2, 12, 32 -> 22
-                // diag L to R, 11, 33 -> 22
-                // diag R to L, 13, 31 -> 22
-                proposeFlag = true
-                if grid {
-                    tempG = 5
-                    testOTG(prefix: L, loc: "Row2, Col2, DiagLtoR, DiagRtoL")
-                } else {
+
+                } else if (game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == under) || (game[pos(pt1: [grd12, 1, 2])] == tok12 && game[pos(pt1: [grd12, 3, 2])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == under) || (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == under) || (game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == under) {
+                    // row 2, 21, 23 -> 22
+                    // col 2, 12, 32 -> 22
+                    // diag L to R, 11, 33 -> 22
+                    // diag R to L, 13, 31 -> 22
+                    proposeFlag = true
                     tempRC = [2, 2]
                     tempR = 2
                     tempC = 2
                     testOTRC(prefix: L, loc: "Row2, Col2, DiagLtoR, DiagRtoL")
-                } // end if
-            } else if (game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == tok12 && game[pos(pt1: [grd12, 2, 1])] == under) ||
-                (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 2, 1])] == under) {
-                // row 2, 22, 23 -> 21
-                // col 1, 11, 31 -> 21
-                proposeFlag = true
-                if grid {
-                    tempG = 4
-                    testOTG(prefix: L, loc: "Row2, Col1")
-                } else {
+                   
+                } else if (game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == tok12 && game[pos(pt1: [grd12, 2, 1])] == under) || (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 2, 1])] == under) {
+                    // row 2, 22, 23 -> 21
+                    // col 1, 11, 31 -> 21
+                    proposeFlag = true
                     tempRC = [2, 1]
                     tempR = 2
                     tempC = 1
                     testOTRC(prefix: L, loc: "Row2, Col1")
-                } // end if
-            } else if (game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 3, 2])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == under) ||
-                (game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == under) ||
-                (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == under) {
-                // row 3, 31, 32, -> 33
-                // col 3, 13, 23 -> 33
-                // diag L to R, 11, 22 -> 33
-                proposeFlag = true
-                if grid {
-                    tempG = 9
-                    testOTG(prefix: L, loc: "Row3, Col3")
-                } else {
+                   
+                } else if (game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 3, 2])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == under) || (game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 2, 3])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == under) || (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == under) {
+                    // row 3, 31, 32, -> 33
+                    // col 3, 13, 23 -> 33
+                    // diag L to R, 11, 22 -> 33
+                    proposeFlag = true
                     tempRC = [3, 3]
                     tempR = 3
                     tempC = 3
                     testOTRC(prefix: L, loc: "Row3, Col3")
-                } // end if
-            } else if (game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 3, 2])] == under) ||
-                (game[pos(pt1: [grd12, 1, 2])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 3, 2])] == under) {
-                // row 3, 31, 33 -> 32
-                // col 2, 12, 22 -> 32
-                proposeFlag = true
-                if grid {
-                    tempG = 8
-                    testOTG(prefix: L, loc: "Row3, Col2")
-                } else {
+                   
+                } else if (game[pos(pt1: [grd12, 3, 1])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 3, 2])] == under) || (game[pos(pt1: [grd12, 1, 2])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 3, 2])] == under) {
+                    // row 3, 31, 33 -> 32
+                    // col 2, 12, 22 -> 32
+                    proposeFlag = true
                     tempRC = [3, 2]
                     tempR = 3
                     tempC = 2
                     testOTRC(prefix: L, loc: "Row3, Col2")
-                } // end if
-            } else if (game[pos(pt1: [grd12, 3, 2])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == under) ||
-                (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == under) ||
-                (game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == under) {
-                // row 3, 32, 33 -> 31
-                // col 1, 11, 21 -> 31
-                // diag R to L, 13, 22 -> 31
-                proposeFlag = true
-                if grid {
-                    tempG = 7
-                    testOTG(prefix: L, loc: "Row3, Col1, DiagRtoL")
-                } else {
+                   
+                } else if (game[pos(pt1: [grd12, 3, 2])] == tok12 && game[pos(pt1: [grd12, 3, 3])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == under) || (game[pos(pt1: [grd12, 1, 1])] == tok12 && game[pos(pt1: [grd12, 2, 1])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == under) || (game[pos(pt1: [grd12, 1, 3])] == tok12 && game[pos(pt1: [grd12, 2, 2])] == tok12 && game[pos(pt1: [grd12, 3, 1])] == under) {
+                    // row 3, 32, 33 -> 31
+                    // col 1, 11, 21 -> 31
+                    // diag R to L, 13, 22 -> 31
+                    proposeFlag = true
                     tempRC = [3, 1]
                     tempR = 3
                     tempC = 1
                     testOTRC(prefix: L, loc: "Row3, Col1, DiagnRtoL")
-                } // end if
-            } // end if
-            if grid {
-                testOTG(prefix: L, loc: "Finish")
-            } else {
-                testOTRC(prefix: L, loc: "Finish")
-            } // end if
-        } // end func proposeOorT
+                    } // end if
+        
+            testOTRC(prefix: L, loc: "Finish")
+        } // end func proposeOorTRC
 
         func testPlayerCurrentStrategy() {
             if testBrain {
@@ -537,8 +561,8 @@ struct PlayGame {
             func proposeSmallBoardOorTG() {
                 for x in 1...9 {
                     if game[pos(pt1:[bigBoard, convertGridToRC(grd22: x, txt22: "proposeSmallBoardOorTG")[0], convertGridToRC(grd22: x, txt22: "proposeSmallBoardOorTG")[1]])] == under {
-                        proposeOorT(grd12: x, tok12: playerCurrent.oppToken, grid: true)
-                        proposeOorT(grd12: x, tok12: playerCurrent.token, grid: true)
+                        proposeOorTG(grd12: x, tok12: playerCurrent.oppToken)
+                        proposeOorTG(grd12: x, tok12: playerCurrent.token)
                     } // end if
                 } // end for
             } // end func proposeSmallBoards()
@@ -562,8 +586,8 @@ struct PlayGame {
                     proposeSmallBoardOorTG()
                 default:
                     proposeRandomGrid()
-                    proposeOorT(grd12: bigBoard, tok12: playerCurrent.oppToken, grid: true)
-                    proposeOorT(grd12: bigBoard, tok12: playerCurrent.token, grid: true)
+                    proposeOorTG(grd12: bigBoard, tok12: playerCurrent.oppToken)
+                    proposeOorTG(grd12: bigBoard, tok12: playerCurrent.token)
                     if !proposeFlag {
                         proposeSmallBoardOorTG()
                     } // end if
@@ -577,7 +601,7 @@ struct PlayGame {
                     proposeRandomGrid()
                 default:
                     proposeRandomGrid()
-                    // proposeOorT(grd12: 0, tok12: playerCurrent.oppToken, playerCurrent.token)
+                    // proposeOorTG(grd12: 0, tok12: playerCurrent.oppToken, playerCurrent.token)
                 } // end switch count
                 testGridStrategy(prefix: L, type: .middle)
                 */
@@ -606,7 +630,7 @@ struct PlayGame {
                     proposeRandomGrid()
                 default:
                     proposeRandomGrid()
-                    // proposeOorT(grd12: 0, tok12: playerCurrent.oppToken, playerCurrent.token)
+                    // proposeOorTG(grd12: 0, tok12: playerCurrent.oppToken, playerCurrent.token)
                 } // end switch count
 
                 /*
@@ -650,7 +674,7 @@ struct PlayGame {
                     proposeRandomGrid()
                 default:
                     proposeRandomGrid()
-                    // proposeOorT(grd12: 0, tok12: playerCurrent.oppToken, playerCurrent.token)
+                    // proposeOorTG(grd12: 0, tok12: playerCurrent.oppToken, playerCurrent.token)
                 } // end switch count
                 testGridStrategy(prefix: L, type: .corner)
                 */
@@ -734,8 +758,8 @@ struct PlayGame {
                 proposeRandomRC(grd20: tempG)
                 default:
                    proposeRandomRC(grd20: tempG)
-                   proposeOorT(grd12: tempG, tok12: playerCurrent.oppToken, grid: false)
-                   proposeOorT(grd12: tempG, tok12: playerCurrent.token, grid: false)
+                    proposeOorTRC(grd12: tempG, tok12: playerCurrent.oppToken)
+                   proposeOorTRC(grd12: tempG, tok12: playerCurrent.token)
                 } // end switch count
             case .middle:
                 meaningless()
@@ -760,7 +784,7 @@ struct PlayGame {
                     // proposeCorner(grd20: tempG, row18: 3, col18: 1)
                     // proposeCorner(grd20: tempG, row18: 3, col18: 3)
                     // proposeFreeMiddle(grd20: tempG)
-                    // proposeOorT(grd12: bigBoard, tok12: playerCurrent.oppToken, playerCurrent.token)
+                    // proposeOorTRC(grd12: bigBoard, tok12: playerCurrent.oppToken, playerCurrent.token)
                 } // end switch count
                 testRCStrategy(type: .middle)
                 */
@@ -772,7 +796,7 @@ struct PlayGame {
                     proposeRandomRC(grd20: tempG)
                 default:
                     proposeRandomRC(grd20: tempG)
-                    // proposeOorT(grd12: bigBoard, tok12: playerCurrent.oppToken, playerCurrent.token)
+                    // proposeOorTRC(grd12: bigBoard, tok12: playerCurrent.oppToken, playerCurrent.token)
                 } // end switch count
                 testRCStrategy(type: .deny)
                 */
@@ -784,7 +808,7 @@ struct PlayGame {
                     proposeRandomRC(grd20: tempG)
                 default:
                     proposeRandomRC(grd20: tempG)
-                    // proposeOorT(grd12: bigBoard, tok12: playerCurrent.oppToken, playerCurrent.token)
+                    // proposeOorTRC(grd12: bigBoard, tok12: playerCurrent.oppToken, playerCurrent.token)
                 } // end switch count
                 testRCStrategy(type: .force)
                 */
@@ -826,7 +850,7 @@ struct PlayGame {
                          meaningless()
                          // proposeCorner(grd20: tempG, row18: 1, col18: 1)
                      } // end if */
-                    // proposeOorT(grd12: tempG, tok12: playerCurrent.oppToken, playerCurrent.token)
+                    // proposeOorTRC(grd12: tempG, tok12: playerCurrent.oppToken, playerCurrent.token)
                 } // end switch count
                 testRCStrategy(type: .corner)
                 */

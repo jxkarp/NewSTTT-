@@ -151,8 +151,9 @@
                     printSpacers()
             meaningless()
             isSquareTaken(grd10: Int, row10: Int, col10: Int) -> Bool // square is taken = true; square is not taken = false
-            proposeOorT(grd12: Int, tok12: String)
+            proposeOorTG(grd12: Int, tok12: String)
                 testOTG(prefix: String)
+            proposeOorTRC(grd12: Int, tok12: String)
                 testOTRC(prefix: String
             testplayerCurrentStrategy
             continueProposeGrid() -> Bool
