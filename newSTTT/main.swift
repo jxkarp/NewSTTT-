@@ -106,7 +106,8 @@ var playGame = PlayGame()
 // B R A I N   E N U M
 enum Brain: String {
     case random = "Random"
-    case smartRandom = "Smart Random"
+    case smartRandomO = "Smart Random Opportunity"
+    case smartRandomT = "Smart Random Threat"
     case middle = "Middle"
     case deny = "Deny"
     case force = "Force"

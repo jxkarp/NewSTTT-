@@ -6,6 +6,8 @@
 //
 /*
 
+ 1, 3, 6, 8, 10, 11, 12, 14, 15, 16, 17, 18, 20, 22, 30
+ 
  main
      test variables
          test
@@ -160,7 +162,7 @@
                 testGridStrategy(prefix: String, type: Brain)
                 testTempG(location: String)
                 proposeRandomGrid()
-                proposeSmallBoardOorTG()
+                proposeSmallBoardOorTG(oppty: Bool)
             continueProposeRC() -> Bool // continue = true; quit = false
                 testRCStrategy(type: Brain)
                 testTempRC(location: String)

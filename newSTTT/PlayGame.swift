@@ -558,11 +558,16 @@ struct PlayGame {
                 testGridStrategy(prefix: L, type: .random)
             } // end func getRandomGrid()
 
-            func proposeSmallBoardOorTG() {
+            func proposeSmallBoardOorTG(oppty: Bool) {
                 for x in 1...9 {
                     if game[pos(pt1:[bigBoard, convertGridToRC(grd22: x, txt22: "proposeSmallBoardOorTG")[0], convertGridToRC(grd22: x, txt22: "proposeSmallBoardOorTG")[1]])] == under {
-                        proposeOorTG(grd12: x, tok12: playerCurrent.oppToken)
-                        proposeOorTG(grd12: x, tok12: playerCurrent.token)
+                        if oppty {
+                            proposeOorTG(grd12: x, tok12: playerCurrent.oppToken)
+                            proposeOorTG(grd12: x, tok12: playerCurrent.token)
+                        } else {
+                            proposeOorTG(grd12: x, tok12: playerCurrent.token)
+                            proposeOorTG(grd12: x, tok12: playerCurrent.oppToken)
+                        }
                     } // end if
                 } // end for
             } // end func proposeSmallBoards()
@@ -579,19 +584,33 @@ struct PlayGame {
             switch playerCurrent.strategy {
             case .random:
                 proposeRandomGrid()
-            case .smartRandom:
+            case .smartRandomO:
                 switch count(grd8: bigBoard, tok8: ex, oh, draw) {
                 case 0, 1:
                     proposeRandomGrid()
-                    proposeSmallBoardOorTG()
+                    proposeSmallBoardOorTG(oppty: true)
                 default:
                     proposeRandomGrid()
                     proposeOorTG(grd12: bigBoard, tok12: playerCurrent.oppToken)
                     proposeOorTG(grd12: bigBoard, tok12: playerCurrent.token)
                     if !proposeFlag {
-                        proposeSmallBoardOorTG()
+                        proposeSmallBoardOorTG(oppty: true)
                     } // end if
                 } // end switch count
+            case .smartRandomT:
+                switch count(grd8: bigBoard, tok8: ex, oh, draw) {
+                case 0, 1:
+                    proposeRandomGrid()
+                    proposeSmallBoardOorTG(oppty: false)
+                default:
+                    proposeRandomGrid()
+                    proposeOorTG(grd12: bigBoard, tok12: playerCurrent.oppToken)
+                    proposeOorTG(grd12: bigBoard, tok12: playerCurrent.token)
+                    if !proposeFlag {
+                        proposeSmallBoardOorTG(oppty: false)
+                    } // end if
+                } // end switch count
+
             case .middle:
                 meaningless()
                 /*
@@ -748,11 +767,15 @@ struct PlayGame {
             testPlayerCurrentStrategy()
             switch playerCurrent.strategy {
             case .random:
+                // √ random v. smart randomO
+                // √ random v. smart randomT
                 switch count(grd8: tempG, tok8: ex, oh) {
                 default:
                     proposeRandomRC(grd20: tempG)
                 } // end switch count
-            case .smartRandom:
+            case .smartRandomO:
+                // √ smart randomO v. random
+                // X smart randomO v. smart randomT
                 switch count(grd8: tempG, tok8: ex, oh) {
                 case 0, 1:
                 proposeRandomRC(grd20: tempG)
@@ -761,6 +784,18 @@ struct PlayGame {
                     proposeOorTRC(grd12: tempG, tok12: playerCurrent.oppToken)
                    proposeOorTRC(grd12: tempG, tok12: playerCurrent.token)
                 } // end switch count
+            case .smartRandomT:
+                // √ smart randomT v. random
+                // X smart randomT v. smart randomO
+                switch count(grd8: tempG, tok8: ex, oh) {
+                case 0, 1:
+                proposeRandomRC(grd20: tempG)
+                default:
+                   proposeRandomRC(grd20: tempG)
+                    proposeOorTRC(grd12: tempG, tok12: playerCurrent.oppToken)
+                   proposeOorTRC(grd12: tempG, tok12: playerCurrent.token)
+                } // end switch count
+
             case .middle:
                 meaningless()
                 /*
@@ -1206,6 +1241,8 @@ struct PlayGame {
                     } // end if
 
                 } while continueFlag // end moveLoop ==> check this condition
+                
+                displayGameStats()
 
                 nL()
                 display(msg: pMsg[17]) // Do you want to play again

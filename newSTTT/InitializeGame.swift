@@ -30,8 +30,8 @@ struct InitializeGame {
         icnInfo + "You selected ", // 16 You selected
         ", please enter your name: ", // 17 what is your name
         icnExclam + "Do you want to go first, ", // 18 Go first?
-        "", // 19
-        Brain.smartRandom.rawValue, // 20
+        Brain.smartRandomT.rawValue, // 19
+        Brain.smartRandomO.rawValue, // 20
         icnQMark + "Please enter 1 or 2", // 21 enter 1 or 2
         icnInfo + "Player ", // 22 Player
         icnInfo + "Opponent ", // 23 Opponent
@@ -47,7 +47,7 @@ struct InitializeGame {
         Brain.deny.rawValue, // 33 deny
         Brain.force.rawValue, // 34 force
         Brain.corner.rawValue, // 35 corner
-        icnQMark + "Please enter a number from 1 to 2", // 36 enter 1 to 5
+        icnQMark + "Please enter a number from 1 to 3", // 36 enter 1 to 5
         "token ", // 37 token
     ] // end iMsg
 
@@ -196,7 +196,8 @@ struct InitializeGame {
                     nL()
                     display(msg: iMsg[29] + playerCurrent.name + iMsg[30]) // what strategy
                     display(m2: tab2, msg: mMsg[13] + iMsg[31]) // random
-                    display(m2: tab2, msg: mMsg[14] + iMsg[20]) // smart Random
+                    display(m2: tab2, msg: mMsg[14] + iMsg[20]) // smart Random Opportunity
+                    display(m2: tab2, msg: mMsg[15] + iMsg[19]) // smart Random Threat
                     /* display(m2: tab2, msg: mMsg[14] + iMsg[32]) // middle
                     display(m2: tab2, msg: mMsg[15] + iMsg[33]) // deny
                     display(m2: tab2, msg: mMsg[16] + iMsg[34]) // force
@@ -219,8 +220,11 @@ struct InitializeGame {
                                 tempS2 = Brain.random.rawValue
                                 playerCurrent.strategy = .random
                             case 2:
-                                tempS2 = Brain.smartRandom.rawValue
-                                playerCurrent.strategy = .smartRandom
+                                tempS2 = Brain.smartRandomO.rawValue
+                                playerCurrent.strategy = .smartRandomO
+                            case 3:
+                                tempS2 = Brain.smartRandomT.rawValue
+                                playerCurrent.strategy = .smartRandomT
                            /* case 2:
                                 tempS2 = Brain.middle.rawValue
                                 playerCurrent.strategy = .middle

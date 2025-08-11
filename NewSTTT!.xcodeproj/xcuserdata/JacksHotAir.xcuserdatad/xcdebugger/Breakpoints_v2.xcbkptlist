@@ -14,8 +14,8 @@
             filePath = "newSTTT/PlayGame.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1080"
-            endingLineNumber = "1080"
+            startingLineNumber = "1115"
+            endingLineNumber = "1115"
             landmarkName = "continuePlay()"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "newSTTT/PlayGame.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1084"
-            endingLineNumber = "1084"
+            startingLineNumber = "1119"
+            endingLineNumber = "1119"
             landmarkName = "continuePlay()"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,9 +94,9 @@
             filePath = "newSTTT/PlayGame.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "566"
-            endingLineNumber = "566"
-            landmarkName = "proposeSmallBoardOorTG()"
+            startingLineNumber = "571"
+            endingLineNumber = "571"
+            landmarkName = "proposeSmallBoardOorTG(oppty:)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -110,8 +110,8 @@
             filePath = "newSTTT/PlayGame.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1101"
-            endingLineNumber = "1101"
+            startingLineNumber = "1136"
+            endingLineNumber = "1136"
             landmarkName = "continuePlay()"
             landmarkType = "7">
          </BreakpointContent>

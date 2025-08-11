@@ -101,13 +101,13 @@ var player1 = Player()
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>117</string>
+					<string>118</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>116</string>
+					<string>117</string>
 					<key>Timestamp</key>
-					<string>775571303.268551</string>
+					<string>776568951.16026</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -146,13 +146,13 @@ func display(m1: String = "\t\t", m2: String = "", msg: String, trm: String = "\
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>145</string>
+					<string>146</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>144</string>
+					<string>145</string>
 					<key>Timestamp</key>
-					<string>775571303.268582</string>
+					<string>776568951.160247</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -235,13 +235,13 @@ struct InitializeGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>280</string>
+					<string>284</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>279</string>
+					<string>283</string>
 					<key>Timestamp</key>
-					<string>775500270.2820899</string>
+					<string>776569270.926747</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -324,13 +324,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>1069</string>
+					<string>1104</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>1068</string>
+					<string>1103</string>
 					<key>Timestamp</key>
-					<string>776562013.625277</string>
+					<string>776642713.345233</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -414,13 +414,13 @@ struct PlayGame {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>713</string>
+					<string>732</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>712</string>
+					<string>731</string>
 					<key>Timestamp</key>
-					<string>776562013.625283</string>
+					<string>776607781.459076</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
